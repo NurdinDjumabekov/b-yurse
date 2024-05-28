@@ -1,0 +1,120 @@
+.listSize {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  > li {
+    width: 40px;
+    height: 40px;
+    font-family: Century Gothic;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #050505;
+    border-radius: 50%;
+    border: 1px solid #050505;
+    text-align: center;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+
+.position {
+  position: relative;
+
+  .size__modal {
+    border-radius: 10px;
+    padding: 20px;
+    background: #fff; 
+    position: absolute;
+    top: 0px;
+    left: 285px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    width: 830px;
+    // width: 40px;
+    // height: 40px;
+
+    &__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 15px;
+    }
+
+    .sizeRow {
+      // width: 160px;
+      > span {
+        font-family: Century Gothic;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        text-align: left;
+        display: block;
+        height: 36px;
+
+      }
+    }
+
+    .sizeColumn{
+      grid-template-columns: repeat(12, 1fr);
+      display: flex;
+      gap: 10px;
+      > span {
+        width: 40px;
+        text-align: center;
+        display: block;
+        margin-bottom: 20px;
+        font-family: Century Gothic;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        text-align: center;
+        color: rgba(5, 5, 5, 1);
+        display: block;
+
+      }
+    }
+
+    .sizeTable{
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 6px;
+
+      span {
+        // padding: 5px;
+        text-align: center;
+        display: block;
+        height: 32px;
+        font-family: Century Gothic;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        text-align: center;
+        color: rgba(144, 144, 144, 1);
+        width: 40px;
+
+      }
+    }
+
+    p {
+      font-family: Century Gothic;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      text-align: left;
+      color: rgba(144, 144, 144, 1);
+
+    }
+  }
+
+  .shadow {
+    z-index: 99 ;
+  }
+}

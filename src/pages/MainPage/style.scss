@@ -1,0 +1,110 @@
+.mainPage {
+    &__inner {
+        background-image: url("../../assets/images/mainImg.jpg");
+        height: 100vh;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 40px 0;
+        position: relative;
+
+        h1 {
+            font-family: AKONY;
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 33px;
+            text-align: center;
+            text-transform: uppercase;
+            color: rgba(94,168,168,255);
+        }
+
+        .mainInfo {
+            width: 400px;
+            position: absolute;
+            left: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+
+            h2 {
+                font-family: AKONY;
+                font-size: 50px;
+                font-weight: 700;
+                line-height: 60px;
+                text-align: left;
+                text-transform: uppercase;
+                color: rgba(94,168,168,255);
+    
+            }
+
+            button {
+                width: 100%;
+                font-size: 20px;
+                font-weight: 400;
+                line-height: 20px;
+                text-align: center;
+                height: 70px;
+                border-radius: 10px;
+                margin-top: 35px;
+                background: rgba(114,144,154,255);
+                color: #fff;
+            }
+
+            .deliveryText {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 25px;
+                gap: 8px;
+
+
+                img {
+                    width: 30px;
+                    height: 30px;
+                }
+
+                p {
+                    font-size: 16px;
+                    font-weight: 400;
+                    line-height: 20px;
+                    text-align: left;
+                    color: #103a44;
+                }
+            }
+
+        }
+
+        .conditions {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            width: 96%;
+            position: absolute;
+            left: 50%;
+            bottom: 25px;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            gap: 15px;
+
+            p {
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 20px;
+                color: #fff;
+                text-align: left;
+            }
+
+            button {
+                min-width: 300px;
+                height: 60px;
+                font-size: 17px;
+                line-height: 20px;
+                text-align: center;
+                background: #c4b3af;
+                border-radius: 10px;
+
+            }
+        }
+        
+    }
+}
