@@ -12,6 +12,8 @@ const initialState = {
   lookBasket: false, //// для просмотра корзины
 
   lookSize: false, //// для просмотра размеров
+
+  lookMenu: false, //// для просмотра menu
 };
 
 const stateSlice = createSlice({
@@ -33,10 +35,19 @@ const stateSlice = createSlice({
     lookSizeFN: (state, action) => {
       state.lookSize = action.payload;
     },
+
+    lookMenuFN: (state, action) => {
+      state.lookMenu = action.payload;
+    },
   },
 });
 
-export const { changeAlertText, lookFavoriteFN, lookBasketFN, lookSizeFN } =
-  stateSlice.actions;
+export const {
+  changeAlertText,
+  lookFavoriteFN,
+  lookBasketFN,
+  lookSizeFN,
+  lookMenuFN,
+} = stateSlice.actions;
 
 export default stateSlice.reducer;

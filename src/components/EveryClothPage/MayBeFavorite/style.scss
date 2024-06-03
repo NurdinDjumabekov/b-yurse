@@ -1,0 +1,20 @@
+.mayBeFavorite {
+    width: 100%;
+    display: block !important;
+    margin-bottom: 20px;
+
+    h4 {
+        font-size: 25px;
+        font-weight: 400;
+        line-height: 25px;  
+        margin: 70px 0 25px;
+    }
+
+    &__list {
+        display: flex;
+        // justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 25px;
+    }
+}

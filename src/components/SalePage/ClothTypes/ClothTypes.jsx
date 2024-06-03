@@ -3,7 +3,8 @@ import "./style.scss";
 import like from "../../../assets/icons/like.svg";
 import ClothSize from "../ClothSize/ClothSize";
 import ClothMenu from "../ClothMenu/ClothMenu";
-import ClothColorPrice from "../ClothColorPrice/ClothColorPrice";
+import ClothPrices from "../ClothPrices/ClothPrices";
+import ClothColor from "../ClothColor/ClothColor";
 
 const ClothTypes = () => {
   const [listClothWomen, setListClothWomen] = useState([
@@ -88,6 +89,10 @@ const ClothTypes = () => {
     setListClothMan(newData);
   };
 
+  const onUp = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div className="clothTypes">
       <ClothMenu />
@@ -126,8 +131,11 @@ const ClothTypes = () => {
         ))}
       </ul>
       <ClothSize />
-      <ClothColorPrice />
-      <button className="onUp">Подняться наверх</button>
+      <ClothColor />
+      <ClothPrices />
+      <button className="onUp" onClick={onUp}>
+        Подняться наверх
+      </button>
     </div>
   );
 };

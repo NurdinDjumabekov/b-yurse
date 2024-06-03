@@ -21,10 +21,27 @@
     align-items: center;
     cursor: pointer;
   }
+
+  .activeItem {
+    background: #050505;
+    color: #fff;
+  }
 }
 
 .position {
   position: relative;
+
+  .title {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
 
   .size__modal {
     border-radius: 10px;
@@ -38,8 +55,6 @@
     flex-direction: column;
     height: 300px;
     width: 830px;
-    // width: 40px;
-    // height: 40px;
 
     &__inner {
       display: flex;
@@ -49,7 +64,6 @@
     }
 
     .sizeRow {
-      // width: 160px;
       > span {
         font-family: Century Gothic;
         font-size: 14px;
@@ -88,7 +102,6 @@
       gap: 6px;
 
       span {
-        // padding: 5px;
         text-align: center;
         display: block;
         height: 32px;

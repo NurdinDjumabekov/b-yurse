@@ -5,7 +5,8 @@ import MainLayouts from "../layouts/MainLayouts/MainLayouts";
 import MainPage from "../pages/MainPage/MainPage";
 import ChoiceCatalog from "../pages/ChoiceCatalog/ChoiceCatalog";
 import SalePage from "../pages/SalePage/SalePage";
-import EveryCloth from "../pages/EveryCloth/EveryCloth";
+import EveryClothPage from "../pages/EveryClothPage/EveryClothPage";
+import BasketPage from "../pages/BasketPage/BasketPage";
 
 const MainRoutes = () => {
   return (
@@ -15,7 +16,8 @@ const MainRoutes = () => {
         <Route element={<MainLayouts />}>
           <Route path="/catalog" element={<ChoiceCatalog />} />
           <Route path="/sale" element={<SalePage />} />
-          <Route path="/every/:id" element={<EveryCloth />} />
+          <Route path="/every/:id" element={<EveryClothPage />} />
+          <Route path="/basket" element={<BasketPage />} />
         </Route>
         {/* <Route path="*" element={<NotFoundPage />} /> */}
       </Routes>

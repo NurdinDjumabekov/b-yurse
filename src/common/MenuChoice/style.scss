@@ -1,0 +1,56 @@
+.menuChoice {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+
+    &__parent {
+        min-width: 1280px;
+        position: absolute; 
+        top: 62px;
+        left: 0;
+        z-index: 99;
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+
+        p {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 38px;
+            color: #505050;
+            cursor: pointer;
+        }
+        
+        .active {
+            padding-left: 20px;     
+            color: #050505;
+        }
+    }
+
+    &__first {
+        width: 400px;
+        background: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        p:hover {
+            padding-left: 20px;     
+            color: #050505;
+        }
+    }   
+
+    &__second {
+        width: 400px;
+        background: #fff;
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    &__three {
+        width: 400px;
+        background: #fff;
+        border-radius: 10px;
+        padding: 20px;
+    }
+}

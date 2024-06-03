@@ -1,14 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import women from "../../assets/images/Rectangle 478.png";
+import pay1 from "../../assets/images/pay1.png";
+import pay2 from "../../assets/images/pay2.png";
 import { NavPath } from "../../common/NavPath/NavPath";
 import "./style.scss";
 import ClothSize from "../../components/SalePage/ClothSize/ClothSize";
+import ClothColor from "../../components/SalePage/ClothColor/ClothColor";
+import basket from "../../assets/icons/basket.svg";
+import heart from "../../assets/icons/heart.svg";
+import { Description } from "../../components/EveryClothPage/Description/Description";
+import RecomCloth from "../../components/EveryClothPage/RecomCloth/RecomCloth";
+import MayBeFavorite from "../../components/EveryClothPage/MayBeFavorite/MayBeFavorite";
 
-const EveryCloth = () => {
+const EveryClothPage = () => {
   const params = useParams();
 
   const { id } = params;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const obj = {
     imgs: [women, women, women, women],
@@ -48,13 +60,32 @@ const EveryCloth = () => {
           </div>
           <div className="dopContant">
             <h5>{obj?.title}</h5>
-            <p>{obj?.title}</p>
+            <p>{obj?.price}</p>
+            <div className="blockPay">
+              <img src={pay2} alt="pay" />
+              <img src={pay1} alt="pay" />
+              <span>4 платежа по ~870 ₽</span>
+            </div>
             <ClothSize />
+            <div className="push"></div>
+            <ClothColor />
+            <div className="actions">
+              <button className="choiceCloth">
+                <span>Положить в корзину</span>
+                <img src={basket} alt="basket" />
+              </button>
+              <button className="actionFavorite">
+                <img src={heart} alt="heart" />
+              </button>
+            </div>
+            <Description />
           </div>
         </div>
+        <RecomCloth />
+        <MayBeFavorite />
       </div>
     </div>
   );
 };
 
-export default EveryCloth;
+export default EveryClothPage;

@@ -10,7 +10,9 @@ import {
   texxtSize2,
 } from "../../../helpers/LodalData";
 
-const ClothSize = () => {
+const ClothSize = ({ oneCodeId }) => {
+  ///// if oneCodeId есть, то надо отображать только один размер, который в codeid приходит
+
   const dispatch = useDispatch();
 
   const { lookSize } = useSelector((state) => state.stateSlice);
@@ -44,7 +46,7 @@ const ClothSize = () => {
       codeid: 5,
       text: "xXs",
       count: 12,
-      active: true,
+      active: false,
     },
     {
       codeid: 6,
@@ -77,15 +79,17 @@ const ClothSize = () => {
   const lookSizeCloth = (bool) => dispatch(lookSizeFN(bool));
 
   return (
-    <>
+    <div>
       <div className="mainTitle position">
-        <h3>Размерная сетка (верх)</h3>
-        <img
-          src={info}
-          alt="info"
-          className="imgAction"
-          onClick={() => lookSizeCloth(true)}
-        />
+        <div className="title">
+          <h3>Размерная сетка</h3>
+          <img
+            src={info}
+            alt="info"
+            className="imgAction"
+            onClick={() => lookSizeCloth(true)}
+          />
+        </div>
 
         {lookSize && (
           <div className="size__modal">
@@ -126,19 +130,25 @@ const ClothSize = () => {
           <div className="shadow" onClick={() => lookSizeCloth(false)}></div>
         )}
       </div>
-      <div className="line"></div>
+      {!oneCodeId && <div className="line"></div>}
       <ul className="listSize">
-        {listClothSize?.map((item) => (
-          <li
-            key={item?.codeid}
-            className={item?.active ? "activeItem" : ""}
-            onClick={() => clickListMan(item.codeid)}
-          >
-            {item?.text}
-          </li>
-        ))}
+        {oneCodeId
+          ? listClothSize?.map((item) => {
+              if (oneCodeId == item.codeid) {
+                return <li key={item?.codeid}>{item?.text}</li>;
+              }
+            })
+          : listClothSize?.map((item) => (
+              <li
+                key={item?.codeid}
+                className={item?.active ? "activeItem" : ""}
+                onClick={() => clickListMan(item.codeid)}
+              >
+                {item?.text}
+              </li>
+            ))}
       </ul>
-    </>
+    </div>
   );
 };
 
