@@ -42,6 +42,7 @@ const ModalNumConfirm = () => {
     } else {
       if (checkNums) {
         dispatch(lookNumberConfFN(false));
+        clear();
       }
     }
   };
@@ -107,10 +108,20 @@ const ModalNumConfirm = () => {
 
   const checkNums = nums?.length == 4;
 
+  const closeModal = (bool) => {
+    dispatch(lookNumberConfFN(bool));
+    clear();
+  };
+
+  const clear = () => {
+    setCode({ num1: "", num2: "", num3: "", num4: "" });
+    setTime(60);
+  };
+
   return (
     <Modal
       openModal={lookNumberConf}
-      setOpenModal={() => dispatch(lookNumberConfFN())}
+      setOpenModal={closeModal}
       title={"Мой аккаунт"}
     >
       <div className="modalNumConf">
