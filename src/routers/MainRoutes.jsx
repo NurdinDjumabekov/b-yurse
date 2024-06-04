@@ -7,6 +7,7 @@ import ChoiceCatalog from "../pages/ChoiceCatalog/ChoiceCatalog";
 import SalePage from "../pages/SalePage/SalePage";
 import EveryClothPage from "../pages/EveryClothPage/EveryClothPage";
 import BasketPage from "../pages/BasketPage/BasketPage";
+import DecorZakazPage from "../pages/DecorZakazPage/DecorZakazPage";
 
 const MainRoutes = () => {
   return (
@@ -18,6 +19,7 @@ const MainRoutes = () => {
           <Route path="/sale" element={<SalePage />} />
           <Route path="/every/:id" element={<EveryClothPage />} />
           <Route path="/basket" element={<BasketPage />} />
+          <Route path="/decor" element={<DecorZakazPage />} />
         </Route>
         {/* <Route path="*" element={<NotFoundPage />} /> */}
       </Routes>

@@ -1,0 +1,22 @@
+.userInputAddres {
+    margin-top: 45px;
+
+    .line {
+        margin: 15px 0 25px;
+      }
+
+    h6 {
+        font-size: 25px;
+        font-weight: 700;
+        line-height: 20px;  
+        margin-top: 40px;
+    }
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        gap: 20px;
+    }
+}

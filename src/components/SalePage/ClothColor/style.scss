@@ -1,43 +1,69 @@
-.listColor {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  position: relative;
+.clothColor {
 
-  > li {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
+  .position {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    &:hover {
-      transition: 400ms;
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .listColor {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    position: relative;
+
+    > li {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      margin: 3px;
+      transform: 0.8s;
+
+      &:hover {
+        transition: 400ms;
+        .activeImg {
+          display: block;
+          opacity: 1;
+          transition: 1s !important;
+        }
+      }
+
       .activeImg {
-        display: block;
-        opacity: 1;
+        display: none;
+        height: 290px;
+        width: 290px;
+        position: absolute;
+        bottom: 60px;
+        left: 0;
+        border-radius: 0px;
+        background: red;
+        border-radius: 10px;
+        opacity: 0;
         transition: 1s !important;
+      }
+
+      > img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
       }
     }
 
-    .activeImg {
-      display: none;
-      height: 290px;
-      width: 290px;
-      position: absolute;
-      bottom: 45px;
-      left: 0;
-      border-radius: 0px;
-      background: red;
-      border-radius: 10px;
-      opacity: 0;
-      transition: 1s !important;
-    }
+    .activeItem {
+      border: 1px solid #050505;
+      width: 46px;
+      height: 46px;
+      margin: 0;
+      padding: 2px;
+      transform: 0.8s;
 
-    > img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
     }
   }
 }

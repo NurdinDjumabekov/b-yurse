@@ -1,10 +1,19 @@
+///hooks
 import React, { useState } from "react";
+
+////imgs
 import color from "../../../assets/images/голубая лагуна.png";
 import color2 from "../../../assets/images/молочный.png";
+import info from "../../../assets/icons/Info.svg";
+
+///style
 import "./style.scss";
+import { useLocation } from "react-router-dom";
 
 const ClothColor = ({ oneCodeId }) => {
   ///// if oneCodeId есть, то надо отображать только один размер, который в codeid приходит
+
+  const { pathname } = useLocation();
 
   const [list, setList] = useState([
     {
@@ -41,15 +50,19 @@ const ClothColor = ({ oneCodeId }) => {
     setList(newData);
   };
 
+  const checkPage = pathname.includes("every"); //// if это детальная страница
+
   return (
-    <div>
-      <div className="mainTitle">
+    <div className="clothColor">
+      <div className={`mainTitle position ${checkPage && "everyPosition"}`}>
         <h3>Цветовая палитра</h3>
+        <img src={info} alt="info" className="imgAction" />
       </div>
       {!oneCodeId && <div className="line"></div>}
       <ul className="listColor">
-        {oneCodeId
-          ? list?.map((item) => {
+        {oneCodeId ? (
+          <>
+            {list?.map((item) => {
               if (oneCodeId == item.codeid) {
                 return (
                   <li key={item?.codeid}>
@@ -63,8 +76,11 @@ const ClothColor = ({ oneCodeId }) => {
                   </li>
                 );
               }
-            })
-          : list?.map((item) => (
+            })}
+          </>
+        ) : (
+          <>
+            {list?.map((item) => (
               <li
                 key={item?.codeid}
                 className={item?.active ? "activeItem" : ""}
@@ -79,6 +95,8 @@ const ClothColor = ({ oneCodeId }) => {
                 />
               </li>
             ))}
+          </>
+        )}
       </ul>
     </div>
   );

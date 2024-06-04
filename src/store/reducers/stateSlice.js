@@ -7,6 +7,7 @@ const initialState = {
     state: false,
   },
 
+  //////modals
   lookFavorite: false, //// для просмотра ибранных
 
   lookBasket: false, //// для просмотра корзины
@@ -14,6 +15,10 @@ const initialState = {
   lookSize: false, //// для просмотра размеров
 
   lookMenu: false, //// для просмотра menu
+
+  lookNumber: false, ///// для модалки логина через номер
+
+  lookNumberConf: false, ///// для модалки подтверждения номера
 };
 
 const stateSlice = createSlice({
@@ -39,6 +44,14 @@ const stateSlice = createSlice({
     lookMenuFN: (state, action) => {
       state.lookMenu = action.payload;
     },
+
+    lookNumberFN: (state, action) => {
+      state.lookNumber = action.payload;
+    },
+
+    lookNumberConfFN: (state, action) => {
+      state.lookNumberConf = action.payload;
+    },
   },
 });
 
@@ -48,6 +61,8 @@ export const {
   lookBasketFN,
   lookSizeFN,
   lookMenuFN,
+  lookNumberFN,
+  lookNumberConfFN,
 } = stateSlice.actions;
 
 export default stateSlice.reducer;

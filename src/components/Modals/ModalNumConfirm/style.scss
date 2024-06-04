@@ -1,0 +1,57 @@
+.modalNumConf {
+    padding: 20px 0px;
+
+    > h4 {
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 20px;
+        margin: 0 0 10px 0;
+    }
+
+    .inputs {
+        width: 360px !important;
+        display: flex;
+        justify-content: space-between;
+        > input{
+            width: 85px !important;
+            height: 50px;
+            border-radius: 10px;
+            text-align: center;
+            padding-bottom: 0px;
+            font-family: AKONY;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 30px;
+
+            &::placeholder {
+                font-family: AKONY;
+                font-size: 38px;
+                font-weight: 700;
+                line-height: 30px ;
+                text-align: center;
+            }
+        }
+    }
+
+    .choiceCloth {
+        width: 360px;
+        margin-top: 10px;
+        height: 70px;
+        background: #cdcdcd;
+        gap: 50px;
+    }
+
+    .active {
+        background: #050505;
+    }
+
+    p {
+        width: 360px;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 18px;
+        text-align: center;
+        color: #303030;
+        margin-top: 20px;
+    }
+}

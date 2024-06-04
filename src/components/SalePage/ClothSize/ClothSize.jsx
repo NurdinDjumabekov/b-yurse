@@ -1,19 +1,27 @@
-import React, { useState } from "react";
-import info from "../../../assets/icons/Info.svg";
-import "./style.scss";
+///hooks
+import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+
+///imgs
+import info from "../../../assets/icons/Info.svg";
+
+///style
+import "./style.scss";
+
+////fns
 import { lookSizeFN } from "../../../store/reducers/stateSlice";
-import {
-  arrSizeRow,
-  arrSizeTable,
-  texxtSize1,
-  texxtSize2,
-} from "../../../helpers/LodalData";
+
+//////helpers
+import { arrSizeRow, arrSizeTable } from "../../../helpers/LodalData";
+import { texxtSize1, texxtSize2 } from "../../../helpers/LodalData";
 
 const ClothSize = ({ oneCodeId }) => {
   ///// if oneCodeId есть, то надо отображать только один размер, который в codeid приходит
 
   const dispatch = useDispatch();
+
+  const { pathname } = useLocation();
 
   const { lookSize } = useSelector((state) => state.stateSlice);
 
@@ -78,10 +86,12 @@ const ClothSize = ({ oneCodeId }) => {
 
   const lookSizeCloth = (bool) => dispatch(lookSizeFN(bool));
 
+  const checkPage = pathname.includes("every"); //// if это детальная страница
+
   return (
     <div>
       <div className="mainTitle position">
-        <div className="title">
+        <div className={`title ${checkPage && "everyPosition"}`}>
           <h3>Размерная сетка</h3>
           <img
             src={info}

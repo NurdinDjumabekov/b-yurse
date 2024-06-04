@@ -1,0 +1,48 @@
+.promocode {
+    display: flex;
+    align-items: center;
+    gap: 10px;  
+
+    p, span, button {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 20px;
+        color: #050505;
+    }
+
+    span {
+        color: #909090;
+        cursor: pointer;
+    }
+
+    button, input {
+        width: 200px;
+        height: 50px;   
+        padding: 10px 15px;
+        border-radius: 10px;
+    }
+
+    button {
+        color: #FF3535;
+        border: 1px solid #FF3535;
+    }
+
+    input {
+        border: 1px solid #ebebeb;
+
+        &::placeholder {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 20px;
+            color: #a4a2a2;
+        }
+
+        &:focus {
+            color: #a4a2a2;
+            border: 1px solid #ebebeb !important;
+            outline: none;
+        }
+    }
+
+    
+}
