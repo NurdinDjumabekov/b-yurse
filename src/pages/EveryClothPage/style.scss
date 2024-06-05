@@ -50,15 +50,37 @@
         }
 
         .dopContant {
-            h5,p {
+            h5 {
                 font-size: 25px;
                 font-weight: 400;
                 line-height: 25px;
-                text-align: left;
             }
 
-            p {
-                margin: 12px 0;
+            .prices {
+
+                .price {
+                    display: flex;
+                    gap: 15px;
+                    align-items: center;
+                }
+
+                p, i, b {
+                    margin: 12px 0;
+                    font-size: 25px;
+                    font-weight: 400;
+                    line-height: 25px;
+                }
+
+                i {
+                    color: #FF3535;
+                  }
+              
+                b {
+                    color: #909090;
+                    text-decoration: line-through;
+                  }
+              
+
             }
 
             .push {

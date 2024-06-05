@@ -5,6 +5,19 @@
     align-items: center;
     gap: 24px;
 
+    .userLogo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;   
+        p {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 18px;
+            color: #909090;
+        }
+    }
+
     &__parent {
         max-width: 1280px;
         position: absolute; 

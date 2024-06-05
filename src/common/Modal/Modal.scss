@@ -5,6 +5,7 @@
   z-index: 99;
   width: 100%;
   height: 100vh;
+  animation: modal 0.5s ease-in-out;  
 
   &__shadow {
     position: absolute;
@@ -31,6 +32,7 @@
     transition: background-color 0.5s, opacity 0.5s;
     border-radius: 8px;
     padding: 30px 15px 30px 15px;
+    animation: modal 0.9s ease-in-out;  
 
     h6 {
       font-size: 25px;
@@ -41,5 +43,15 @@
       border-bottom: 1px solid #90909092;
     }
 
+  }
+}
+
+
+@keyframes modal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

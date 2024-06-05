@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import women from "../../assets/images/Rectangle 478.png";
 import pay1 from "../../assets/images/pay1.png";
 import pay2 from "../../assets/images/pay2.png";
 import { NavPath } from "../../common/NavPath/NavPath";
@@ -12,30 +11,28 @@ import heart from "../../assets/icons/heart.svg";
 import { Description } from "../../components/EveryClothPage/Description/Description";
 import RecomCloth from "../../components/EveryClothPage/RecomCloth/RecomCloth";
 import MayBeFavorite from "../../components/EveryClothPage/MayBeFavorite/MayBeFavorite";
+import { useDispatch, useSelector } from "react-redux";
+import { addProdBasket } from "../../store/reducers/saveDataSlice";
 
 const EveryClothPage = () => {
   const params = useParams();
+  const dispatch = useDispatch();
 
   const { id } = params;
+
+  const { everyCloth } = useSelector((state) => state.requestSlice);
+
+  const addBasket = () => {
+    dispatch(addProdBasket(everyCloth));
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const obj = {
-    imgs: [women, women, women, women],
-    price: "3 490 ₽",
-    title: "Футболка из премиальной ткани с облегающим кроем",
-    descr:
-      "Идеальная футболка с облегающим кроем, а также с круглым вырезом, является отличным вариантом для повседневного и уикенд ношения.   Футбола изготовлена ​​из премиального, прохладного, удобного и эластичного хлопка, отделанного качественными строчками из крепких ниток. Ведь, это настоящая классика на все времена.",
-  };
+  const link = ["Бестселлер-коллекция", everyCloth?.title];
 
-  console.log(params, "params");
-
-  const link = [
-    "Бестселлер-коллекция",
-    "Футболка из премиальной ткани с облегающим кроем",
-  ];
+  const checkSale = everyCloth?.sale; //// есть ли скидка
 
   return (
     <div className="everyCloth">
@@ -45,22 +42,30 @@ const EveryClothPage = () => {
           <div className="mainContant">
             <div className="dopImg">
               <div>
-                <img src={obj?.imgs?.[0]} alt="" />
+                <img src={everyCloth?.img} alt="" />
               </div>
               <div>
-                <img src={obj?.imgs?.[1]} alt="" />
+                <img src={everyCloth?.img} alt="" />
               </div>
               <div>
-                <img src={obj?.imgs?.[2]} alt="" />
+                <img src={everyCloth?.img} alt="" />
               </div>
             </div>
             <div className="mainImg">
-              <img src={obj?.imgs?.[3]} alt="" />
+              <img src={everyCloth?.img} alt="" />
             </div>
           </div>
           <div className="dopContant">
-            <h5>{obj?.title}</h5>
-            <p>{obj?.price}</p>
+            <h5>{everyCloth?.title}</h5>
+            <div className="prices">
+              {checkSale ? (
+                <div className="price">
+                  <i>{everyCloth?.price}</i> <b>{everyCloth?.price}</b>
+                </div>
+              ) : (
+                <p>{everyCloth?.price}</p>
+              )}
+            </div>
             <div className="blockPay">
               <img src={pay2} alt="pay" />
               <img src={pay1} alt="pay" />
@@ -70,7 +75,7 @@ const EveryClothPage = () => {
             <div className="push"></div>
             <ClothColor />
             <div className="actions">
-              <button className="choiceCloth">
+              <button className="choiceCloth" onClick={addBasket}>
                 <span>Положить в корзину</span>
                 <img src={basket} alt="basket" />
               </button>

@@ -13,12 +13,9 @@ import "./style.scss";
 import { activeSizeFN, lookSizeFN } from "../../../store/reducers/stateSlice";
 
 //////helpers
-import {
-  arrSizeRow,
-  arrSizeTable,
-  listClothSize,
-} from "../../../helpers/LodalData";
+import { arrSizeRow, arrSizeTable } from "../../../helpers/LodalData";
 import { texxtSize1, texxtSize2 } from "../../../helpers/LodalData";
+import { getListCloth } from "../../../store/reducers/requestSlice";
 
 const ClothSize = ({ oneCodeId }) => {
   ///// if oneCodeId есть, то надо отображать только один размер, который в codeid приходит
@@ -27,10 +24,18 @@ const ClothSize = ({ oneCodeId }) => {
 
   const { pathname } = useLocation();
 
-  const { lookSize, activeSize } = useSelector((state) => state.stateSlice);
+  const { lookSize } = useSelector((state) => state.stateSlice);
+  const { activeCateg, activeSize } = useSelector((state) => state.stateSlice);
+  const { activeColor, activePrice } = useSelector((state) => state.stateSlice);
 
-  const clickListMan = (codeid) => {
-    dispatch(activeSizeFN(codeid));
+  const { listSize } = useSelector((state) => state.requestSlice);
+
+  const clickListMan = (id) => {
+    dispatch(activeSizeFN(id));
+    const obj1 = { categId: activeCateg.categId, activeSize: id };
+    const obj2 = { activeColor, minPrice: activePrice.min };
+    const obj3 = { maxPrice: activePrice?.max, type: activeCateg.type };
+    dispatch(getListCloth({ ...obj1, ...obj2, ...obj3 }));
   };
 
   const lookSizeCloth = (bool) => dispatch(lookSizeFN(bool));
@@ -51,7 +56,7 @@ const ClothSize = ({ oneCodeId }) => {
         </div>
 
         {lookSize && (
-          <div className="size__modal">
+          <div className={`size__modal ${checkPage && "more__size"}`}>
             <div className="size__modal__inner">
               <div className="sizeRow">
                 <span>российский размер</span>
@@ -92,18 +97,18 @@ const ClothSize = ({ oneCodeId }) => {
       {!oneCodeId && <div className="line"></div>}
       <ul className="listSize">
         {oneCodeId
-          ? listClothSize?.map((item) => {
-              if (oneCodeId == item.codeid) {
-                return <li key={item?.codeid}>{item?.text}</li>;
+          ? listSize?.map((item) => {
+              if (oneCodeId == item.id) {
+                return <li key={item?.id}>{item?.sizeName}</li>;
               }
             })
-          : listClothSize?.map((item) => (
+          : listSize?.map((item) => (
               <li
-                key={item?.codeid}
-                className={activeSize == item.codeid ? "activeItem" : ""}
-                onClick={() => clickListMan(item.codeid)}
+                key={item?.id}
+                className={activeSize == item.id ? "activeItem" : ""}
+                onClick={() => clickListMan(item.id)}
               >
-                {item?.text}
+                {item?.sizeName}
               </li>
             ))}
       </ul>

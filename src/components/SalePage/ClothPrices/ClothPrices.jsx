@@ -1,10 +1,30 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import "./style.scss";
 import { Box, Slider } from "@mui/material";
+import { activePriceFN } from "../../../store/reducers/stateSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { getListCloth } from "../../../store/reducers/requestSlice";
 
 const ClothPrices = () => {
-  const onChangePrice = (price) => {
-    return `${price}`;
+  const [value, setValue] = useState([1, 10000]);
+  const timerRef = useRef(null);
+
+  const dispatch = useDispatch();
+
+  const { activeCateg, activeSize } = useSelector((state) => state.stateSlice);
+  const { activeColor, activePrice } = useSelector((state) => state.stateSlice);
+
+  const onSliderChange = (event, newValue) => {
+    dispatch(activePriceFN({ min: newValue?.[0], max: newValue?.[1] }));
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+    timerRef.current = setTimeout(() => {
+      const obj1 = { categId: activeCateg.categId, activeSize };
+      const obj2 = { activeColor, minPrice: newValue?.[0] };
+      const obj3 = { maxPrice: newValue?.[1], type: activeCateg.type };
+      dispatch(getListCloth({ ...obj1, ...obj2, ...obj3 }));
+    }, 1500);
   };
 
   return (
@@ -17,8 +37,7 @@ const ClothPrices = () => {
         <Box sx={{ width: 200 }}>
           <Slider
             aria-label="Temperature"
-            getAriaValueText={onChangePrice}
-            shiftStep={30}
+            onChange={onSliderChange}
             step={10}
             valueLabelDisplay="on"
             min={10}
@@ -41,12 +60,11 @@ const ClothPrices = () => {
               },
               "& .MuiSlider-valueLabel": {
                 backgroundColor: "transparent",
-                color: "#222  ",
+                color: "#222",
               },
             }}
-            defaultValue={[1, 10000]}
+            value={[activePrice?.min, activePrice?.max]}
             disableSwap
-            // marks={marks}
           />
         </Box>
       </div>

@@ -5,8 +5,6 @@ import UserInputs from "../../components/DecorPage/UserInputs/UserInputs";
 import UserAddresInputs from "../../components/DecorPage/UserAddresInputs/UserAddresInputs";
 import { useRef } from "react";
 import DeliveryPay from "../../components/DecorPage/DeliveryPay/DeliveryPay";
-import ModalNumber from "../../components/Modals/ModalNumber/ModalNumber";
-import ModalNumConfirm from "../../components/Modals/ModalNumConfirm/ModalNumConfirm";
 
 const DecorZakazPage = () => {
   const refAddres = useRef(null);
@@ -20,8 +18,6 @@ const DecorZakazPage = () => {
           <UserInputs refAddres={refAddres} />
           <UserAddresInputs refAddres={refAddres} />
           <DeliveryPay />
-          <ModalNumber />
-          <ModalNumConfirm />
         </div>
       </div>
     </div>

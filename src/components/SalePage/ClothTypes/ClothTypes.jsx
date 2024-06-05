@@ -1,35 +1,47 @@
+////hooks
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+////style
 import "./style.scss";
+
+////imgs
 import like from "../../../assets/icons/like.svg";
+
+/////components
 import ClothSize from "../ClothSize/ClothSize";
 import ClothPrices from "../ClothPrices/ClothPrices";
 import ClothColor from "../ClothColor/ClothColor";
-import {
-  listAll,
-  listClothMan,
-  listClothWomen,
-} from "../../../helpers/LodalData";
-import { useDispatch, useSelector } from "react-redux";
+
+///////fns
 import { activeCategFN } from "../../../store/reducers/stateSlice";
+import { getListCloth } from "../../../store/reducers/requestSlice";
 
 const ClothTypes = () => {
   const dispatch = useDispatch();
 
-  const { activeCateg } = useSelector((state) => state.stateSlice);
+  const { categClothWoman } = useSelector((state) => state.requestSlice);
+  const { categClothMan } = useSelector((state) => state.requestSlice);
+  const { listBrands } = useSelector((state) => state.requestSlice);
 
-  const actionCateg = ({ codeid, type }) => {
-    dispatch(activeCategFN({ codeid, type }));
+  const { activeCateg, activeSize } = useSelector((state) => state.stateSlice);
+  const { activeColor, activePrice } = useSelector((state) => state.stateSlice);
+
+  const actionCateg = ({ id, gender }) => {
+    dispatch(activeCategFN({ categId: id, type: gender }));
+    const obj1 = { categId: id, type: gender, activeSize };
+    const obj2 = { activeColor, minPrice: activePrice.min };
+    const obj3 = { maxPrice: activePrice?.max };
+    dispatch(getListCloth({ ...obj1, ...obj2, ...obj3 }));
   };
 
   const onUp = () => {
     window.scrollTo(0, 0);
   };
 
-  console.log(activeCateg, "activeCateg");
-
   const checkTitle = activeCateg?.type;
 
-  const checkCateg = activeCateg?.codeid;
+  const checkCateg = activeCateg?.categId;
 
   return (
     <div className="clothTypes">
@@ -38,47 +50,53 @@ const ClothTypes = () => {
       </div>
       <div className="line"></div>
       <ul className="listTypes">
-        {listAll?.map((item) => (
+        {listBrands?.map((item) => (
           <li
-            key={item?.codeid}
-            className={checkCateg == item.codeid ? "activeItem" : ""}
+            key={item?.id}
+            className={
+              checkCateg == item.id && checkTitle == 3 ? "activeItem" : ""
+            }
             onClick={() => actionCateg(item)}
           >
-            <p>{item?.text}</p>
+            <p>{item?.collectionName}</p>
           </li>
         ))}
       </ul>
       <div className="mainTitle">
-        <h3 className={checkTitle == 1 && "activeTitle"}>Женская одежда</h3>
+        <h3 className={checkTitle == 2 && "activeTitle"}>Женская одежда</h3>
         <img src={like} alt="like" />
       </div>
       <div className="line"></div>
       <ul className="listTypes">
-        {listClothWomen?.map((item) => (
+        {categClothWoman?.map((item) => (
           <li
-            key={item?.codeid}
-            className={checkCateg == item.codeid ? "activeItem" : ""}
+            key={item?.id}
+            className={
+              checkCateg == item.id && checkTitle == 2 ? "activeItem" : ""
+            }
             onClick={() => actionCateg(item)}
           >
-            <p>{item?.text}</p>
-            <span className="count">{item?.count}</span>
+            <p>{item?.categoryName}</p>
+            <span className="count">{item?.count || 0}</span>
           </li>
         ))}
       </ul>
       <div className="mainTitle">
-        <h3 className={checkTitle == 2 && "activeTitle"}>Мужская одежда</h3>
+        <h3 className={checkTitle == 1 && "activeTitle"}>Мужская одежда</h3>
         <img src={like} alt="like" />
       </div>
       <div className="line"></div>
       <ul className="listTypes">
-        {listClothMan?.map((item) => (
+        {categClothMan?.map((item) => (
           <li
-            key={item?.codeid}
-            className={checkCateg == item.codeid ? "activeItem" : ""}
+            key={item?.id}
+            className={
+              checkCateg == item.id && checkTitle == 1 ? "activeItem" : ""
+            }
             onClick={() => actionCateg(item)}
           >
-            <p>{item?.text}</p>
-            <span className="count">{item?.count}</span>
+            <p>{item?.categoryName}</p>
+            <span className="count">{item?.count || 0}</span>
           </li>
         ))}
       </ul>

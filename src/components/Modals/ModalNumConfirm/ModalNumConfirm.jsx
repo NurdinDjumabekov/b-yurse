@@ -3,7 +3,10 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 ///fns
-import { lookNumberConfFN } from "../../../store/reducers/stateSlice";
+import {
+  lookNumberConfFN,
+  numberUserFN,
+} from "../../../store/reducers/stateSlice";
 
 ////componets
 import Modal from "../../../common/Modal/Modal";
@@ -15,13 +18,21 @@ import "./style.scss";
 import phone from "../../../assets/icons/phone.svg";
 import { useEffect } from "react";
 import { useRef } from "react";
+import { confirmNumberFN } from "../../../store/reducers/requestSlice";
+import saveDataSlice, {
+  changeDataUser,
+} from "../../../store/reducers/saveDataSlice";
 
 const ModalNumConfirm = () => {
   ////// для подивердения номера (подивердение кодом)
   const dispatch = useDispatch();
 
   const [time, setTime] = useState(60);
-  const { lookNumberConf } = useSelector((state) => state.stateSlice);
+  const { lookNumberConf, numberUser } = useSelector(
+    (state) => state.stateSlice
+  );
+
+  const { dataUser } = useSelector((state) => state.saveDataSlice);
 
   const [code, setCode] = useState({ num1: "", num2: "", num3: "", num4: "" });
 
@@ -30,21 +41,6 @@ const ModalNumConfirm = () => {
     num2: useRef(null),
     num3: useRef(null),
     num4: useRef(null),
-  };
-
-  const onChange = () => {};
-
-  const sendNums = () => {
-    if (time === 0) {
-      //// отправка номера еше раз
-      setTime(60);
-      dispatch(lookNumberConfFN(true));
-    } else {
-      if (checkNums) {
-        dispatch(lookNumberConfFN(false));
-        clear();
-      }
-    }
   };
 
   useEffect(() => {
@@ -116,6 +112,28 @@ const ModalNumConfirm = () => {
   const clear = () => {
     setCode({ num1: "", num2: "", num3: "", num4: "" });
     setTime(60);
+  };
+
+  const sendNums = () => {
+    if (time === 0) {
+      //// отправка номера еше раз
+      setTime(60);
+      dispatch(lookNumberConfFN(true));
+    } else {
+      if (checkNums) {
+        // dispatch(confirmNumberFN({ clear, nums, numberUser }));
+
+        ///// перенести в запрос
+        const data = { ...dataUser, chechAccount: true, haveBeen: true };
+        dispatch(changeDataUser({ ...data, numberUser }));
+        dispatch(lookNumberConfFN(false));
+        dispatch(numberUserFN); ///// очищаю вводный номер
+        alert("Вы успешно авторизовались");
+        clear();
+      } else {
+        alert("Введите все 4 числа");
+      }
+    }
   };
 
   return (

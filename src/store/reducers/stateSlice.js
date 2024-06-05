@@ -7,16 +7,18 @@ const initialState = {
     state: false,
   },
 
+  numberUser: "", /// для ввода номера
+
   //////////////////////// categories all
 
-  activeCateg: { codeid: 31, type: 3 }, // (categ) id категории
+  activeCateg: { categId: 1, type: 2 }, // (categ) id категории
   ////// (type) тип категрии (мужская одежда, женская, премиальная одежда ....)
 
-  activeSize: 0, //// размер одежды
+  activeSize: 1, //// размер одежды
 
-  activeColor: 0, //// цвет одежды
+  activeColor: 1, //// цвет одежды
 
-  activePrice: { start: 10, end: 12000 }, //// цена одежды диапозон
+  activePrice: { min: 10, max: 12000 }, //// цена одежды диапозон
 
   //////////////////////// modals
   lookFavorite: false, //// для просмотра ибранных
@@ -38,6 +40,10 @@ const stateSlice = createSlice({
   reducers: {
     changeAlertText: (state, action) => {
       state.alertText = action.payload;
+    },
+
+    numberUserFN: (state, action) => {
+      state.numberUser = action.payload;
     },
 
     lookFavoriteFN: (state, action) => {
@@ -84,6 +90,7 @@ const stateSlice = createSlice({
 
 export const {
   changeAlertText,
+  numberUserFN,
   lookFavoriteFN,
   lookBasketFN,
   lookSizeFN,

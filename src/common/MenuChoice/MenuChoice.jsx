@@ -3,13 +3,16 @@ import "./style.scss";
 ////imgs
 import menu from "../../assets/icons/menu.svg";
 import userCheck from "../../assets/icons/UserCheck.svg";
+import user from "../../assets/icons/User.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { lookMenuFN } from "../../store/reducers/stateSlice";
+import { lookMenuFN, lookNumberFN } from "../../store/reducers/stateSlice";
 
 const MenuChoice = () => {
   const dispatch = useDispatch();
 
   const { lookMenu } = useSelector((state) => state.stateSlice);
+
+  const { dataUser } = useSelector((state) => state.saveDataSlice);
 
   const openMenu = () => {
     dispatch(lookMenuFN(true));
@@ -17,8 +20,6 @@ const MenuChoice = () => {
 
   const [secondID, setSecondID] = useState(0);
   const [threeId, setThreeId] = useState(0);
-
-  console.log(secondID);
 
   const firstList = [
     {
@@ -102,15 +103,25 @@ const MenuChoice = () => {
     setThreeId(0);
   }, [lookMenu]);
 
+  const openNum = () => dispatch(lookNumberFN(true));
+  //// открываю модалку для отправки номера
+
   return (
     <>
       <div className="menuChoice">
-        <button onClick={openMenu}>
+        <button onClick={openMenu} className="userLogo">
           <img src={menu} alt="menu" />
         </button>
-        <button>
-          <img src={userCheck} alt="userCheck" />
-        </button>
+        {dataUser?.haveBeen ? (
+          <button className="userLogo">
+            <img src={userCheck} alt="userCheck" />
+          </button>
+        ) : (
+          <button className="userLogo" onClick={openNum}>
+            <img src={user} alt="userCheck" />
+            <p>Войти</p>
+          </button>
+        )}
 
         {lookMenu && (
           <div className="menuChoice__parent">

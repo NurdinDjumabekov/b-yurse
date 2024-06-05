@@ -9,11 +9,9 @@ import info from "../../../assets/icons/Info.svg";
 ///style
 import "./style.scss";
 
-////helpers
-import { listColors } from "../../../helpers/LodalData";
-
 ///fns
 import { activeColorFN } from "../../../store/reducers/stateSlice";
+import { getListCloth } from "../../../store/reducers/requestSlice";
 
 const ClothColor = ({ oneCodeId }) => {
   ///// if oneCodeId есть, то надо отображать только один размер, который в codeid приходит
@@ -21,9 +19,18 @@ const ClothColor = ({ oneCodeId }) => {
 
   const dispatch = useDispatch();
 
-  const { activeColor } = useSelector((state) => state.stateSlice);
+  const { activeCateg, activeSize } = useSelector((state) => state.stateSlice);
+  const { activeColor, activePrice } = useSelector((state) => state.stateSlice);
 
-  const click = (codeid) => dispatch(activeColorFN(codeid));
+  const { listColor } = useSelector((state) => state.requestSlice);
+
+  const click = (id) => {
+    dispatch(activeColorFN(id));
+    const obj1 = { categId: activeCateg.categId, activeColor: id };
+    const obj2 = { activeSize, minPrice: activePrice.min };
+    const obj3 = { maxPrice: activePrice?.max, type: activeCateg.type };
+    dispatch(getListCloth({ ...obj1, ...obj2, ...obj3 }));
+  };
 
   const checkPage = pathname.includes("every"); //// if это детальная страница
 
@@ -38,14 +45,14 @@ const ClothColor = ({ oneCodeId }) => {
         <ul className="listColor">
           {oneCodeId ? (
             <>
-              {listColors?.map((item) => {
-                if (oneCodeId == item.codeid) {
+              {listColor?.map((item) => {
+                if (oneCodeId == item.id) {
                   return (
-                    <li key={item?.codeid}>
+                    <li key={item?.id}>
                       {item?.text}
-                      <img src={item?.imgColor} alt="imgColor" />
+                      <img src={item?.color} alt="imgColor" />
                       <img
-                        src={item?.imgColorBig}
+                        src={item?.color}
                         alt="imgColorBig"
                         className="activeImg"
                       />
@@ -56,18 +63,16 @@ const ClothColor = ({ oneCodeId }) => {
             </>
           ) : (
             <>
-              {listColors?.map((item) => (
+              {listColor?.map((item) => (
                 <li
-                  key={item?.codeid}
-                  className={`list ${
-                    activeColor == item.codeid && "activeItem"
-                  }`}
-                  onClick={() => click(item.codeid)}
+                  key={item?.id}
+                  className={`list ${activeColor == item.id && "activeItem"}`}
+                  onClick={() => click(item.id)}
                 >
                   {item?.text}
-                  <img src={item?.imgColor} alt="imgColor" />
+                  <img src={item?.color} alt="imgColor" />
                   <div className="activeImg">
-                    <img src={item?.imgColorBig} alt="imgColorBig" />
+                    <img src={item?.color} alt="imgColorBig" />
                   </div>
                   <div className="shadowWhite" />
                 </li>

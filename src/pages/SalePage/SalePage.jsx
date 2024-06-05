@@ -1,11 +1,26 @@
+/////hooks
 import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+
+////// components
 import ClothList from "../../components/SalePage/ClothList/ClothList";
 import ClothTypes from "../../components/SalePage/ClothTypes/ClothTypes";
+
+////styles
 import "./style.scss";
 
+////fns
+import { getListBrands, getListCateg } from "../../store/reducers/requestSlice";
+import { getListColors, getListSize } from "../../store/reducers/requestSlice";
+
 const SalePage = () => {
+  const dispatch = useDispatch();
   useEffect(() => {
     window.scrollTo(0, 0);
+    dispatch(getListCateg());
+    dispatch(getListSize());
+    dispatch(getListColors());
+    dispatch(getListBrands());
   }, []);
 
   return (

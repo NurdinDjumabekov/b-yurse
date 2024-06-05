@@ -1,17 +1,18 @@
 import React from "react";
 import imgMan from "../../assets/icons/whileMan.svg";
 import "./style.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { lookNumberFN } from "../../store/reducers/stateSlice";
 
 const CheckUser = () => {
   const dispatch = useDispatch();
 
-  const openNum = () => {
-    dispatch(lookNumberFN(true)); //// открываю модалку для отправки номера
-  };
+  const { dataUser } = useSelector((state) => state.saveDataSlice);
 
-  if (true) {
+  const openNum = () => dispatch(lookNumberFN(true));
+  //// открываю модалку для отправки номера
+
+  if (!dataUser?.haveBeen) {
     return (
       <div className="checkUser">
         <p>Вы уже зарегистрированы?</p>

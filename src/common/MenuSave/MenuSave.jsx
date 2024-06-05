@@ -14,6 +14,9 @@ const MenuSave = () => {
 
   const { lookFavorite, lookBasket } = useSelector((state) => state.stateSlice);
 
+  const { basketList } = useSelector((state) => state.saveDataSlice);
+  const { favouriteList } = useSelector((state) => state.saveDataSlice);
+
   const listFavorite = [
     {
       codeid: 1,
@@ -41,7 +44,7 @@ const MenuSave = () => {
     <>
       <div className="blockFavorite">
         <button className="btnAction" onClick={lookMyFavorite}>
-          <p>10</p>
+          <p>{favouriteList?.reduce((total, item) => total + item.count, 0)}</p>
           <img src={favorite} alt="favorite" />
         </button>
         {lookFavorite && (
@@ -54,7 +57,7 @@ const MenuSave = () => {
       </div>
       <div className="blockFavorite">
         <button className="btnAction" onClick={lookMyBasket}>
-          <p>10</p>
+          <p>{basketList?.reduce((total, item) => total + item.count, 0)}</p>
           <img src={sale} alt="sale" />
         </button>
         {lookBasket && (
