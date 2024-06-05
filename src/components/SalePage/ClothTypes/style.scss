@@ -21,11 +21,17 @@
     > h3 {
       font-family: Century Gothic;
       font-size: 18px;
-      font-weight: 700;
+      font-weight: 400;  
       line-height: 20px;
       text-align: left;
       color: #050505;
     }
+
+    .activeTitle{
+      font-weight: 700 !important;  
+      transition: 0.3s;
+    }
+
     > img {
       width: 25px;
       height: 25px;

@@ -21,6 +21,7 @@
     flex-direction: column;
     gap: 20px;
     max-height: 550px;
+    animation: modal 1s ease-in-out;
 
     li {
       width: 100%;
@@ -139,5 +140,14 @@
         }
       }
     }
+  }
+}
+
+@keyframes modal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

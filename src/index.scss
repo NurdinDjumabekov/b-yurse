@@ -94,10 +94,12 @@ button {
   }
 
   .activeItem {
+    transition: 0.3s;
     > p,
     span {
       font-weight: 700;
       color: #050505;
+      transition: 0.8s;
     }
   }
 }
@@ -137,6 +139,7 @@ button {
   left: 0;
   cursor: pointer;
   // z-index: 95;
+  animation: modal 0.7s ease-in-out;
 
 }
 
@@ -178,4 +181,15 @@ button {
       text-decoration: line-through;
   }
 
+}
+
+
+
+@keyframes modal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

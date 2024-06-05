@@ -20,7 +20,12 @@
             font-weight: 400;
             line-height: 38px;
             color: #505050;
+            transition: 0.5s;
             cursor: pointer;
+            &:hover {
+                padding-left: 20px;     
+                color: #050505;
+            }
         }
         
         .active {
@@ -34,10 +39,8 @@
         background: #fff;
         border-radius: 10px;
         padding: 20px;
-        p:hover {
-            padding-left: 20px;     
-            color: #050505;
-        }
+        animation: modal 0.5s ease-in-out;
+
     }   
 
     &__second {
@@ -45,6 +48,8 @@
         background: #fff;
         border-radius: 10px;
         padding: 20px;
+        animation: modal 0.5s ease-in-out;
+
     }
 
     &__three {
@@ -52,5 +57,18 @@
         background: #fff;
         border-radius: 10px;
         padding: 20px;
+        animation: modal 0.5s ease-in-out;
+
     }
 }
+
+
+
+@keyframes modal {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }

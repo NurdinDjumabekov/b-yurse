@@ -1,9 +1,21 @@
 .sale {
+  animation: page 0.7s ease-in-out;
+
   &__inner {
     display: flex;
     justify-content: space-between;
     padding-top: 20px;
     gap: 40px;
     padding-bottom: 80px;
+  }
+}
+
+
+@keyframes page {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

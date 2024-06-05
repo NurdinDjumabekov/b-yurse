@@ -10,10 +10,14 @@ import info from "../../../assets/icons/Info.svg";
 import "./style.scss";
 
 ////fns
-import { lookSizeFN } from "../../../store/reducers/stateSlice";
+import { activeSizeFN, lookSizeFN } from "../../../store/reducers/stateSlice";
 
 //////helpers
-import { arrSizeRow, arrSizeTable } from "../../../helpers/LodalData";
+import {
+  arrSizeRow,
+  arrSizeTable,
+  listClothSize,
+} from "../../../helpers/LodalData";
 import { texxtSize1, texxtSize2 } from "../../../helpers/LodalData";
 
 const ClothSize = ({ oneCodeId }) => {
@@ -23,65 +27,10 @@ const ClothSize = ({ oneCodeId }) => {
 
   const { pathname } = useLocation();
 
-  const { lookSize } = useSelector((state) => state.stateSlice);
-
-  const [listClothSize, setListClothSize] = useState([
-    {
-      codeid: 1,
-      text: "xXs",
-      count: 12,
-      active: true,
-    },
-    {
-      codeid: 2,
-      text: "xs",
-      count: 12,
-      active: false,
-    },
-    {
-      codeid: 3,
-      text: "OV3",
-      count: 12,
-      active: false,
-    },
-    {
-      codeid: 4,
-      text: "xxs",
-      count: 100,
-      active: false,
-    },
-    {
-      codeid: 5,
-      text: "xXs",
-      count: 12,
-      active: false,
-    },
-    {
-      codeid: 6,
-      text: "xs",
-      count: 12,
-      active: false,
-    },
-    {
-      codeid: 7,
-      text: "OV3",
-      count: 12,
-      active: false,
-    },
-    {
-      codeid: 8,
-      text: "xxs",
-      count: 100,
-      active: false,
-    },
-  ]);
+  const { lookSize, activeSize } = useSelector((state) => state.stateSlice);
 
   const clickListMan = (codeid) => {
-    const newData = listClothSize?.map((item) => ({
-      ...item,
-      active: item.codeid === codeid, // обновляем только поле active
-    }));
-    setListClothSize(newData);
+    dispatch(activeSizeFN(codeid));
   };
 
   const lookSizeCloth = (bool) => dispatch(lookSizeFN(bool));
@@ -151,7 +100,7 @@ const ClothSize = ({ oneCodeId }) => {
           : listClothSize?.map((item) => (
               <li
                 key={item?.codeid}
-                className={item?.active ? "activeItem" : ""}
+                className={activeSize == item.codeid ? "activeItem" : ""}
                 onClick={() => clickListMan(item.codeid)}
               >
                 {item?.text}

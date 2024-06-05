@@ -15,8 +15,8 @@ const MainRoutes = () => {
       <Routes>
         {/* <Route path="/" element={<MainPage />} /> */}
         <Route element={<MainLayouts />}>
-          <Route path="/catalog" element={<ChoiceCatalog />} />
-          <Route path="/sale" element={<SalePage />} />
+          {/* <Route path="/catalog" element={<ChoiceCatalog />} /> */}
+          <Route path="/" element={<SalePage />} />
           <Route path="/every/:id" element={<EveryClothPage />} />
           <Route path="/basket" element={<BasketPage />} />
           <Route path="/decor" element={<DecorZakazPage />} />

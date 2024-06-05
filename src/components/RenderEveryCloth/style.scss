@@ -1,5 +1,11 @@
 .every {
     width: 290px;
+
+    > img {
+      width: 290px;
+      height: 390px;
+    }
+
     h5 {
       font-family: Century Gothic;
       font-size: 20px;

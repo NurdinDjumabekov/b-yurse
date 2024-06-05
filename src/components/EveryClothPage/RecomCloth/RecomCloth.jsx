@@ -8,13 +8,8 @@ const RecomCloth = () => {
     <div className="recom">
       <h4>Можно дополнить образ, чтобы собрать весь комплект</h4>
       <ul className="recom__list">
-        {list?.slice(0, 4)?.map((item, index) => (
-          <RenderEveryCloth
-            item={item}
-            key={index}
-            index={index}
-            detailed={false}
-          />
+        {list?.slice(0, 4)?.map((item) => (
+          <RenderEveryCloth item={item} key={item.codeid} detailed={false} />
         ))}
       </ul>
     </div>

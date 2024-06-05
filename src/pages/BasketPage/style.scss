@@ -1,4 +1,6 @@
 .basket {
+    animation: page 0.7s ease-in-out;
+
     &__inner {
 
         h4 {
@@ -126,3 +128,13 @@
         }
     }
 }
+
+
+@keyframes page {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }

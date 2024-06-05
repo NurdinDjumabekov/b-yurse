@@ -1,8 +1,20 @@
 import hart from "../../assets/icons/hart.svg";
 import React from "react";
 import basket from "../../assets/icons/basket.svg";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { lookBasketFN, lookFavoriteFN } from "../../store/reducers/stateSlice";
 
 const Cloth = ({ item }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const nav = () => {
+    dispatch(lookFavoriteFN(false));
+    dispatch(lookBasketFN(false));
+    navigate("basket");
+  };
+
   return (
     <li>
       <div className="imgMain">
@@ -22,7 +34,7 @@ const Cloth = ({ item }) => {
           </div>
         </div>
         <div className="actions">
-          <button className="choiceCloth">
+          <button className="choiceCloth" onClick={nav}>
             <span>Посмотреть ближе</span>
             <img src={basket} alt="basket" />
           </button>
