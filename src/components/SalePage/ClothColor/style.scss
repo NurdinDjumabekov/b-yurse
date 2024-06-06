@@ -17,16 +17,15 @@
     flex-wrap: wrap;
     gap: 6px;
     
-
     .activeItem {
       border: 1px solid #050505;
       width: 46px;
       height: 46px;
       margin: 0;
-      padding: 2px;
-      transform: 0.8s;
+      padding: 2px !important;
     }
   }
+
   .list {
     width: 40px;
     height: 40px;

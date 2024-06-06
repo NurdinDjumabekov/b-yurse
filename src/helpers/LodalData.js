@@ -355,3 +355,15 @@ export const listColors = [
     active: false,
   },
 ];
+
+export const defaultRequest = {
+  categId: 0,
+  activeSize: 0,
+  activeColor: 0,
+  categId: 0,
+  activeSize: 0,
+  type: 0,
+  minPrice: 10,
+  maxPrice: 12000,
+  activeBrands: 0,
+};

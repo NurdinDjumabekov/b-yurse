@@ -5,7 +5,7 @@ import Sorting from "../Sorting/Sorting";
 import RenderEveryCloth from "../../RenderEveryCloth/RenderEveryCloth";
 import { getListCloth } from "../../../store/reducers/requestSlice";
 import { useEffect } from "react";
-import { list } from "../../../helpers/LodalData";
+import { defaultRequest } from "../../../helpers/LodalData";
 
 const ClothList = () => {
   const dispatch = useDispatch();
@@ -13,16 +13,22 @@ const ClothList = () => {
   const { listCloth } = useSelector((state) => state.requestSlice);
 
   useEffect(() => {
-    dispatch(getListCloth());
+    dispatch(getListCloth(defaultRequest));
   }, []);
 
   return (
     <div className="clothList">
       <Sorting />
       <ul className="clothList__inner">
-        {list?.map((item) => (
-          <RenderEveryCloth item={item} key={item.codeid} />
-        ))}
+        {listCloth?.length === 0 ? (
+          <p className="emptyData">Данных пока что нет</p>
+        ) : (
+          <>
+            {listCloth?.map((item) => (
+              <RenderEveryCloth item={item} key={item.id} />
+            ))}
+          </>
+        )}
       </ul>
     </div>
   );

@@ -5,9 +5,14 @@ import UserInputs from "../../components/DecorPage/UserInputs/UserInputs";
 import UserAddresInputs from "../../components/DecorPage/UserAddresInputs/UserAddresInputs";
 import { useRef } from "react";
 import DeliveryPay from "../../components/DecorPage/DeliveryPay/DeliveryPay";
+import { useEffect } from "react";
 
 const DecorZakazPage = () => {
   const refAddres = useRef(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="decor">

@@ -1,64 +1,48 @@
 import React from "react";
 import basket from "../../assets/icons/basket.svg";
 import basketBlack from "../../assets/icons/basketBlack.svg";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { everyClothFN } from "../../store/reducers/requestSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import "./style.scss";
 
-import favorite from "../../assets/icons/hart.svg";
-import favoriteDisActive from "../../assets/icons/heartGray.svg";
-import { addDelProdFavourite } from "../../store/reducers/saveDataSlice";
-
-/////////// helpers
-import { checkFavourite } from "../../helpers/checkFavourite";
 import Favourite from "../../common/Favourite/Favourite";
+import { sarchImg } from "../../helpers/sarchImg";
 
 const RenderEveryCloth = ({ item, detailed }) => {
   ///true - можно добавить в корзину, false - переход на детальный просмотр
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
 
-  const { favouriteList } = useSelector((state) => state.saveDataSlice);
-
   const clickBtn = () => {
-    if (detailed) {
+    if (location?.pathname?.includes("every")) {
+      window.scrollTo(0, 0);
     } else {
-      navigate(`/every/${item?.codeid}`);
+      navigate(`/every/${item?.id}`);
       dispatch(everyClothFN(item));
     }
-    window.scrollTo(0, 0);
+    console.log(location?.pathname);
   };
-
-  const checkSale = item?.sale; //// есть ли скидка
-
-  console.log(favouriteList, "favouriteList");
 
   return (
     <li className="every">
-      {/* <button className="favoriteBtn" onClick={changeFavourite}>
-        {checkFavourite(item, favouriteList) ? (
-          <img src={favorite} alt="{}" />
-        ) : (
-          <img src={favoriteDisActive} alt="{}" />
-        )}
-      </button> */}
       <Favourite obj={item} />
-      <img src={item?.img} alt="img" />
-      {checkSale ? (
+      <img src={sarchImg(item?.photos)?.url} alt="img" />
+      {item?.discountActive ? ( //// есть ли скидка
         <div className="price">
-          <i>{item?.price}</i> <b>{item?.price}</b>
+          <i>{item?.price} ₽</i> <b>{item?.oldPrice} ₽</b>
         </div>
       ) : (
-        <p>{item?.price}</p>
+        <p>{item?.price} ₽</p>
       )}
-      <h5>{item?.title}</h5>
+      <h5>{item?.productName}</h5>
       <button
-        className={`choiceCloth ${checkSale && "sale"}`}
+        className={`choiceCloth ${item?.discountActive && "sale"}`}
         onClick={clickBtn}
       >
         <span>Посмотреть ближе</span>
-        <img src={checkSale ? basketBlack : basket} alt="basket" />
+        <img src={item?.discountActive ? basketBlack : basket} alt="basket" />
       </button>
     </li>
   );

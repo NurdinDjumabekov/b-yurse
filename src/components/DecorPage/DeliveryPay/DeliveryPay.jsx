@@ -9,11 +9,21 @@ import {
   confidation,
   confidationInner,
 } from "../../../helpers/LodalData";
+import {
+  sumTotalBasket,
+  sumTotalBasketOldPrice,
+} from "../../../helpers/SumTotalBasket";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const DeliveryPay = () => {
   const [state, setState] = useState(false);
   const [state1, setState1] = useState(false);
   const [state2, setState2] = useState(false);
+
+  const navigate = useNavigate();
+
+  const { basketList } = useSelector((state) => state.saveDataSlice);
 
   const list = [
     { codeid: 1, name: "«Деловые линии 1none»" },
@@ -24,6 +34,11 @@ const DeliveryPay = () => {
 
   const onChnage = (key, name) => {
     console.log(key, name);
+  };
+
+  const sendData = () => {
+    navigate("/");
+    alert("Ваш заказ успешно был оформлен");
   };
 
   return (
@@ -102,11 +117,13 @@ const DeliveryPay = () => {
 
       <div className="result">
         <p>Итого: </p>
-        <span>7 480 ₽</span>
-        <i>8 490 ₽</i>
+        <span>{sumTotalBasket(basketList)} ₽</span>
+        {+sumTotalBasket(basketList) < sumTotalBasketOldPrice(basketList) && (
+          <i>{sumTotalBasketOldPrice(basketList)} ₽</i>
+        )}
       </div>
       <div className="action">
-        <button>Оплатить мой заказ</button>
+        <button onClick={sendData}>Оплатить мой заказ</button>
         <p>без учета доставки вашего заказа: обычно около 500 ₽</p>
       </div>
     </div>

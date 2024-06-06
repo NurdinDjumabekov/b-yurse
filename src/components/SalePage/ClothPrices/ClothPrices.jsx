@@ -13,6 +13,7 @@ const ClothPrices = () => {
 
   const { activeCateg, activeSize } = useSelector((state) => state.stateSlice);
   const { activeColor, activePrice } = useSelector((state) => state.stateSlice);
+  const { activeBrands } = useSelector((state) => state.stateSlice);
 
   const onSliderChange = (event, newValue) => {
     dispatch(activePriceFN({ min: newValue?.[0], max: newValue?.[1] }));
@@ -21,7 +22,7 @@ const ClothPrices = () => {
     }
     timerRef.current = setTimeout(() => {
       const obj1 = { categId: activeCateg.categId, activeSize };
-      const obj2 = { activeColor, minPrice: newValue?.[0] };
+      const obj2 = { activeColor, minPrice: newValue?.[0], activeBrands };
       const obj3 = { maxPrice: newValue?.[1], type: activeCateg.type };
       dispatch(getListCloth({ ...obj1, ...obj2, ...obj3 }));
     }, 1500);

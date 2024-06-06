@@ -130,13 +130,42 @@ export const getListColors = createAsyncThunk(
 export const getListCloth = createAsyncThunk(
   "getListCloth",
   async function (props, { dispatch, rejectWithValue }) {
-    const { categId, type, activeSize } = props;
+    const { categId, type, activeSize, activeBrands } = props;
     const { activeColor, minPrice, maxPrice } = props;
+
+    const check1 = categId == 0 && type == 0 && activeSize == 0;
+    const check2 = activeColor == 0 && minPrice == 10 && maxPrice == 12000;
+
+    const checkAll = check1 && check2;
+
+    const url = checkAll
+      ? `${REACT_APP_API_URL}/products`
+      : `${REACT_APP_API_URL}/products/filter?genderId=${type}&categoryId=${categId}&sizeId=${activeSize}&colorId=${activeColor}&priceMin=${minPrice}&priceMax=${maxPrice}&collectionName=${activeBrands}`;
 
     try {
       const response = await axios({
         method: "GET",
-        url: `${REACT_APP_API_URL}/products/filter?genderId=${type}&categoryId=${categId}&sizeId=${activeSize}&colorId=${activeColor}&priceMin=${minPrice}&priceMax=${maxPrice}`,
+        url,
+      });
+      if (response.status >= 200 && response.status < 300) {
+        return response?.data;
+      } else {
+        throw Error(`Error: ${response.status}`);
+      }
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+///// detailedCloth - get каждую одежду
+export const detailedCloth = createAsyncThunk(
+  "detailedCloth",
+  async function (id, { dispatch, rejectWithValue }) {
+    try {
+      const response = await axios({
+        method: "GET",
+        url: `${REACT_APP_API_URL}/products/details/${id}`,
       });
       if (response.status >= 200 && response.status < 300) {
         return response?.data;
@@ -252,6 +281,19 @@ const requestSlice = createSlice({
       state.preloader = false;
     });
     builder.addCase(getListCloth.pending, (state, action) => {
+      state.preloader = true;
+    });
+
+    /////////////////// detailedCloth
+    builder.addCase(detailedCloth.fulfilled, (state, action) => {
+      state.preloader = false;
+      state.everyCloth = action.payload;
+    });
+    builder.addCase(detailedCloth.rejected, (state, action) => {
+      state.error = action.payload;
+      state.preloader = false;
+    });
+    builder.addCase(detailedCloth.pending, (state, action) => {
       state.preloader = true;
     });
   },

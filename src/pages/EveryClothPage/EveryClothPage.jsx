@@ -13,16 +13,21 @@ import ClothColor from "../../components/SalePage/ClothColor/ClothColor";
 import RecomCloth from "../../components/EveryClothPage/RecomCloth/RecomCloth";
 import { Description } from "../../components/EveryClothPage/Description/Description";
 import MayBeFavorite from "../../components/EveryClothPage/MayBeFavorite/MayBeFavorite";
+import Favourite from "../../common/Favourite/Favourite";
 
 //////////fns
 import { addProdBasket } from "../../store/reducers/saveDataSlice";
+import { detailedCloth } from "../../store/reducers/requestSlice";
 
-/////////tags
+/////////imgs
 import basket from "../../assets/icons/basket.svg";
-import favorite from "../../assets/icons/heart.svg";
 import pay1 from "../../assets/images/pay1.png";
 import pay2 from "../../assets/images/pay2.png";
-import Favourite from "../../common/Favourite/Favourite";
+import { sarchImg, sarchImgSeconds } from "../../helpers/sarchImg";
+import {
+  activeColorEveryFN,
+  activeSizeEveryFN,
+} from "../../store/reducers/stateSlice";
 
 const EveryClothPage = () => {
   const params = useParams();
@@ -31,18 +36,41 @@ const EveryClothPage = () => {
   const { id } = params;
 
   const { everyCloth } = useSelector((state) => state.requestSlice);
+  const { activeColorEvery } = useSelector((state) => state.stateSlice);
+  const { activeSizeEvery } = useSelector((state) => state.stateSlice);
 
   const addBasket = () => {
-    dispatch(addProdBasket(everyCloth));
+    if (activeSizeEvery == 0) {
+      alert("Выберите размер одежды");
+    } else if (activeColorEvery == 0) {
+      alert("Выберите цвет одежды");
+    } else {
+      alert("Товар добавлен в корзину");
+      const data = { ...everyCloth, activeColorEvery, activeSizeEvery };
+      dispatch(addProdBasket(data));
+      clear();
+    }
   };
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    dispatch(detailedCloth(id));
+    clear();
   }, []);
 
-  const link = ["Бестселлер-коллекция", everyCloth?.title];
+  const clear = () => {
+    dispatch(activeColorEveryFN(0)); ///// обнуляю state для временного хранения цвета
+    dispatch(activeSizeEveryFN(0)); ///// обнуляю state для временного хранения размера
+  };
 
-  const checkSale = everyCloth?.sale; //// есть ли скидка
+  console.log(everyCloth, "everyCloth");
+
+  const link = [
+    everyCloth?.brand?.collectionName || "...",
+    everyCloth?.category?.categoryName,
+  ];
+
+  console.log(everyCloth, "everyCloth87");
 
   return (
     <div className="everyCloth">
@@ -51,29 +79,25 @@ const EveryClothPage = () => {
         <div className="everyCloth__inner">
           <div className="mainContant">
             <div className="dopImg">
-              <div>
-                <img src={everyCloth?.img} alt="" />
-              </div>
-              <div>
-                <img src={everyCloth?.img} alt="" />
-              </div>
-              <div>
-                <img src={everyCloth?.img} alt="" />
-              </div>
+              {sarchImgSeconds(everyCloth?.photos)?.map((item) => (
+                <div key={item?.id}>
+                  <img src={item?.url} alt="" />
+                </div>
+              ))}
             </div>
             <div className="mainImg">
-              <img src={everyCloth?.img} alt="" />
+              <img src={sarchImg(everyCloth?.photos)?.url} alt="" />
             </div>
           </div>
           <div className="dopContant">
-            <h5>{everyCloth?.title}</h5>
+            <h5>{everyCloth?.productName}</h5>
             <div className="prices">
-              {checkSale ? (
+              {everyCloth?.discountActive ? ( //// есть ли скидка
                 <div className="price">
-                  <i>{everyCloth?.price}</i> <b>{everyCloth?.price}</b>
+                  <i>{everyCloth?.price} ₽</i> <b>{everyCloth?.oldPrice} ₽</b>
                 </div>
               ) : (
-                <p>{everyCloth?.price}</p>
+                <p>{everyCloth?.price} ₽</p>
               )}
             </div>
             <div className="blockPay">
@@ -81,9 +105,9 @@ const EveryClothPage = () => {
               <img src={pay1} alt="pay" />
               <span>4 платежа по ~870 ₽</span>
             </div>
-            <ClothSize />
+            <ClothSize choiceEvery={true} listEvery={everyCloth?.sizes} />
             <div className="push"></div>
-            <ClothColor />
+            <ClothColor choiceEvery={true} listEvery={everyCloth?.colors} />
             <div className="actions">
               <button className="choiceCloth" onClick={addBasket}>
                 <span>Положить в корзину</span>

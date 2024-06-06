@@ -1,5 +1,5 @@
 ////hooks
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 ////style
@@ -15,6 +15,7 @@ import ClothColor from "../ClothColor/ClothColor";
 
 ///////fns
 import { activeCategFN } from "../../../store/reducers/stateSlice";
+import { activeBrandsFN } from "../../../store/reducers/stateSlice";
 import { getListCloth } from "../../../store/reducers/requestSlice";
 
 const ClothTypes = () => {
@@ -26,6 +27,7 @@ const ClothTypes = () => {
 
   const { activeCateg, activeSize } = useSelector((state) => state.stateSlice);
   const { activeColor, activePrice } = useSelector((state) => state.stateSlice);
+  const { activeBrands } = useSelector((state) => state.stateSlice);
 
   const actionCateg = ({ id, gender }) => {
     dispatch(activeCategFN({ categId: id, type: gender }));
@@ -39,6 +41,14 @@ const ClothTypes = () => {
     window.scrollTo(0, 0);
   };
 
+  const actionBrands = (id) => {
+    dispatch(activeBrandsFN(id));
+    const obj1 = { categId: activeCateg?.categId, type: activeCateg.type };
+    const obj2 = { activeColor, minPrice: activePrice.min, activeSize };
+    const obj3 = { maxPrice: activePrice?.max, activeBrands: id };
+    dispatch(getListCloth({ ...obj1, ...obj2, ...obj3 }));
+  };
+
   const checkTitle = activeCateg?.type;
 
   const checkCateg = activeCateg?.categId;
@@ -46,17 +56,17 @@ const ClothTypes = () => {
   return (
     <div className="clothTypes">
       <div className="mainTitle">
-        <h3 className={checkTitle == 3 && "activeTitle"}>Премиальная одежда</h3>
+        <h3 className={activeBrands !== 0 && "activeTitle"}>
+          Премиальная одежда
+        </h3>
       </div>
       <div className="line"></div>
       <ul className="listTypes">
         {listBrands?.map((item) => (
           <li
             key={item?.id}
-            className={
-              checkCateg == item.id && checkTitle == 3 ? "activeItem" : ""
-            }
-            onClick={() => actionCateg(item)}
+            className={activeBrands == item.id ? "activeItem" : ""}
+            onClick={() => actionBrands(item.id)}
           >
             <p>{item?.collectionName}</p>
           </li>

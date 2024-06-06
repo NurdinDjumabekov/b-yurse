@@ -50,13 +50,18 @@
     }
 
     &__main {
+        animation: page 0.7s ease-in-out;
+        transition: 0.5s;
+
 
         > p {
             font-size: 16px !important;
             font-weight: 400;
             line-height: 18px !important;
             padding-right: 15px;
-            margin-top: 25px;
+            margin-top: 25px;   
+            animation: page 0.7s ease-in-out;
+            transition: 0.5s;
         }
 
         .moreSescr {
@@ -64,7 +69,8 @@
             flex-direction: column;
             gap: 8px;
             padding-top: 20px;
-
+            animation: page 0.7s ease-in-out;
+            transition: 0.5s;
 
             > div {
                 display: flex;
@@ -87,3 +93,13 @@
         }
     }
 }
+
+
+@keyframes page {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }

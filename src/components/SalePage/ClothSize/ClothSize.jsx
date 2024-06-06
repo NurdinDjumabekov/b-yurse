@@ -1,7 +1,7 @@
 ///hooks
+import React from "react";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import React, { useState } from "react";
 
 ///imgs
 import info from "../../../assets/icons/Info.svg";
@@ -10,14 +10,18 @@ import info from "../../../assets/icons/Info.svg";
 import "./style.scss";
 
 ////fns
-import { activeSizeFN, lookSizeFN } from "../../../store/reducers/stateSlice";
+import {
+  activeSizeEveryFN,
+  activeSizeFN,
+  lookSizeFN,
+} from "../../../store/reducers/stateSlice";
 
 //////helpers
 import { arrSizeRow, arrSizeTable } from "../../../helpers/LodalData";
 import { texxtSize1, texxtSize2 } from "../../../helpers/LodalData";
 import { getListCloth } from "../../../store/reducers/requestSlice";
 
-const ClothSize = ({ oneCodeId }) => {
+const ClothSize = ({ oneCodeId, choiceEvery, listEvery }) => {
   ///// if oneCodeId есть, то надо отображать только один размер, который в codeid приходит
 
   const dispatch = useDispatch();
@@ -27,15 +31,22 @@ const ClothSize = ({ oneCodeId }) => {
   const { lookSize } = useSelector((state) => state.stateSlice);
   const { activeCateg, activeSize } = useSelector((state) => state.stateSlice);
   const { activeColor, activePrice } = useSelector((state) => state.stateSlice);
+  const { activeSizeEvery, activeBrands } = useSelector(
+    (state) => state.stateSlice
+  );
 
   const { listSize } = useSelector((state) => state.requestSlice);
 
   const clickListMan = (id) => {
     dispatch(activeSizeFN(id));
     const obj1 = { categId: activeCateg.categId, activeSize: id };
-    const obj2 = { activeColor, minPrice: activePrice.min };
+    const obj2 = { activeColor, minPrice: activePrice.min, activeBrands };
     const obj3 = { maxPrice: activePrice?.max, type: activeCateg.type };
     dispatch(getListCloth({ ...obj1, ...obj2, ...obj3 }));
+  };
+
+  const choiceForBasket = (id) => {
+    dispatch(activeSizeEveryFN(id));
   };
 
   const lookSizeCloth = (bool) => dispatch(lookSizeFN(bool));
@@ -95,23 +106,37 @@ const ClothSize = ({ oneCodeId }) => {
         )}
       </div>
       {!oneCodeId && <div className="line"></div>}
-      <ul className="listSize">
-        {oneCodeId
-          ? listSize?.map((item) => {
-              if (oneCodeId == item.id) {
-                return <li key={item?.id}>{item?.sizeName}</li>;
-              }
-            })
-          : listSize?.map((item) => (
-              <li
-                key={item?.id}
-                className={activeSize == item.id ? "activeItem" : ""}
-                onClick={() => clickListMan(item.id)}
-              >
-                {item?.sizeName}
-              </li>
-            ))}
-      </ul>
+      {choiceEvery ? (
+        <ul className="listSize">
+          {listEvery?.map((item) => (
+            <li
+              key={item?.id}
+              className={activeSizeEvery == item?.id ? "activeItem" : ""}
+              onClick={() => choiceForBasket(item?.id)}
+            >
+              {item?.sizeName}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <ul className="listSize">
+          {oneCodeId
+            ? listSize?.map((item) => {
+                if (oneCodeId == item.id) {
+                  return <li key={item?.id}>{item?.sizeName}</li>;
+                }
+              })
+            : listSize?.map((item) => (
+                <li
+                  key={item?.id}
+                  className={activeSize == item.id ? "activeItem" : ""}
+                  onClick={() => clickListMan(item.id)}
+                >
+                  {item?.sizeName}
+                </li>
+              ))}
+        </ul>
+      )}
     </div>
   );
 };

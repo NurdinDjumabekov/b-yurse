@@ -49,9 +49,15 @@ const MenuSave = () => {
         </button>
         {lookFavorite && (
           <ul className="favorite__modal">
-            {listFavorite?.map((item, index) => (
-              <Cloth item={item} key={index} />
-            ))}
+            {favouriteList?.length == 0 ? (
+              <p className="emptyFavourite">Список избранных пустой</p>
+            ) : (
+              <>
+                {favouriteList?.map((item, index) => (
+                  <Cloth item={item} key={index} />
+                ))}
+              </>
+            )}
           </ul>
         )}
       </div>
@@ -62,9 +68,15 @@ const MenuSave = () => {
         </button>
         {lookBasket && (
           <ul className="favorite__modal">
-            {listFavorite?.map((item, index) => (
-              <Cloth item={item} key={index} />
-            ))}
+            {basketList?.length == 0 ? (
+              <p className="emptyFavourite">Список избранных пустой</p>
+            ) : (
+              <>
+                {basketList?.map((item, index) => (
+                  <Cloth item={item} key={index} />
+                ))}
+              </>
+            )}
           </ul>
         )}
       </div>

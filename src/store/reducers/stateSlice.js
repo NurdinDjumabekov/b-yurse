@@ -11,12 +11,20 @@ const initialState = {
 
   //////////////////////// categories all
 
-  activeCateg: { categId: 1, type: 2 }, // (categ) id категории
-  ////// (type) тип категрии (мужская одежда, женская, премиальная одежда ....)
+  activeBrands: 0, // (categ) id категории
 
-  activeSize: 1, //// размер одежды
+  activeCateg: { categId: 0, type: 0 }, // (categ) id категории
+  ////// (type) тип категрии (мужская одежда, женская)
 
-  activeColor: 1, //// цвет одежды
+  activeSize: 0, //// размер одежды
+
+  activeSizeEvery: 0, ////// для детальнйо страницы, тобы user мог временно
+  //// до закидывания в корзину положить куда-то размер
+
+  activeColor: 0, //// цвет одежды
+
+  activeColorEvery: 0, ////// для детальнйо страницы, тобы user мог временно
+  //// до закидывания в корзину положить куда-то цвет товара
 
   activePrice: { min: 10, max: 12000 }, //// цена одежды диапозон
 
@@ -70,6 +78,10 @@ const stateSlice = createSlice({
       state.lookNumberConf = action.payload;
     },
 
+    activeBrandsFN: (state, action) => {
+      state.activeBrands = action.payload;
+    },
+
     activeCategFN: (state, action) => {
       state.activeCateg = action.payload;
     },
@@ -78,8 +90,16 @@ const stateSlice = createSlice({
       state.activeSize = action.payload;
     },
 
+    activeSizeEveryFN: (state, action) => {
+      state.activeSizeEvery = action.payload;
+    },
+
     activeColorFN: (state, action) => {
       state.activeColor = action.payload;
+    },
+
+    activeColorEveryFN: (state, action) => {
+      state.activeColorEvery = action.payload;
     },
 
     activePriceFN: (state, action) => {
@@ -97,9 +117,12 @@ export const {
   lookMenuFN,
   lookNumberFN,
   lookNumberConfFN,
+  activeBrandsFN,
   activeCategFN,
   activeSizeFN,
+  activeSizeEveryFN,
   activeColorFN,
+  activeColorEveryFN,
   activePriceFN,
 } = stateSlice.actions;
 

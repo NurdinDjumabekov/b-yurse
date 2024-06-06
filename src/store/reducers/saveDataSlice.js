@@ -25,15 +25,13 @@ const saveDataSlice = createSlice({
     addProdBasket: (state, action) => {
       const newItem = action.payload;
       const existingItem = state.basketList?.find(
-        (item) => item.codeid === newItem.codeid
+        (item) => item.id === newItem.id
       );
 
       if (existingItem) {
         // Если элемент уже есть в корзине, увеличиваю счетчик
         const newData = state.basketList.map((item) =>
-          item.codeid === newItem.codeid
-            ? { ...item, count: item?.count + 1 }
-            : item
+          item.id === newItem.id ? { ...item, count: item?.count + 1 } : item
         );
         state.basketList = newData;
       } else {
@@ -44,11 +42,11 @@ const saveDataSlice = createSlice({
 
     //// удаение с count(отнимаю по одному)
     removeProdBasket: (state, action) => {
-      const { codeid } = action.payload;
+      const { id } = action.payload;
 
-      // Находим индекс элемента в корзине по codeid
+      // Находим индекс элемента в корзине по id
       const existingOrderIndex = state.basketList.findIndex(
-        (obj) => obj?.codeid === codeid
+        (obj) => obj?.id === id
       );
 
       if (existingOrderIndex !== -1) {
@@ -64,9 +62,9 @@ const saveDataSlice = createSlice({
 
           // Если count стал равным 0, удаляем элемент из корзины
           if (existingOrder.count === 1) {
-            // Фильтруем массив и удаляем элемент с соответствующим codeid
+            // Фильтруем массив и удаляем элемент с соответствующим id
             state.basketList = state.basketList.filter(
-              (item) => item?.codeid !== codeid
+              (item) => item?.id !== id
             );
           }
         }
@@ -77,7 +75,7 @@ const saveDataSlice = createSlice({
     deleteProdBasket: (state, action) => {
       const deleteItem = action.payload;
       state.basketList = state.basketList?.filter(
-        (item) => item?.codeid !== deleteItem?.codeid
+        (item) => item?.id !== deleteItem?.id
       );
     },
 

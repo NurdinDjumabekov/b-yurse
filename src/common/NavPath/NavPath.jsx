@@ -10,8 +10,8 @@ export const NavPath = ({ list }) => {
       <div>
         <span>Каталог </span>
       </div>
-      {list?.map((item) => (
-        <div>
+      {list?.map((item, index) => (
+        <div key={index}>
           <img src={arrow} alt=">" />
           <span>{item}</span>
         </div>
