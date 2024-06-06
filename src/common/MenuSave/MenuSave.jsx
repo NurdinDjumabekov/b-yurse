@@ -44,7 +44,7 @@ const MenuSave = () => {
     <>
       <div className="blockFavorite">
         <button className="btnAction" onClick={lookMyFavorite}>
-          <p>{favouriteList?.reduce((total, item) => total + item.count, 0)}</p>
+          <p>{favouriteList?.length}</p>
           <img src={favorite} alt="favorite" />
         </button>
         {lookFavorite && (

@@ -1,5 +1,14 @@
 .every {
     width: 290px;
+    position: relative;
+
+    .favoriteBtn {
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
 
     > img {
       width: 290px;

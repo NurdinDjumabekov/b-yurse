@@ -85,67 +85,22 @@ const saveDataSlice = createSlice({
       state.basketList = [];
     },
 
-    /// добавление продуктов в корзину
-    addProdFavourite: (state, action) => {
+    /// добавление и удаление продуктов в избранных
+    addDelProdFavourite: (state, action) => {
       const newItem = action.payload;
-      const existingItem = state.favouriteList?.find(
-        (item) => item.codeid === newItem.codeid
+      const existingItemIndex = state.favouriteList?.findIndex(
+        (item) => item?.id === newItem?.id
       );
 
-      if (existingItem) {
-        // Если элемент уже есть в корзине, увеличиваю счетчик
-        const newData = state.favouriteList.map((item) =>
-          item.codeid === newItem.codeid
-            ? { ...item, count: item?.count + 1 }
-            : item
+      if (existingItemIndex !== -1) {
+        // Если элемент уже есть в списке, удаляем его
+        state.favouriteList = state.favouriteList?.filter(
+          (item) => item?.id !== newItem?.id
         );
-        state.favouriteList = newData;
       } else {
-        // добавляю новый элемент с начальным счетчиком
-        state.favouriteList = [
-          ...state.favouriteList,
-          { ...newItem, count: 1 },
-        ];
+        // Если элемента нет в списке, добавляем его
+        state.favouriteList = [...state.favouriteList, newItem];
       }
-    },
-
-    //// удаение с count(отнимаю по одному)
-    removeProdFavourite: (state, action) => {
-      const { codeid } = action.payload;
-
-      // Находим индекс элемента в корзине по codeid
-      const existingOrderIndex = state.favouriteList?.findIndex(
-        (obj) => obj?.codeid === codeid
-      );
-
-      if (existingOrderIndex !== -1) {
-        // Получаем элемент корзины по найденному индексу
-        const existingOrder = state.favouriteList?.[existingOrderIndex];
-
-        if (existingOrder?.count > 0) {
-          // Уменьшаем счетчик count на 1
-          state.favouriteList[existingOrderIndex] = {
-            ...existingOrder,
-            count: existingOrder?.count - 1,
-          };
-
-          // Если count стал равным 0, удаляем элемент из корзины
-          if (existingOrder.count === 1) {
-            // Фильтруем массив и удаляем элемент с соответствующим codeid
-            state.favouriteList = state?.favouriteList?.filter(
-              (item) => item?.codeid !== codeid
-            );
-          }
-        }
-      }
-    },
-
-    //// прямое уджаление, не считая count сразу удаляет
-    deleteProdFavourite: (state, action) => {
-      const deleteItem = action.payload;
-      state.favouriteList = state.favouriteList?.filter(
-        (item) => item?.codeid !== deleteItem?.codeid
-      );
     },
 
     clearFavouriteList: (state, action) => {
@@ -160,9 +115,7 @@ export const {
   removeProdBasket,
   deleteProdBasket,
   clearBasketList,
-  addProdFavourite,
-  removeProdFavourite,
-  deleteProdFavourite,
+  addDelProdFavourite,
   clearFavouriteList,
 } = saveDataSlice.actions;
 

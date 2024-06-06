@@ -1,18 +1,28 @@
+///////////hoooks
+import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import pay1 from "../../assets/images/pay1.png";
-import pay2 from "../../assets/images/pay2.png";
-import { NavPath } from "../../common/NavPath/NavPath";
+
+//////////style
 import "./style.scss";
+
+/////////components
+import { NavPath } from "../../common/NavPath/NavPath";
 import ClothSize from "../../components/SalePage/ClothSize/ClothSize";
 import ClothColor from "../../components/SalePage/ClothColor/ClothColor";
-import basket from "../../assets/icons/basket.svg";
-import heart from "../../assets/icons/heart.svg";
-import { Description } from "../../components/EveryClothPage/Description/Description";
 import RecomCloth from "../../components/EveryClothPage/RecomCloth/RecomCloth";
+import { Description } from "../../components/EveryClothPage/Description/Description";
 import MayBeFavorite from "../../components/EveryClothPage/MayBeFavorite/MayBeFavorite";
-import { useDispatch, useSelector } from "react-redux";
+
+//////////fns
 import { addProdBasket } from "../../store/reducers/saveDataSlice";
+
+/////////tags
+import basket from "../../assets/icons/basket.svg";
+import favorite from "../../assets/icons/heart.svg";
+import pay1 from "../../assets/images/pay1.png";
+import pay2 from "../../assets/images/pay2.png";
+import Favourite from "../../common/Favourite/Favourite";
 
 const EveryClothPage = () => {
   const params = useParams();
@@ -79,9 +89,7 @@ const EveryClothPage = () => {
                 <span>Положить в корзину</span>
                 <img src={basket} alt="basket" />
               </button>
-              <button className="actionFavorite">
-                <img src={heart} alt="heart" />
-              </button>
+              <Favourite obj={everyCloth} />
             </div>
             <Description />
           </div>

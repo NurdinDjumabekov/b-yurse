@@ -22,7 +22,7 @@
     border-radius: 10px;
 
     .titleMain {
-      border-bottom: 1px solid #d8d5d5b6;
+      border-bottom: 1px solid #d8d5d563;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -86,16 +86,18 @@
     }
   }
 
-  &__info {
+  &__info { 
     width: 29%;
     background-color: #050505;
     padding: 50px 40px 40px;
     border-radius: 10px;
     min-height: 100%;
+    position: relative;
 
     .header {
       position: relative;
-      height: 70px;
+      height: 50px;
+      border-bottom: 1px solid #d8d5d563;
 
       img {
         position: absolute;
@@ -113,7 +115,7 @@
       line-height: 18px;
       text-align: left;
       color: #909090;
-      margin: 10px 0;
+      margin: 18px 0;
     }
 
     span {
@@ -123,6 +125,14 @@
       line-height: 20px;
       text-align: left;
       color: #d8d5d5b6;
+    }
+
+    .imgFooter {
+      position: absolute;
+      top: 65px;
+      left: 130px;  
+      width: 250px;
+      height: 350px;
     }
   }
 }

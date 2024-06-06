@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'RAYDIS';
+    src: url('RAYDIS-Bold.eot');
+    src: url('RAYDIS-Bold.eot?#iefix') format('embedded-opentype'),
+        url('RAYDIS-Bold.woff2') format('woff2'),
+        url('RAYDIS-Bold.woff') format('woff'),
+        url('RAYDIS-Bold.ttf') format('truetype'),
+        url('RAYDIS-Bold.svg#RAYDIS-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'RAYDIS';
+    src: url('RAYDIS-Bold_1.eot');
+    src: url('RAYDIS-Bold_1.eot?#iefix') format('embedded-opentype'),
+        url('RAYDIS-Bold_1.woff2') format('woff2'),
+        url('RAYDIS-Bold_1.woff') format('woff'),
+        url('RAYDIS-Bold_1.ttf') format('truetype'),
+        url('RAYDIS-Bold_1.svg#RAYDIS-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'RAYDIS';
+    src: url('RAYDIS-Bold_2.eot');
+    src: url('RAYDIS-Bold_2.eot?#iefix') format('embedded-opentype'),
+        url('RAYDIS-Bold_2.woff2') format('woff2'),
+        url('RAYDIS-Bold_2.woff') format('woff'),
+        url('RAYDIS-Bold_2.ttf') format('truetype'),
+        url('RAYDIS-Bold_2.svg#RAYDIS-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+

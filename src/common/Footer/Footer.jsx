@@ -1,7 +1,8 @@
-import React from 'react';
-import './style.scss';
-import contacts from '../../assets/icons/contacts.svg';
-import news from '../../assets/images/news.png';
+import React from "react";
+import "./style.scss";
+import contacts from "../../assets/icons/contacts.svg";
+import news from "../../assets/images/news.png";
+import imgFooter from "../../assets/images/imgFooter.png";
 
 const Footer = () => {
   return (
@@ -54,6 +55,7 @@ const Footer = () => {
               подпишись на нас в нашем сообществе «VK», а также на наш
               телеграм-канал, и участвуй в постоянных мероприятиях от магазина!
             </span>
+            <img src={imgFooter} alt="imgFooter" className="imgFooter" />
           </div>
         </div>
       </div>
