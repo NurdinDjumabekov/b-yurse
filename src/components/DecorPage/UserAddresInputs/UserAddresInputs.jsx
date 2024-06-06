@@ -22,7 +22,7 @@ const UserAddresInputs = ({ refAddres }) => {
       <h6>Адрес доставки</h6>
       <div className="line"></div>
 
-      <form onSubmit={sendMainData} className="userInputMain__inner">
+      <div className="userInputMain__inner">
         <MyInputs
           title={"Страна и город"}
           placeholder={"Россия, Москва"}
@@ -56,8 +56,8 @@ const UserAddresInputs = ({ refAddres }) => {
           onChange={onChange}
         />
 
-        <button />
-      </form>
+        {/* <button /> */}
+      </div>
     </div>
   );
 };

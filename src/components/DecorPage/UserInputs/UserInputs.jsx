@@ -29,7 +29,7 @@ const UserInputs = ({ refAddres }) => {
       <h6>Мои данные</h6>
       <div className="line"></div>
 
-      <form onSubmit={sendMainData} className="userInputMain__inner">
+      <div className="userInputMain__inner">
         <MyInputs
           title={"Имя"}
           placeholder={"Александра"}
@@ -75,14 +75,14 @@ const UserInputs = ({ refAddres }) => {
           email={true}
         />
 
-        <button />
+        <div />
 
         <MyInputs
           title={"Отчество (если нет отчества, то пусто)"}
           placeholder={"Александровна"}
           onChange={onChange}
         />
-      </form>
+      </div>
     </div>
   );
 };

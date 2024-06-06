@@ -17,12 +17,13 @@ const RenderEveryCloth = ({ item, detailed }) => {
 
   const clickBtn = () => {
     if (location?.pathname?.includes("every")) {
+      navigate(`/every/${item?.id}`);
+      window.location.reload();
       window.scrollTo(0, 0);
     } else {
       navigate(`/every/${item?.id}`);
       dispatch(everyClothFN(item));
     }
-    console.log(location?.pathname);
   };
 
   return (

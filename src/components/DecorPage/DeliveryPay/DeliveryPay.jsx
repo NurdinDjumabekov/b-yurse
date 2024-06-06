@@ -36,10 +36,10 @@ const DeliveryPay = () => {
     console.log(key, name);
   };
 
-  const sendData = () => {
-    navigate("/");
-    alert("Ваш заказ успешно был оформлен");
-  };
+  // const sendData = () => {
+  //   navigate("/");
+  //   alert("Ваш заказ успешно был оформлен");
+  // };
 
   return (
     <div className="deliveryPay">
@@ -122,8 +122,15 @@ const DeliveryPay = () => {
           <i>{sumTotalBasketOldPrice(basketList)} ₽</i>
         )}
       </div>
+
       <div className="action">
-        <button onClick={sendData}>Оплатить мой заказ</button>
+        <button
+          type="submit"
+          disabled={state1 || state2}
+          className={(state1 || state2) && "disable"}
+        >
+          Оплатить мой заказ
+        </button>
         <p>без учета доставки вашего заказа: обычно около 500 ₽</p>
       </div>
     </div>

@@ -1,9 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-// import Alerts from "../components/Alerts/Alerts";
 import MainLayouts from "../layouts/MainLayouts/MainLayouts";
-import MainPage from "../pages/MainPage/MainPage";
-import ChoiceCatalog from "../pages/ChoiceCatalog/ChoiceCatalog";
 import SalePage from "../pages/SalePage/SalePage";
 import EveryClothPage from "../pages/EveryClothPage/EveryClothPage";
 import BasketPage from "../pages/BasketPage/BasketPage";

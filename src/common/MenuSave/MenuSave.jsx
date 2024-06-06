@@ -69,7 +69,7 @@ const MenuSave = () => {
         {lookBasket && (
           <ul className="favorite__modal">
             {basketList?.length == 0 ? (
-              <p className="emptyFavourite">Список избранных пустой</p>
+              <p className="emptyFavourite">Корзина пустая</p>
             ) : (
               <>
                 {basketList?.map((item, index) => (

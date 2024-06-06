@@ -70,8 +70,6 @@ const EveryClothPage = () => {
     everyCloth?.category?.categoryName,
   ];
 
-  console.log(everyCloth, "everyCloth87");
-
   return (
     <div className="everyCloth">
       <div className="container">

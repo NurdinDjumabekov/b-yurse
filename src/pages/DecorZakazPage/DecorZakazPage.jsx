@@ -6,13 +6,21 @@ import UserAddresInputs from "../../components/DecorPage/UserAddresInputs/UserAd
 import { useRef } from "react";
 import DeliveryPay from "../../components/DecorPage/DeliveryPay/DeliveryPay";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const DecorZakazPage = () => {
   const refAddres = useRef(null);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const sendData = () => {
+    navigate("/");
+    alert("Ваш заказ успешно был оформлен");
+  };
 
   return (
     <div className="decor">
@@ -20,9 +28,11 @@ const DecorZakazPage = () => {
         <div className="decor__inner">
           <h5>Моя корзина: оформление заказа</h5>
           <CheckUser />
-          <UserInputs refAddres={refAddres} />
-          <UserAddresInputs refAddres={refAddres} />
-          <DeliveryPay />
+          <form onSubmit={sendData}>
+            <UserInputs refAddres={refAddres} />
+            <UserAddresInputs refAddres={refAddres} />
+            <DeliveryPay />
+          </form>
         </div>
       </div>
     </div>

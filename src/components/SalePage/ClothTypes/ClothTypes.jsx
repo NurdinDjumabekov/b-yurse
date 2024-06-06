@@ -33,8 +33,9 @@ const ClothTypes = () => {
     dispatch(activeCategFN({ categId: id, type: gender }));
     const obj1 = { categId: id, type: gender, activeSize };
     const obj2 = { activeColor, minPrice: activePrice.min };
-    const obj3 = { maxPrice: activePrice?.max };
+    const obj3 = { maxPrice: activePrice?.max, activeBrands };
     dispatch(getListCloth({ ...obj1, ...obj2, ...obj3 }));
+    window.scrollTo(0, 0);
   };
 
   const onUp = () => {
@@ -43,10 +44,12 @@ const ClothTypes = () => {
 
   const actionBrands = (id) => {
     dispatch(activeBrandsFN(id));
-    const obj1 = { categId: activeCateg?.categId, type: activeCateg.type };
+    dispatch(activeCategFN({ categId: 0, type: 0 }));
+    const obj1 = { categId: 0, type: 0 };
     const obj2 = { activeColor, minPrice: activePrice.min, activeSize };
     const obj3 = { maxPrice: activePrice?.max, activeBrands: id };
     dispatch(getListCloth({ ...obj1, ...obj2, ...obj3 }));
+    window.scrollTo(0, 0);
   };
 
   const checkTitle = activeCateg?.type;

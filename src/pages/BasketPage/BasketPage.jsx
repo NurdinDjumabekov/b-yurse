@@ -37,6 +37,15 @@ const BasketPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  const nav = () => {
+    if (basketList?.length === 0) {
+      alert("У вас пустой список");
+      navigate("/");
+    } else {
+      navigate("/decor");
+    }
+  };
+
   return (
     <div className="basket">
       <div className="container">
@@ -114,7 +123,7 @@ const BasketPage = () => {
               <i>{sumTotalBasketOldPrice(basketList)} ₽</i>
             )}
           </div>
-          <div className="confirm" onClick={() => navigate("/decor")}>
+          <div className="confirm" onClick={nav}>
             <button>Подтвердить мой заказ</button>
             <span>без учета доставки вашего заказа: обычно около 500 ₽</span>
           </div>
