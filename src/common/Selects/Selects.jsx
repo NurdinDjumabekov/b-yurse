@@ -40,7 +40,10 @@ const Selects = (props) => {
     <div className="selectBlockMain">
       <h5>{title}</h5>
       <div className="selectBlock" id="uniqueSelectID" ref={accordionRef}>
-        <div className="selectBlock__inner" onClick={() => setActive(!active)}>
+        <div
+          className={`selectBlock__inner ${active && "more"}`}
+          onClick={() => setActive(!active)}
+        >
           <p className={textSelect ? "activeText" : ""}>
             {textSelect ? textSelect?.name : initText}
           </p>

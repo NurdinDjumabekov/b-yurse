@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import Selects from "../../../common/Selects/Selects";
 import "./style.scss";
 
-import like from "../../../assets/icons/likeBlack.svg";
+import like from "../../../assets/images/likeBlack.png";
+
 import {
-  advartising,
   advartisingInner,
   confidation,
   confidationInner,
 } from "../../../helpers/LodalData";
+
 import {
   sumTotalBasket,
   sumTotalBasketOldPrice,
@@ -89,7 +90,7 @@ const DeliveryPay = () => {
           />
         </div>
       </div>
-      <div className="line"></div>
+      <div className="line big"></div>
 
       <div className="agreementCofidantion" onClick={() => setState1(!state1)}>
         {state1 ? (
@@ -97,9 +98,9 @@ const DeliveryPay = () => {
         ) : (
           <img src={like} alt="like" className="roundImg" />
         )}
-        <p className="agreement__text">
+        <p className={`agreement__text ${!state1 && "active"}`}>
           {confidation}
-          <i>{confidationInner}</i>
+          <i> {confidationInner}</i>
         </p>
       </div>
 
@@ -109,8 +110,8 @@ const DeliveryPay = () => {
         ) : (
           <img src={like} alt="like" className="roundImg" />
         )}
-        <p className="agreement__text">
-          {advartising}
+        <p className={`agreement__text ${!state2 && "active"}`}>
+          {confidation}
           <i>{advartisingInner}</i>
         </p>
       </div>

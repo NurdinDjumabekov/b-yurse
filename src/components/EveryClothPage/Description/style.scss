@@ -10,8 +10,9 @@
             display: flex;
             align-items: center;
             width: 50%;
-            padding: 5px 20px 0 0px;
-            gap: 20px;
+            padding: 5px 20px 8px 0px;
+            gap: 10px;
+            width: 230px;
             cursor: pointer;
 
             p {
@@ -22,54 +23,54 @@
             }
 
             img {
-                width: 25px;
-                height: 25px;
-                transform: rotate(180deg);
+                width: 20px;
+                height: 20px;
                 transition: 0.5s;
-
             }
         }
 
         .activeDescr {
 
             p {
-                color: #9b9b9b;
+                color: #9b9b9b91;
             }
 
             img {
-                transform: rotate(360deg);
+                transform: rotate(180deg);
                 transition: 0.5s;
             }
         }
 
         .lineTitle {
             border-left: 1px solid #e6e6e6;
-            padding: 0 0 0 20px;
+
+            p {
+                margin-left: 15px;
+            }
 
         }
     }
 
     &__main {
         animation: page 0.7s ease-in-out;
-        transition: 0.5s;
-
 
         > p {
             font-size: 16px !important;
             font-weight: 400;
             line-height: 18px !important;
             padding-right: 15px;
-            margin-top: 25px;   
-            animation: page 0.7s ease-in-out;
+            margin-top: 10px;   
+            animation: page 0.9s ease-in-out;
             transition: 0.5s;
+            width: 93%;
         }
 
         .moreSescr {
             display: flex;
             flex-direction: column;
             gap: 8px;
-            padding-top: 20px;
-            animation: page 0.7s ease-in-out;
+            padding-top: 10px;
+            animation: page 0.9s ease-in-out;
             transition: 0.5s;
 
             > div {

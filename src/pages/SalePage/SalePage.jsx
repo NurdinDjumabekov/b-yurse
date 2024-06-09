@@ -32,7 +32,7 @@ const SalePage = () => {
           <ClothList />
         </div>
       </div>
-      <Accordion />
+      {/* <Accordion /> */}
     </div>
   );
 };

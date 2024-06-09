@@ -30,13 +30,15 @@ const RenderEveryCloth = ({ item, detailed }) => {
     <li className="every">
       <Favourite obj={item} />
       <img src={sarchImg(item?.photos)?.url} alt="img" />
-      {item?.discountActive ? ( //// есть ли скидка
-        <div className="price">
-          <i>{item?.price} ₽</i> <b>{item?.oldPrice} ₽</b>
-        </div>
-      ) : (
-        <p>{item?.price} ₽</p>
-      )}
+      <div className="prices">
+        {item?.discountActive ? ( //// есть ли скидка
+          <div className="price">
+            <i>{item?.price} ₽</i> <b>{item?.oldPrice} ₽</b>
+          </div>
+        ) : (
+          <p>{item?.price} ₽</p>
+        )}
+      </div>
       <h5>{item?.productName}</h5>
       <button
         className={`choiceCloth ${item?.discountActive && "sale"}`}

@@ -66,9 +66,11 @@ button {
   margin: 11px 0 10px;
   background: linear-gradient(90deg, #ebebeb 0%, rgba(5, 5, 5, 0) 90%);
 }
+
 //////перенети в index
 
 .listTypes {
+  // background: red;
   li {
     display: flex;
     justify-content: space-between;
@@ -136,12 +138,12 @@ button {
 .shadow {
   height: 100vh;
   min-width: 100%;
-  background-color: rgba(5, 5, 5, 0.5);
+  background-color: rgba(5, 5, 5, 0.553);
   position: fixed;
   top: 0;
   left: 0;
   cursor: pointer;
-  // z-index: 95;
+  z-index: 95;
   animation: modal 0.7s ease-in-out;
 
 }
@@ -203,7 +205,7 @@ button {
     font-weight: 400;
     line-height: 18px;
     text-align: left;
-    color: #909090;
+    color: #a4a2a26e;
   }
 
   > img {
@@ -211,6 +213,34 @@ button {
     height: 25px;
   }
 }
+
+.prices {
+  .price {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  p, i, b {
+    font-family: Century Gothic;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+    color: #050505;
+    margin: 5px 0 0 0;
+    display: block;
+  }
+
+  i {
+    color: #FF3535;
+  }
+
+  b {
+    color: #909090;
+    text-decoration: line-through;
+  }
+}
+
 
 
 

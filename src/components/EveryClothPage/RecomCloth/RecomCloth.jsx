@@ -14,6 +14,7 @@ const RecomCloth = () => {
   useEffect(() => {
     dispatch(getListCloth(defaultRequest));
   }, []);
+
   return (
     <div className="recom">
       <h4>Можно дополнить образ, чтобы собрать весь комплект</h4>

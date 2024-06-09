@@ -23,7 +23,7 @@ import { CSSTransition } from "react-transition-group";
 const ClothTypes = () => {
   const dispatch = useDispatch();
 
-  const [accordion, setAccordion] = useState({ man: false, woman: false });
+  const [accordion, setAccordion] = useState({ man: true, woman: true });
 
   const { categClothWoman } = useSelector((state) => state.requestSlice);
   const { categClothMan } = useSelector((state) => state.requestSlice);
@@ -63,8 +63,8 @@ const ClothTypes = () => {
 
   const lengthTen = listCloth?.length > 9;
 
-  const toggleAccordion = () => {
-    setAccordion({ ...accordion, woman: !accordion?.woman });
+  const changeAccordion = (key) => {
+    setAccordion({ ...accordion, [key]: !accordion?.[key] });
   };
 
   return (
@@ -87,16 +87,21 @@ const ClothTypes = () => {
             </li>
           ))}
         </ul>
-        <div className="mainTitle" onClick={toggleAccordion}>
+        <div className="mainTitle">
           <h3 className={checkTitle === 2 ? "activeTitle" : ""}>
             Женская одежда
           </h3>
-          <img src={like} alt="like" />
+          <img
+            src={like}
+            alt="like"
+            className="accordionImg"
+            onClick={() => changeAccordion("woman")}
+          />
         </div>
         <div className="line"></div>
         <CSSTransition
           in={accordion?.woman}
-          timeout={300}
+          timeout={500}
           classNames="clothTypes__inner"
           unmountOnExit
         >
@@ -116,26 +121,42 @@ const ClothTypes = () => {
           </ul>
         </CSSTransition>
 
-        <div className="mainTitle">
-          <h3 className={checkTitle == 1 && "activeTitle"}>Мужская одежда</h3>
-          <img src={like} alt="like" />
+        <div className="position">
+          <div className="mainTitle">
+            <h3 className={checkTitle == 1 && "activeTitle"}>Мужская одежда</h3>
+            <img
+              src={like}
+              alt="like"
+              className="accordionImg"
+              onClick={() => changeAccordion("man")}
+            />
+          </div>
+          <div className="line"></div>
+          <CSSTransition
+            in={accordion?.man}
+            timeout={500}
+            classNames="clothTypes__inner"
+            unmountOnExit
+          >
+            <ul className="listTypes">
+              {categClothMan?.map((item) => (
+                <li
+                  key={item?.id}
+                  className={
+                    checkCateg == item.id && checkTitle == 1 ? "activeItem" : ""
+                  }
+                  onClick={() => actionCateg(item)}
+                >
+                  <p>{item?.categoryName}</p>
+                  <span className="count">{item?.count || 0}</span>
+                </li>
+              ))}
+            </ul>
+          </CSSTransition>
         </div>
-        <div className="line"></div>
-        <ul className="listTypes">
-          {categClothMan?.map((item) => (
-            <li
-              key={item?.id}
-              className={
-                checkCateg == item.id && checkTitle == 1 ? "activeItem" : ""
-              }
-              onClick={() => actionCateg(item)}
-            >
-              <p>{item?.categoryName}</p>
-              <span className="count">{item?.count || 0}</span>
-            </li>
-          ))}
-        </ul>
-        <ClothSize />
+        <div className="position">
+          <ClothSize />
+        </div>
         <ClothSize />
         <ClothColor />
       </div>

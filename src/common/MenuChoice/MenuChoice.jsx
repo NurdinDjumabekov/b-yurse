@@ -130,20 +130,17 @@ const MenuChoice = () => {
                 <p onClick={() => setSecondID(i.codeid)}>{i.text}</p>
               ))}
             </div>
-            {!!secondID && (
-              <div className="menuChoice__second">
-                {secondList?.map((i) => (
-                  <p onClick={() => setThreeId(i.codeid)}>{i.text}</p>
-                ))}
-              </div>
-            )}
-            {!!threeId && (
-              <div className="menuChoice__three">
-                {threeList?.map((i) => (
-                  <p>{i.text}</p>
-                ))}
-              </div>
-            )}
+
+            <div className="menuChoice__second">
+              {secondList?.map((i) => (
+                <p onClick={() => setThreeId(i.codeid)}>{i.text}</p>
+              ))}
+            </div>
+            <div className="menuChoice__three">
+              {threeList?.map((i) => (
+                <p>{i.text}</p>
+              ))}
+            </div>
           </div>
         )}
       </div>

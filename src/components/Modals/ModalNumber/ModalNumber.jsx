@@ -51,10 +51,12 @@ const ModalNumber = () => {
           />
         </div>
         <button className="choiceCloth" onClick={sendNums}>
-          <span>Войти в свой аккаунт </span>
+          <span>Получить код подтверждения</span>
           <img src={phone} alt="0" />
         </button>
-        <p>Мы вышлем код подтверждения по SMS на ваш номер.</p>
+        <p>
+          вам позвонит входящий номер телефона, введите последние четыре цифры
+        </p>
       </div>
     </Modal>
   );

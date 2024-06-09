@@ -1,0 +1,159 @@
+.basket__every {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 20px;
+    justify-content: space-between;
+
+    .mainImg {
+        width: 290px;   
+        height: 390px;
+        > img {
+            object-fit: cover;
+            border-radius: 10px;
+        }
+    }
+
+    .dopContant {
+        width: 505px;
+
+        .mainInfo {
+            display: flex;
+            justify-content: space-between;
+
+            h5 {
+                width: 80%;
+            }
+
+            > img {
+                width: 20px;
+                height: 20px;
+                cursor: pointer;
+            }
+        }
+
+        p {
+            margin: 13px 0 20px;
+            font-size: 25px;
+            font-weight: 400;
+            line-height: 25px;
+            text-align: left;
+        }
+
+        .blockPay {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 25px;
+
+            img {
+                width: 30px;
+                height: 30px;
+            }
+
+            span {
+                margin-left: 25px;
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 20px;
+            }
+        }
+
+        .counterBlock {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 20px 0 26px;
+            > button {
+                width: 37px;
+                height: 37px;
+                border-radius: 6px;
+                font-size: 45px;
+                line-height: 0;
+                color: #fff;
+                
+            }
+            > span {
+                width: 50px;
+                text-align: center;
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 20px;
+                text-decoration: underline;
+            }
+        }
+
+        .sizesColors {
+            display: flex;
+            gap: 45px;
+            .sizes {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 25px;
+      
+                &__inner {
+                  display: flex;
+                  flex-direction: column;
+                  gap: 10px;
+      
+                  > b {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-family: Century Gothic;
+                    font-size: 12px;
+                    font-weight: 400;
+                    line-height: 12px;
+                    text-align: center;
+      
+                  }
+      
+                  b,img {
+                    width: 40px;
+                    height: 40px;
+                  }
+                }
+      
+                span {
+                  font-family: Century Gothic;
+                  font-size: 16px;
+                  font-weight: 400;
+                  line-height: 18px;
+                  text-align: left;
+                  color: #303030;
+                }
+      
+                b {
+                  width: 40px;
+                  height: 40px;
+                  border-radius: 50%;
+                  border: 1px solid #050505;
+                  font-family: Century Gothic;
+                  font-size: 12px;
+                  font-weight: 400;
+                  line-height: 12px;
+                  text-align: center;
+                  color: #050505;
+                }
+      
+                img {
+                  width: 40px;
+                  height: 40px;
+                  border-radius: 50%;
+                }
+              }
+      
+            
+        }
+    }
+
+    .deleteAction {
+        width: 350px;
+        height: 100%;
+        text-align: right;
+        > button {
+            width: 30px;
+            height: 30px;
+        }
+    }
+}

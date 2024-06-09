@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./style.scss";
 
 /////imgs
@@ -7,10 +7,8 @@ import krest from "../../../assets/icons/krest.svg";
 import aroow from "../../../assets/icons/aroow.svg";
 
 /////fns
-import {
-  activeBrandsFN,
-  activePriceFN,
-} from "../../../store/reducers/stateSlice";
+import { activePriceFN } from "../../../store/reducers/stateSlice";
+import { activeBrandsFN } from "../../../store/reducers/stateSlice";
 import { activeSizeFN } from "../../../store/reducers/stateSlice";
 import { activeColorFN } from "../../../store/reducers/stateSlice";
 import { activeCategFN } from "../../../store/reducers/stateSlice";
@@ -18,6 +16,9 @@ import { getListCloth } from "../../../store/reducers/requestSlice";
 
 const Sorting = () => {
   const dispatch = useDispatch();
+
+  const { activeBrands, activeSize } = useSelector((state) => state.stateSlice);
+  const { activeCateg, activeColor } = useSelector((state) => state.stateSlice);
 
   const reset = () => {
     dispatch(activeCategFN({ categId: 0, type: 0 }));
@@ -33,14 +34,21 @@ const Sorting = () => {
     dispatch(getListCloth({ ...obj1, ...obj2, ...obj3 }));
   };
 
+  const check = activeBrands == 0 && activeColor == 0 && activeSize == 0;
+  const checkMore = activeCateg?.categId == 0 && activeCateg?.type == 0;
+
   return (
     <div className="sorting">
-      <div className="filter" onClick={reset}>
-        <p>сбросить фильтр</p>
-        <button>
-          <img src={krest} alt="x" />
-        </button>
-      </div>
+      {check && checkMore ? (
+        <div />
+      ) : (
+        <div className="filter" onClick={reset}>
+          <p>сбросить фильтр</p>
+          <button>
+            <img src={krest} alt="x" />
+          </button>
+        </div>
+      )}
       <div className="filter">
         <p>сортировка</p>
         <button>

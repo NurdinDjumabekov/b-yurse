@@ -1,7 +1,6 @@
 .recom {
     width: 100%;
     display: block !important;
-    margin-bottom: 20px;
 
     h4 {
         font-size: 25px;
@@ -12,10 +11,9 @@
 
     &__list {
         display: flex;
-        // justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
-        gap: 25px;
+        gap: 20px;
 
     }
 }

@@ -1,5 +1,5 @@
 .modalNum {
-    padding: 20px 0px;
+    padding: 25px 0px 10px;
 
     input {
         width: 360px !important;
@@ -9,6 +9,12 @@
         width: 360px;
         margin-top: 10px;
         height: 70px;
+        gap: 12px;
+
+        > img {
+            width: 30px;
+            height: 30px;   
+        }
     }
 
     p {

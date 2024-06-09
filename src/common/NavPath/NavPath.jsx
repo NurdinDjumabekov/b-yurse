@@ -1,5 +1,5 @@
 import React from "react";
-import arrow from "../../assets/icons/aroow.svg";
+import arrow from "../../assets/icons/arrowRightTreg.svg";
 import "./style.scss";
 import { useNavigate } from "react-router-dom";
 

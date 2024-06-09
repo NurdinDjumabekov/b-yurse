@@ -273,15 +273,15 @@ const requestSlice = createSlice({
 
     //////////////// getListCloth
     builder.addCase(getListCloth.fulfilled, (state, action) => {
-      state.preloader = false;
+      // state.preloader = false;
       state.listCloth = action.payload;
     });
     builder.addCase(getListCloth.rejected, (state, action) => {
       state.error = action.payload;
-      state.preloader = false;
+      // state.preloader = false;
     });
     builder.addCase(getListCloth.pending, (state, action) => {
-      state.preloader = true;
+      // state.preloader = true;
     });
 
     /////////////////// detailedCloth

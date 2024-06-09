@@ -1,7 +1,8 @@
 import React from "react";
 import "./style.scss";
 import { useState } from "react";
-import arrow from "../../../assets/icons/aroow.svg";
+import arrowGray from "../../../assets/icons/aroow.svg";
+import arrowBlack from "../../../assets/icons/arrowBlack.svg";
 
 export const Description = () => {
   const [type, setType] = useState(true);
@@ -23,17 +24,17 @@ export const Description = () => {
       <div className="title">
         <div
           className={`title__inner ${type && "activeDescr"}`}
-          onClick={() => setType(true)}
+          onClick={() => setType(false)}
         >
           <p>Характеристика</p>
-          <img src={arrow} alt=">" />
+          <img src={type ? arrowGray : arrowBlack} alt=">" />
         </div>
         <div
           className={`title__inner lineTitle  ${!type && "activeDescr"}`}
-          onClick={() => setType(false)}
+          onClick={() => setType(true)}
         >
           <p>Краткое описание</p>
-          <img src={arrow} alt=">" />
+          <img src={type ? arrowBlack : arrowGray} alt=">" />
         </div>
       </div>
       <div className="descriptions__main">

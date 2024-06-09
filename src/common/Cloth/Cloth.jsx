@@ -5,8 +5,9 @@ import { useDispatch } from "react-redux";
 import { lookBasketFN, lookFavoriteFN } from "../../store/reducers/stateSlice";
 import { sarchImg } from "../../helpers/sarchImg";
 import Favourite from "../Favourite/Favourite";
+import "./style.scss";
 
-const Cloth = ({ item }) => {
+const Cloth = ({ item, btn }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -21,7 +22,7 @@ const Cloth = ({ item }) => {
   const size = item?.sizes?.filter((i) => i.id == item?.activeSizeEvery);
 
   return (
-    <li>
+    <li className="everyBasket">
       <div className="imgMain">
         <img src={sarchImg(item?.photos)?.url} alt="" />
       </div>
@@ -40,10 +41,10 @@ const Cloth = ({ item }) => {
         </div>
         <div className="actions">
           <button className="choiceCloth" onClick={nav}>
-            <span>Посмотреть ближе</span>
+            <span>{btn}</span>
             <img src={basket} alt="basket" />
           </button>
-          <Favourite obj={item} />
+          <Favourite obj={item} black={true} />
         </div>
       </div>
     </li>

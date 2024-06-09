@@ -24,10 +24,8 @@ import basket from "../../assets/icons/basket.svg";
 import pay1 from "../../assets/images/pay1.png";
 import pay2 from "../../assets/images/pay2.png";
 import { sarchImg, sarchImgSeconds } from "../../helpers/sarchImg";
-import {
-  activeColorEveryFN,
-  activeSizeEveryFN,
-} from "../../store/reducers/stateSlice";
+import { activeSizeEveryFN } from "../../store/reducers/stateSlice";
+import { activeColorEveryFN } from "../../store/reducers/stateSlice";
 
 const EveryClothPage = () => {
   const params = useParams();
@@ -111,7 +109,7 @@ const EveryClothPage = () => {
                 <span>Положить в корзину</span>
                 <img src={basket} alt="basket" />
               </button>
-              <Favourite obj={everyCloth} />
+              <Favourite obj={everyCloth} black={true} />
             </div>
             <Description />
           </div>

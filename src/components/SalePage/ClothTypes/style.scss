@@ -6,6 +6,12 @@
 
   &__inner {
     padding: 0 15px 0 0;
+
+    .position {
+      position: relative;
+      z-index: 10;
+      background: #fff;
+    }
   }
 
   h2 {
@@ -39,6 +45,10 @@
     > img {
       width: 30px;
       height: 30px;
+    }
+    
+    .accordionImg {
+      cursor: pointer;
     }
   }
 
@@ -76,7 +86,7 @@
 .clothTypes__inner-enter-active {
   max-height: 500px; /* Установите максимальную высоту для содержимого */
   opacity: 1;
-  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+  transition: max-height 0.3s ease-out, opacity 0.9s ease-out;
 }
 
 .clothTypes__inner-exit {

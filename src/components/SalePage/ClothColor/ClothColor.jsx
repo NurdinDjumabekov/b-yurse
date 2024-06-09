@@ -43,54 +43,52 @@ const ClothColor = ({ oneCodeId, choiceEvery, listEvery }) => {
   const checkPage = pathname.includes("every"); //// if это детальная страница
 
   return (
-    <>
-      <div className="clothColor">
-        <div className={`mainTitle position ${checkPage && "everyPosition"}`}>
-          <h3>Цветовая палитра</h3>
-          <img src={info} alt="info" className="imgAction" />
-        </div>
-        {!oneCodeId && <div className="line"></div>}
-        {choiceEvery ? (
-          <ul className="listColor">
-            {listEvery?.map((item) => (
-              <li
-                key={item?.id}
-                className={`list ${
-                  activeColorEvery == item.id && "activeItem"
-                }`}
-                onClick={() => choiceForBasket(item.id)}
-              >
-                <img src={item?.color} alt="imgColor" />
-                <div className="activeImg">
-                  <img src={item?.color} alt="imgColorBig" />
-                </div>
-                <div className="shadowWhite" />
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <ul className="listColor">
-            {oneCodeId ? (
-              <>
-                {listColor?.map((item) => {
-                  if (oneCodeId == item.id) {
-                    return (
-                      <li key={item?.id}>
-                        {item?.text}
-                        <img src={item?.color} alt="imgColor" />
-                        <img
-                          src={item?.color}
-                          alt="imgColorBig"
-                          className="activeImg"
-                        />
-                      </li>
-                    );
-                  }
-                })}
-              </>
-            ) : (
-              <>
-                {listColor?.map((item) => (
+    <div className="clothColor">
+      <div className={`mainTitle position ${checkPage && "everyPosition"}`}>
+        <h3>Цветовая палитра</h3>
+        <img src={info} alt="info" className="imgAction" />
+      </div>
+      {!oneCodeId && <div className="line"></div>}
+      {choiceEvery ? (
+        <ul className="listColor">
+          {listEvery?.map((item) => (
+            <li
+              key={item?.id}
+              className={`list ${activeColorEvery == item.id && "activeItem"}`}
+              onClick={() => choiceForBasket(item.id)}
+            >
+              <img src={item?.color} alt="imgColor" />
+              <div className="activeImg">
+                <img src={item?.color} alt="imgColorBig" />
+              </div>
+              <div className="shadowWhite" />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <ul className="listColor">
+          {oneCodeId ? (
+            <>
+              {listColor?.map((item) => {
+                if (oneCodeId == item.id) {
+                  return (
+                    <li key={item?.id}>
+                      {item?.text}
+                      <img src={item?.color} alt="imgColor" />
+                      <img
+                        src={item?.color}
+                        alt="imgColorBig"
+                        className="activeImg"
+                      />
+                    </li>
+                  );
+                }
+              })}
+            </>
+          ) : (
+            <>
+              {listColor?.map((item) => (
+                <>
                   <li
                     key={item?.id}
                     className={`list ${activeColor == item.id && "activeItem"}`}
@@ -103,13 +101,13 @@ const ClothColor = ({ oneCodeId, choiceEvery, listEvery }) => {
                     </div>
                     <div className="shadowWhite" />
                   </li>
-                ))}
-              </>
-            )}
-          </ul>
-        )}
-      </div>
-    </>
+                </>
+              ))}
+            </>
+          )}
+        </ul>
+      )}
+    </div>
   );
 };
 
