@@ -16,8 +16,6 @@ import MenuChoice from "../MenuChoice/MenuChoice";
 const Menu = () => {
   const dispatch = useDispatch();
 
-  const { dataUser } = useSelector((state) => state.saveDataSlice);
-
   const { lookFavorite, lookBasket, lookMenu } = useSelector(
     (state) => state.stateSlice
   );
@@ -39,7 +37,6 @@ const Menu = () => {
             <h1>b’yurse</h1>
           </div>
           <div className="menu__favorite">
-            {/* {dataUser?.chechAccount && <MenuSave />} */}
             <MenuSave />
           </div>
         </div>

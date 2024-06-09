@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getListCloth } from "../../../store/reducers/requestSlice";
 
 const ClothPrices = () => {
-  const [value, setValue] = useState([1, 10000]);
   const timerRef = useRef(null);
 
   const dispatch = useDispatch();
@@ -35,7 +34,7 @@ const ClothPrices = () => {
       </div>
       <div className="line"></div>
       <div className="priceBlock">
-        <Box sx={{ width: 200 }}>
+        <Box sx={{ width: "100%" }}>
           <Slider
             aria-label="Temperature"
             onChange={onSliderChange}

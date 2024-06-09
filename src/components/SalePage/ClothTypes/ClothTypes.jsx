@@ -17,13 +17,18 @@ import ClothColor from "../ClothColor/ClothColor";
 import { activeCategFN } from "../../../store/reducers/stateSlice";
 import { activeBrandsFN } from "../../../store/reducers/stateSlice";
 import { getListCloth } from "../../../store/reducers/requestSlice";
+import { useState } from "react";
+import { CSSTransition } from "react-transition-group";
 
 const ClothTypes = () => {
   const dispatch = useDispatch();
 
+  const [accordion, setAccordion] = useState({ man: false, woman: false });
+
   const { categClothWoman } = useSelector((state) => state.requestSlice);
   const { categClothMan } = useSelector((state) => state.requestSlice);
   const { listBrands } = useSelector((state) => state.requestSlice);
+  const { listCloth } = useSelector((state) => state.requestSlice);
 
   const { activeCateg, activeSize } = useSelector((state) => state.stateSlice);
   const { activeColor, activePrice } = useSelector((state) => state.stateSlice);
@@ -56,69 +61,90 @@ const ClothTypes = () => {
 
   const checkCateg = activeCateg?.categId;
 
+  const lengthTen = listCloth?.length > 9;
+
+  const toggleAccordion = () => {
+    setAccordion({ ...accordion, woman: !accordion?.woman });
+  };
+
   return (
     <div className="clothTypes">
-      <div className="mainTitle">
-        <h3 className={activeBrands !== 0 && "activeTitle"}>
-          Премиальная одежда
-        </h3>
+      <div className="clothTypes__inner">
+        <div className="mainTitle first">
+          <h3 className={activeBrands !== 0 && "activeTitle"}>
+            Премиальная одежда
+          </h3>
+        </div>
+        <div className="line"></div>
+        <ul className="listTypes">
+          {listBrands?.map((item) => (
+            <li
+              key={item?.id}
+              className={activeBrands == item.id ? "activeItem" : ""}
+              onClick={() => actionBrands(item.id)}
+            >
+              <p>{item?.collectionName}</p>
+            </li>
+          ))}
+        </ul>
+        <div className="mainTitle" onClick={toggleAccordion}>
+          <h3 className={checkTitle === 2 ? "activeTitle" : ""}>
+            Женская одежда
+          </h3>
+          <img src={like} alt="like" />
+        </div>
+        <div className="line"></div>
+        <CSSTransition
+          in={accordion?.woman}
+          timeout={300}
+          classNames="clothTypes__inner"
+          unmountOnExit
+        >
+          <ul className="listTypes">
+            {categClothWoman?.map((item) => (
+              <li
+                key={item?.id}
+                className={
+                  checkCateg === item.id && checkTitle === 2 ? "activeItem" : ""
+                }
+                onClick={() => actionCateg(item)}
+              >
+                <p>{item?.categoryName}</p>
+                <span className="count">{item?.count || 0}</span>
+              </li>
+            ))}
+          </ul>
+        </CSSTransition>
+
+        <div className="mainTitle">
+          <h3 className={checkTitle == 1 && "activeTitle"}>Мужская одежда</h3>
+          <img src={like} alt="like" />
+        </div>
+        <div className="line"></div>
+        <ul className="listTypes">
+          {categClothMan?.map((item) => (
+            <li
+              key={item?.id}
+              className={
+                checkCateg == item.id && checkTitle == 1 ? "activeItem" : ""
+              }
+              onClick={() => actionCateg(item)}
+            >
+              <p>{item?.categoryName}</p>
+              <span className="count">{item?.count || 0}</span>
+            </li>
+          ))}
+        </ul>
+        <ClothSize />
+        <ClothSize />
+        <ClothColor />
       </div>
-      <div className="line"></div>
-      <ul className="listTypes">
-        {listBrands?.map((item) => (
-          <li
-            key={item?.id}
-            className={activeBrands == item.id ? "activeItem" : ""}
-            onClick={() => actionBrands(item.id)}
-          >
-            <p>{item?.collectionName}</p>
-          </li>
-        ))}
-      </ul>
-      <div className="mainTitle">
-        <h3 className={checkTitle == 2 && "activeTitle"}>Женская одежда</h3>
-        <img src={like} alt="like" />
-      </div>
-      <div className="line"></div>
-      <ul className="listTypes">
-        {categClothWoman?.map((item) => (
-          <li
-            key={item?.id}
-            className={
-              checkCateg == item.id && checkTitle == 2 ? "activeItem" : ""
-            }
-            onClick={() => actionCateg(item)}
-          >
-            <p>{item?.categoryName}</p>
-            <span className="count">{item?.count || 0}</span>
-          </li>
-        ))}
-      </ul>
-      <div className="mainTitle">
-        <h3 className={checkTitle == 1 && "activeTitle"}>Мужская одежда</h3>
-        <img src={like} alt="like" />
-      </div>
-      <div className="line"></div>
-      <ul className="listTypes">
-        {categClothMan?.map((item) => (
-          <li
-            key={item?.id}
-            className={
-              checkCateg == item.id && checkTitle == 1 ? "activeItem" : ""
-            }
-            onClick={() => actionCateg(item)}
-          >
-            <p>{item?.categoryName}</p>
-            <span className="count">{item?.count || 0}</span>
-          </li>
-        ))}
-      </ul>
-      <ClothSize />
-      <ClothColor />
       <ClothPrices />
-      <button className="onUp" onClick={onUp}>
-        Подняться наверх
-      </button>
+      {lengthTen && (
+        <button className="onUp" onClick={onUp}>
+          Подняться наверх
+        </button>
+      )}
     </div>
   );
 };

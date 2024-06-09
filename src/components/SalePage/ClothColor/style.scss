@@ -15,12 +15,12 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 5px;
     
     .activeItem {
       border: 1px solid #050505;
-      width: 46px;
-      height: 46px;
+      width: 43px;
+      height: 43px;
       margin: 0;
       padding: 2px !important;
     }
@@ -31,14 +31,13 @@
     height: 40px;
     border-radius: 50%;
     cursor: pointer;
-    margin: 3px;
     transform: 0.8s;
     position: relative;
 
     &:hover {
       .activeImg {
         display: block;
-        animation: page 0.6s ease-in-out;
+        animation: page 1s ease-in-out;
       }
 
     }

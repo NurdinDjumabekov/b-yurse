@@ -12,6 +12,7 @@ import "./style.scss";
 ////fns
 import { getListBrands, getListCateg } from "../../store/reducers/requestSlice";
 import { getListColors, getListSize } from "../../store/reducers/requestSlice";
+import Accordion from "../../components/ывфывфы/Accordion";
 
 const SalePage = () => {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ const SalePage = () => {
           <ClothList />
         </div>
       </div>
+      <Accordion />
     </div>
   );
 };

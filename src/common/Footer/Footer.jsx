@@ -1,6 +1,7 @@
 import React from "react";
 import "./style.scss";
-import contacts from "../../assets/icons/contacts.svg";
+import vk from "../../assets/icons/vk.svg";
+import telega from "../../assets/icons/telega.svg";
 import news from "../../assets/images/news.png";
 import imgFooter from "../../assets/images/imgFooter.png";
 
@@ -12,7 +13,14 @@ const Footer = () => {
           <div className="footer__main">
             <div className="titleMain">
               <h4>b’yurse</h4>
-              <img src={contacts} alt="vk" />
+              <div className="imgSocial">
+                <div>
+                  <img src={vk} alt="vk" />
+                </div>
+                <div>
+                  <img src={telega} alt="telega" />
+                </div>
+              </div>
             </div>
             <div className="textSecond">
               <div>

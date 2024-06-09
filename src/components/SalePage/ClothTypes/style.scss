@@ -1,8 +1,12 @@
 .clothTypes {
-  min-width: 280px;
-  max-width: 280px;
+  min-width: 290px;
+  max-width: 290px;
   padding-bottom: 200px;
   position: relative;
+
+  &__inner {
+    padding: 0 15px 0 0;
+  }
 
   h2 {
     font-family: Century Gothic;
@@ -16,7 +20,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 35px;
+    margin-top: 32px;
     
     > h3 {
       font-family: Century Gothic;
@@ -33,9 +37,13 @@
     }
 
     > img {
-      width: 25px;
-      height: 25px;
+      width: 30px;
+      height: 30px;
     }
+  }
+
+  .first {
+    margin-top: 12px !important;
   }
 
   .onUp {
@@ -54,4 +62,30 @@
     bottom: 40px;
     left: 0;
   }
+}
+
+.accordion-content-wrapper {
+  overflow: hidden;
+}
+
+.clothTypes__inner-enter {
+  max-height: 0;
+  opacity: 0;
+}
+
+.clothTypes__inner-enter-active {
+  max-height: 500px; /* Установите максимальную высоту для содержимого */
+  opacity: 1;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.clothTypes__inner-exit {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.clothTypes__inner-exit-active {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.3s ease-out, opacity 0.9s ease-out;
 }
