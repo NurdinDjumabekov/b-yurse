@@ -54,7 +54,7 @@ const EveryClothPage = () => {
     window.scrollTo(0, 0);
     dispatch(detailedCloth(id));
     clear();
-  }, []);
+  }, [id]);
 
   const clear = () => {
     dispatch(activeColorEveryFN(0)); ///// обнуляю state для временного хранения цвета
@@ -68,6 +68,8 @@ const EveryClothPage = () => {
     everyCloth?.category?.categoryName,
   ];
 
+  const listImg = sarchImgSeconds(everyCloth?.photos);
+
   return (
     <div className="everyCloth">
       <div className="container">
@@ -75,7 +77,7 @@ const EveryClothPage = () => {
         <div className="everyCloth__inner">
           <div className="mainContant">
             <div className="dopImg">
-              {sarchImgSeconds(everyCloth?.photos)?.map((item) => (
+              {listImg?.slice(0, 3)?.map((item) => (
                 <div key={item?.id}>
                   <img src={item?.url} alt="" />
                 </div>
@@ -111,7 +113,7 @@ const EveryClothPage = () => {
               </button>
               <Favourite obj={everyCloth} black={true} />
             </div>
-            <Description />
+            <Description everyCloth={everyCloth} />
           </div>
         </div>
         <RecomCloth list={everyCloth?.recommendations} />

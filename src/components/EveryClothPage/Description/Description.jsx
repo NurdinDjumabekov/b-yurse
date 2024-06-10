@@ -4,20 +4,10 @@ import { useState } from "react";
 import arrowGray from "../../../assets/icons/aroow.svg";
 import arrowBlack from "../../../assets/icons/arrowBlack.svg";
 
-export const Description = () => {
+export const Description = ({ everyCloth }) => {
   const [type, setType] = useState(true);
 
-  const characteristic =
-    "Идеальная футболка с облегающим кроем, а также с круглым вырезом, является отличным вариантом для повседневного и уикенд ношения. Футбола изготовлена ​​из премиального, прохладного, удобного и эластичного хлопка, отделанного качественными строчками из крепких ниток.Ведь, это настоящая классика на все времена. ";
-
-  const description = {
-    articul: "1234567890",
-    sex: "женский",
-    material: "100% хлопок и 95% лайкра",
-    complect: "футболка, 1 штука",
-    country: "россия",
-    marking: "имеется",
-  };
+  const sex = { 1: "мужской", 2: "женский" };
 
   return (
     <div className="descriptions">
@@ -39,32 +29,32 @@ export const Description = () => {
       </div>
       <div className="descriptions__main">
         {type ? (
-          <p>{characteristic}</p>
+          <p>{everyCloth?.productDetails?.description}</p>
         ) : (
           <div className="moreSescr">
             <div>
               <span>артикул: </span>
-              <p>{description?.articul}</p>
+              <p>{everyCloth?.productDetails?.articul}</p>
             </div>
             <div>
               <span>пол: </span>
-              <p>{description?.sex}</p>
+              <p>{sex?.[everyCloth?.genderId]}</p>
             </div>
             <div>
               <span>материал: </span>
-              <p>{description?.material}</p>
+              <p>{everyCloth?.productDetails?.material}</p>
             </div>
             <div>
               <span>комплектация: </span>
-              <p>{description?.complect}</p>
+              <p>{everyCloth?.productDetails?.complect}</p>
             </div>
             <div>
               <span>страна изготовления: </span>
-              <p>{description?.country}</p>
+              <p>{everyCloth?.productDetails?.country}</p>
             </div>
             <div>
               <span>маркировка «честный знак»: </span>
-              <p>{description?.marking}</p>
+              <p>{everyCloth?.productDetails?.marking} имеется</p>
             </div>
           </div>
         )}

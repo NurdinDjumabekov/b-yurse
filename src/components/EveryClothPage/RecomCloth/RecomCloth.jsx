@@ -11,16 +11,16 @@ const RecomCloth = ({ list }) => {
 
   const { listCloth } = useSelector((state) => state.requestSlice);
 
-  // useEffect(() => {
-  //   dispatch(getListCloth(defaultRequest));
-  // }, []);
+  useEffect(() => {
+    dispatch(getListCloth(defaultRequest));
+  }, []);
 
   if (list?.length > 0) {
     return (
       <div className="recom">
         <h4>Можно дополнить образ, чтобы собрать весь комплект</h4>
         <ul className="recom__list">
-          {list?.map((item) => (
+          {listCloth?.map((item) => (
             <RenderEveryCloth item={item} key={item.id} detailed={false} />
           ))}
         </ul>

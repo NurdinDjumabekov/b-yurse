@@ -78,11 +78,13 @@
                 align-items: center;
                 gap: 8px;
                 
-                span,p {
+                span, p {
+
                     font-size: 16px !important;
                     font-weight: 400;
                     line-height: 18px !important;
                     margin: 0 !important;
+                    text-transform: lowercase;
                 }
 
                 span{
