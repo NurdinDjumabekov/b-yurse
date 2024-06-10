@@ -114,10 +114,23 @@ const ModalNumConfirm = () => {
     setTime(60);
   };
 
+  const resetTimer = () => {
+    setTime(60);
+    const timer = setInterval(() => {
+      setTime((prevTime) => {
+        if (prevTime <= 1) {
+          clearInterval(timer);
+          return 0;
+        }
+        return prevTime - 1;
+      });
+    }, 1000);
+  };
+
   const sendNums = () => {
     if (time === 0) {
       //// отправка номера еше раз
-      setTime(60);
+      resetTimer();
       dispatch(lookNumberConfFN(true));
     } else {
       if (checkNums) {

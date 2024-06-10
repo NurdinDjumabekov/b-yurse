@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { generateUniqueId } from "../../helpers/generateUniqueId";
 
 const initialState = {
   dataUser: {
@@ -25,28 +26,37 @@ const saveDataSlice = createSlice({
     addProdBasket: (state, action) => {
       const newItem = action.payload;
       const existingItem = state.basketList?.find(
-        (item) => item.id === newItem.id
+        (item) =>
+          item.id === newItem.id &&
+          item.activeColorEvery === newItem.activeColorEvery &&
+          item.activeSizeEvery === newItem.activeSizeEvery
       );
 
       if (existingItem) {
         // Если элемент уже есть в корзине, увеличиваю счетчик
-        const newData = state.basketList.map((item) =>
-          item.id === newItem.id ? { ...item, count: item?.count + 1 } : item
+        state.basketList = state.basketList.map((item) =>
+          item.id === newItem.id &&
+          item.activeColorEvery === newItem.activeColorEvery &&
+          item.activeSizeEvery === newItem.activeSizeEvery
+            ? { ...item, count: item.count + 1 }
+            : item
         );
-        state.basketList = newData;
       } else {
-        // добавляю новый элемент с начальным счетчиком
-        state.basketList = [...state.basketList, { ...newItem, count: 1 }];
+        // Добавляю новый элемент с начальным счетчиком и новым codeid
+        state.basketList = [
+          ...state.basketList,
+          { ...newItem, count: 1, codeid: generateUniqueId() },
+        ];
       }
     },
 
     //// удаение с count(отнимаю по одному)
     removeProdBasket: (state, action) => {
-      const { id } = action.payload;
+      const { codeid } = action.payload; // Используем codeid для удаления
 
-      // Находим индекс элемента в корзине по id
+      // Находим индекс элемента в корзине по codeid
       const existingOrderIndex = state.basketList.findIndex(
-        (obj) => obj?.id === id
+        (obj) => obj?.codeid === codeid
       );
 
       if (existingOrderIndex !== -1) {
@@ -62,9 +72,9 @@ const saveDataSlice = createSlice({
 
           // Если count стал равным 0, удаляем элемент из корзины
           if (existingOrder.count === 1) {
-            // Фильтруем массив и удаляем элемент с соответствующим id
+            // Фильтруем массив и удаляем элемент с соответствующим codeid
             state.basketList = state.basketList.filter(
-              (item) => item?.id !== id
+              (item) => item?.codeid !== codeid
             );
           }
         }
@@ -73,9 +83,10 @@ const saveDataSlice = createSlice({
 
     //// прямое уджаление, не считая count сразу удаляет
     deleteProdBasket: (state, action) => {
-      const deleteItem = action.payload;
+      const { codeid } = action.payload; // Используем codeid для удаления
+
       state.basketList = state.basketList?.filter(
-        (item) => item?.id !== deleteItem?.id
+        (item) => item?.codeid !== codeid
       );
     },
 

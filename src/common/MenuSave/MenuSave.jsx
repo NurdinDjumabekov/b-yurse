@@ -21,6 +21,9 @@ const MenuSave = () => {
 
   const lookMyBasket = () => dispatch(lookBasketFN(!lookBasket));
 
+  console.log(favouriteList);
+  console.log(basketList, "basketList");
+
   return (
     <>
       <div className="blockFavorite">

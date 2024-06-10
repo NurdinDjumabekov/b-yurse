@@ -5,6 +5,7 @@
   gap: 5px;
 
   > li {
+
     width: 40px;
     height: 40px;
     font-family: Century Gothic;
@@ -51,25 +52,25 @@
     }
   }
 
-
   .size__modal {
     border-radius: 10px;
-    padding: 20px;
+    padding: 30px 20px 20px;
     background: #fff; 
     position: absolute;
-    top: 0px;
-    left: 285px;
+    bottom: 35px;
+    left: 250px;
     z-index: 120;
     display: flex;
     flex-direction: column;
     height: 300px;
     width: 830px;
+    z-index: 150;
 
     &__inner {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
 
     .sizeRow {
@@ -143,6 +144,6 @@
   }
 
   .shadow {
-    z-index: 99 ;
+    z-index: 140;
   }
 }

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 export const NavPath = ({ list }) => {
   const navigate = useNavigate();
   return (
-    <div className="navPath" onClick={() => navigate(-1)}>
+    <div className="navPath" onClick={() => navigate("/")}>
       <div>
         <span>Каталог </span>
       </div>

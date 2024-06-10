@@ -7,7 +7,7 @@ import { getListCloth } from "../../../store/reducers/requestSlice";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-const MayBeFavorite = () => {
+const MayBeFavorite = ({ list }) => {
   const dispatch = useDispatch();
 
   const { listCloth } = useSelector((state) => state.requestSlice);
@@ -16,16 +16,18 @@ const MayBeFavorite = () => {
     dispatch(getListCloth(defaultRequest));
   }, []);
 
-  return (
-    <div className="mayBeFavorite">
-      <h4>Просмотренное, которое можно отложить в «Избранное»</h4>
-      <ul className="mayBeFavorite__list">
-        {listCloth?.slice(4, 10)?.map((item) => (
-          <RenderEveryCloth item={item} key={item.id} detailed={false} />
-        ))}
-      </ul>
-    </div>
-  );
+  if (list?.length > 0) {
+    return (
+      <div className="mayBeFavorite">
+        <h4>Просмотренное, которое можно отложить в «Избранное»</h4>
+        <ul className="mayBeFavorite__list">
+          {list?.map((item) => (
+            <RenderEveryCloth item={item} key={item.id} detailed={false} />
+          ))}
+        </ul>
+      </div>
+    );
+  }
 };
 
 export default MayBeFavorite;

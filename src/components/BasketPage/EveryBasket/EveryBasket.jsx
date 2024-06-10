@@ -59,7 +59,7 @@ const EveryBasket = ({ item }) => {
                   <b>
                     {
                       item?.sizes?.filter(
-                        (i) => i.id == item?.activeColorEvery
+                        (i) => i.id == item?.activeSizeEvery
                       )?.[0]?.sizeName
                     }
                   </b>

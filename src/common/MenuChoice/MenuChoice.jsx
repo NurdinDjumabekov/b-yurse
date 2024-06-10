@@ -5,48 +5,29 @@ import menu from "../../assets/icons/menu.svg";
 import userCheck from "../../assets/icons/UserCheck.svg";
 import user from "../../assets/icons/User.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { lookMenuFN, lookNumberFN } from "../../store/reducers/stateSlice";
+
+import {
+  activeBrandsFN,
+  lookMenuFN,
+  lookNumberFN,
+} from "../../store/reducers/stateSlice";
+
+import { useNavigate } from "react-router-dom";
 
 const MenuChoice = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const { lookMenu } = useSelector((state) => state.stateSlice);
+  const { lookMenu, activeBrands } = useSelector((state) => state.stateSlice);
 
   const { dataUser } = useSelector((state) => state.saveDataSlice);
 
-  const openMenu = () => {
-    dispatch(lookMenuFN(true));
-  };
+  const { listBrands } = useSelector((state) => state.requestSlice);
+
+  const openMenu = () => dispatch(lookMenuFN(true));
 
   const [secondID, setSecondID] = useState(0);
   const [threeId, setThreeId] = useState(0);
-
-  const firstList = [
-    {
-      text: "Вся одежда",
-      codeid: 1,
-    },
-    {
-      text: "Подарочная карта",
-      codeid: 2,
-    },
-    {
-      text: "Реализация со скидками",
-      codeid: 3,
-    },
-    {
-      text: "Бестселлер-коллекция",
-      codeid: 4,
-    },
-    {
-      text: "Нью-коллекция",
-      codeid: 5,
-    },
-    {
-      text: "Мужская одежда",
-      codeid: 6,
-    },
-  ];
 
   const secondList = [
     {
@@ -106,45 +87,55 @@ const MenuChoice = () => {
   const openNum = () => dispatch(lookNumberFN(true));
   //// открываю модалку для отправки номера
 
+  const clickFirstMenu = (id) => {
+    dispatch(activeBrandsFN(id));
+    dispatch(lookMenuFN(false));
+    navigate("/");
+  };
+
   return (
-    <>
-      <div className="menuChoice">
-        <button onClick={openMenu} className="userLogo">
-          <img src={menu} alt="menu" />
+    <div className="menuChoice">
+      <button onClick={openMenu} className="userLogo">
+        <img src={menu} alt="menu" />
+      </button>
+      {dataUser?.haveBeen ? (
+        <button className="userLogo">
+          <img src={userCheck} alt="userCheck" />
         </button>
-        {dataUser?.haveBeen ? (
-          <button className="userLogo">
-            <img src={userCheck} alt="userCheck" />
-          </button>
-        ) : (
-          <button className="userLogo" onClick={openNum}>
-            <img src={user} alt="userCheck" />
-            <p>Войти</p>
-          </button>
-        )}
+      ) : (
+        <button className="userLogo" onClick={openNum}>
+          <img src={user} alt="userCheck" />
+          <p>Войти</p>
+        </button>
+      )}
 
-        {lookMenu && (
-          <div className="menuChoice__parent">
-            <div className="menuChoice__first">
-              {firstList?.map((i) => (
-                <p onClick={() => setSecondID(i.codeid)}>{i.text}</p>
-              ))}
-            </div>
-
-            <div className="menuChoice__second">
-              {secondList?.map((i) => (
-                <p onClick={() => setThreeId(i.codeid)}>{i.text}</p>
-              ))}
-            </div>
-            <div className="menuChoice__three">
-              {threeList?.map((i) => (
-                <p>{i.text}</p>
-              ))}
-            </div>
+      {lookMenu && (
+        <div className="menuChoice__parent">
+          <div className="menuChoice__first">
+            {listBrands?.map((i) => (
+              <p
+                className={i.id == activeBrands ? "activeMenu" : ""}
+                onClick={() => clickFirstMenu(i.id)}
+              >
+                {i?.collectionName}
+              </p>
+            ))}
           </div>
-        )}
-      </div>
-    </>
+
+          <div className="menuChoice__second">
+            {secondList?.map((i) => (
+              <p onClick={() => setThreeId(i.codeid)}>{i.text}</p>
+            ))}
+          </div>
+
+          <div className="menuChoice__three">
+            {threeList?.map((i) => (
+              <p>{i.text}</p>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 

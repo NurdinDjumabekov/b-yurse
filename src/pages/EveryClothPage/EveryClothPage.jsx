@@ -114,8 +114,8 @@ const EveryClothPage = () => {
             <Description />
           </div>
         </div>
-        <RecomCloth />
-        <MayBeFavorite />
+        <RecomCloth list={everyCloth?.recommendations} />
+        <MayBeFavorite list={everyCloth?.recommendations} />
       </div>
     </div>
   );

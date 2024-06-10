@@ -7,18 +7,24 @@ import krest from "../../../assets/icons/krest.svg";
 import aroow from "../../../assets/icons/aroow.svg";
 
 /////fns
-import { activePriceFN } from "../../../store/reducers/stateSlice";
+import {
+  activePriceFN,
+  activeSortingFN,
+} from "../../../store/reducers/stateSlice";
 import { activeBrandsFN } from "../../../store/reducers/stateSlice";
 import { activeSizeFN } from "../../../store/reducers/stateSlice";
 import { activeColorFN } from "../../../store/reducers/stateSlice";
 import { activeCategFN } from "../../../store/reducers/stateSlice";
 import { getListCloth } from "../../../store/reducers/requestSlice";
+import Selects from "../../../common/Selects/Selects";
+import { listSorting } from "../../../helpers/LodalData";
 
 const Sorting = () => {
   const dispatch = useDispatch();
 
   const { activeBrands, activeSize } = useSelector((state) => state.stateSlice);
   const { activeCateg, activeColor } = useSelector((state) => state.stateSlice);
+  const { activePrice } = useSelector((state) => state.stateSlice);
 
   const reset = () => {
     dispatch(activeCategFN({ categId: 0, type: 0 }));
@@ -37,6 +43,17 @@ const Sorting = () => {
   const check = activeBrands == 0 && activeColor == 0 && activeSize == 0;
   const checkMore = activeCateg?.categId == 0 && activeCateg?.type == 0;
 
+  const onChnage = (key, name, id) => {
+    // console.log(key, name, id);
+    dispatch(activeSortingFN({ name, id }));
+
+    const { categId, type } = activeCateg;
+    const obj1 = { categId, type, activeSize, sorting: id };
+    const obj2 = { activeColor, minPrice: activePrice.min };
+    const obj3 = { maxPrice: activePrice?.max, activeBrands };
+    dispatch(getListCloth({ ...obj1, ...obj2, ...obj3 }));
+  };
+
   return (
     <div className="sorting">
       {check && checkMore ? (
@@ -49,11 +66,14 @@ const Sorting = () => {
           </button>
         </div>
       )}
-      <div className="filter">
-        <p>сортировка</p>
-        <button>
-          <img src={aroow} alt=">" />
-        </button>
+      <div className="selectFilter">
+        <Selects
+          list={listSorting}
+          title={""}
+          initText={"сортировка"}
+          onChnage={onChnage}
+          nameKey={"name"}
+        />
       </div>
     </div>
   );

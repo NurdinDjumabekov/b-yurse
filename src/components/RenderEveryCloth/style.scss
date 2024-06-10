@@ -1,6 +1,7 @@
 .every {
     width: 290px;
     position: relative;
+    animation: listEvery 0.7s ease-in-out;
 
     .favoriteBtn {
       width: 30px;
@@ -37,5 +38,14 @@
             color: #050505;
         }
        
+    }
+  }
+
+  @keyframes listEvery {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }

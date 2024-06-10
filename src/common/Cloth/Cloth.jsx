@@ -36,7 +36,11 @@ const Cloth = ({ item, btn }) => {
           </div>
           <div className="sizes__inner">
             <span>Цветовая палитра</span>
-            <img src={color?.[0]?.color} alt="" />
+            <img
+              src={color?.[0]?.color}
+              alt=""
+              className={item?.activeColorEvery ? "" : "noneImg"}
+            />
           </div>
         </div>
         <div className="actions">

@@ -51,9 +51,10 @@ const UserAddresInputs = ({ refAddres }) => {
         />
 
         <MyInputs
-          title={`Квартира (если частный дом, то пусто)`}
+          title={`Квартира `}
           placeholder={"1"}
           onChange={onChange}
+          moreTitle={"(если частный дом, то пусто)"}
         />
 
         {/* <button /> */}

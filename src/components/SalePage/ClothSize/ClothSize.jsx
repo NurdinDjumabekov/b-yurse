@@ -10,11 +10,8 @@ import info from "../../../assets/icons/Info.svg";
 import "./style.scss";
 
 ////fns
-import {
-  activeSizeEveryFN,
-  activeSizeFN,
-  lookSizeFN,
-} from "../../../store/reducers/stateSlice";
+import { activeSizeEveryFN } from "../../../store/reducers/stateSlice";
+import { activeSizeFN, lookSizeFN } from "../../../store/reducers/stateSlice";
 
 //////helpers
 import { arrSizeRow, arrSizeTable } from "../../../helpers/LodalData";
@@ -31,27 +28,27 @@ const ClothSize = ({ oneCodeId, choiceEvery, listEvery }) => {
   const { lookSize } = useSelector((state) => state.stateSlice);
   const { activeCateg, activeSize } = useSelector((state) => state.stateSlice);
   const { activeColor, activePrice } = useSelector((state) => state.stateSlice);
-  const { activeSizeEvery, activeBrands } = useSelector(
-    (state) => state.stateSlice
-  );
+  const { activeSizeEvery } = useSelector((state) => state.stateSlice);
+  const { activeBrands } = useSelector((state) => state.stateSlice);
 
   const { listSize } = useSelector((state) => state.requestSlice);
 
   const clickListMan = (id) => {
     dispatch(activeSizeFN(id));
-    const obj1 = { categId: activeCateg.categId, activeSize: id };
-    const obj2 = { activeColor, minPrice: activePrice.min, activeBrands };
-    const obj3 = { maxPrice: activePrice?.max, type: activeCateg.type };
+
+    const { categId, type } = activeCateg;
+    const obj1 = { categId, type, activeSize: id, activeBrands };
+    const obj2 = { activeColor, minPrice: activePrice.min };
+    const obj3 = { maxPrice: activePrice?.max };
     dispatch(getListCloth({ ...obj1, ...obj2, ...obj3 }));
   };
 
-  const choiceForBasket = (id) => {
-    dispatch(activeSizeEveryFN(id));
-  };
+  const choiceForBasket = (id) => dispatch(activeSizeEveryFN(id));
 
   const lookSizeCloth = (bool) => dispatch(lookSizeFN(bool));
 
-  const checkPage = pathname.includes("every"); //// if это детальная страница
+  const checkPage = pathname?.includes("every");
+  //// if это детальная страница
 
   return (
     <div>
@@ -65,7 +62,6 @@ const ClothSize = ({ oneCodeId, choiceEvery, listEvery }) => {
             onClick={() => lookSizeCloth(true)}
           />
         </div>
-
         {lookSize && (
           <div className={`size__modal ${checkPage && "more__size"}`}>
             <div className="size__modal__inner">

@@ -8,6 +8,8 @@ import {
   advartisingInner,
   confidation,
   confidationInner,
+  listDelivery,
+  listKredit,
 } from "../../../helpers/LodalData";
 
 import {
@@ -49,7 +51,7 @@ const DeliveryPay = () => {
         <div className="line"></div>
         <div className="delivery">
           <Selects
-            list={list}
+            list={listDelivery}
             title={"Транспортная компания до пункта"}
             initText={"«Деловые линии»"}
             onChnage={onChnage}
@@ -57,7 +59,7 @@ const DeliveryPay = () => {
           />
 
           <Selects
-            list={list}
+            list={listDelivery}
             title={"Транспортная компания до двери"}
             initText={"«Деловые линии»"}
             onChnage={onChnage}
@@ -82,7 +84,7 @@ const DeliveryPay = () => {
           </div>
 
           <Selects
-            list={list}
+            list={listKredit}
             title={"Беспроцентная рассрочка"}
             initText={"«Деловые линии»"}
             onChnage={onChnage}

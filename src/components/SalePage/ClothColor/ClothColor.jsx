@@ -26,6 +26,8 @@ const ClothColor = ({ oneCodeId, choiceEvery, listEvery }) => {
     (state) => state.stateSlice
   );
 
+  const { lookSize } = useSelector((state) => state.stateSlice);
+
   const { listColor } = useSelector((state) => state.requestSlice);
 
   const click = (id) => {
@@ -43,7 +45,7 @@ const ClothColor = ({ oneCodeId, choiceEvery, listEvery }) => {
   const checkPage = pathname.includes("every"); //// if это детальная страница
 
   return (
-    <div className="clothColor">
+    <div className={`clothColor ${lookSize && "moreNoneActive"}`}>
       <div className={`mainTitle position ${checkPage && "everyPosition"}`}>
         <h3>Цветовая палитра</h3>
         <img src={info} alt="info" className="imgAction" />
@@ -88,20 +90,18 @@ const ClothColor = ({ oneCodeId, choiceEvery, listEvery }) => {
           ) : (
             <>
               {listColor?.map((item) => (
-                <>
-                  <li
-                    key={item?.id}
-                    className={`list ${activeColor == item.id && "activeItem"}`}
-                    onClick={() => click(item.id)}
-                  >
-                    {item?.text}
-                    <img src={item?.color} alt="imgColor" />
-                    <div className="activeImg">
-                      <img src={item?.color} alt="imgColorBig" />
-                    </div>
-                    <div className="shadowWhite" />
-                  </li>
-                </>
+                <li
+                  key={item?.id}
+                  className={`list ${activeColor == item.id && "activeItem"}`}
+                  onClick={() => click(item.id)}
+                >
+                  {item?.text}
+                  <img src={item?.color} alt="imgColor" />
+                  <div className="activeImg">
+                    <img src={item?.color} alt="imgColorBig" />
+                  </div>
+                  <div className="shadowWhite" />
+                </li>
               ))}
             </>
           )}

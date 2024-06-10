@@ -27,8 +27,7 @@ const ClothTypes = () => {
 
   const { categClothWoman } = useSelector((state) => state.requestSlice);
   const { categClothMan } = useSelector((state) => state.requestSlice);
-  const { listBrands } = useSelector((state) => state.requestSlice);
-  const { listCloth } = useSelector((state) => state.requestSlice);
+  const { listBrands, listCloth } = useSelector((state) => state.requestSlice);
 
   const { activeCateg, activeSize } = useSelector((state) => state.stateSlice);
   const { activeColor, activePrice } = useSelector((state) => state.stateSlice);
@@ -44,7 +43,7 @@ const ClothTypes = () => {
   };
 
   const onUp = () => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const actionBrands = (id) => {
@@ -101,7 +100,7 @@ const ClothTypes = () => {
         <div className="line"></div>
         <CSSTransition
           in={accordion?.woman}
-          timeout={500}
+          timeout={400}
           classNames="clothTypes__inner"
           unmountOnExit
         >
@@ -157,7 +156,7 @@ const ClothTypes = () => {
         <div className="position">
           <ClothSize />
         </div>
-        <ClothSize />
+        {/* <ClothSize /> */}
         <ClothColor />
       </div>
       <ClothPrices />

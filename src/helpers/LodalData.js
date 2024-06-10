@@ -4,6 +4,12 @@ import color from "../assets/images/голубая лагуна.png";
 import colorBig from "../assets/noneData/bigMaterial.png";
 import color2 from "../assets/images/молочный.png";
 
+export const listSorting = [
+  { id: 1, name: "по цене" },
+  { id: 2, name: "по популярности" },
+  { id: 3, name: "по новинке" },
+];
+
 export const dataCatalog = [
   {
     id: 1,
@@ -364,3 +370,17 @@ export const defaultRequest = {
   maxPrice: 12000,
   activeBrands: 0,
 };
+
+export const listDelivery = [
+  { id: 1, name: "«Pony Express»" },
+  { id: 2, name: "«DPD (Dynamic Parcel Distribution)»" },
+  { id: 3, name: "«СДЭК (Служба Доставки Экспресс Курьер)»" },
+  { id: 4, name: "«GLS (General Logistics Systems)»" },
+];
+
+export const listKredit = [
+  { id: 1, name: "«Банковская рассрочка»" },
+  { id: 2, name: "«Рассрочка от магазина»" },
+  { id: 3, name: "«Долями»" },
+  { id: 4, name: "«Рассрочка через платежные сервисы»" },
+];

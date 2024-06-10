@@ -7,4 +7,17 @@
   .css-13sv6az-MuiSlider-root {
     height: 1px;
   }
+
+  .css-13sv6az-MuiSlider-root .MuiSlider-valueLabel {
+    background: #fff;
+  }
+
+  .css-7d61z1-MuiSlider-valueLabel::before{
+    width: 0;
+    height: 0;
+  }
+
+  .css-7d61z1-MuiSlider-valueLabel {
+    padding: 0 5px !important;
+  }
 }

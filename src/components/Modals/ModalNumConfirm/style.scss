@@ -12,6 +12,7 @@
         width: 360px !important;
         display: flex;
         justify-content: space-between;
+
         > input{
             width: 85px !important;
             height: 50px;
@@ -24,15 +25,15 @@
             line-height: 20px;
             text-align: center;
             padding-top: 6px;
-            
+            border: 1px solid #cdcdcd;
 
             &::placeholder {
                 font-family: AKONY;
                 font-size: 18px;
                 font-weight: 700;
                 line-height: 20px;
-                text-align: center;                
                 text-align: center;
+                color: #cdcdcd;                
             }
         }
     }

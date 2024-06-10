@@ -11,7 +11,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 40px 0 25px;
-    border-bottom: 1px solid #817e7e29;
+    border-bottom: 1px solid #e6e6e6;
   }
 
   &__main,
@@ -67,4 +67,8 @@
   &__zIndex {
     z-index: 102;
   }
+}
+
+.epsIndex {
+  z-index: 9;
 }

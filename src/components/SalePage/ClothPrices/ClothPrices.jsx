@@ -12,19 +12,22 @@ const ClothPrices = () => {
 
   const { activeCateg, activeSize } = useSelector((state) => state.stateSlice);
   const { activeColor, activePrice } = useSelector((state) => state.stateSlice);
-  const { activeBrands } = useSelector((state) => state.stateSlice);
+  const { activeBrands, initialPrice } = useSelector(
+    (state) => state.stateSlice
+  );
 
   const onSliderChange = (event, newValue) => {
     dispatch(activePriceFN({ min: newValue?.[0], max: newValue?.[1] }));
     if (timerRef.current) {
       clearTimeout(timerRef.current);
     }
+
     timerRef.current = setTimeout(() => {
       const obj1 = { categId: activeCateg.categId, activeSize };
       const obj2 = { activeColor, minPrice: newValue?.[0], activeBrands };
       const obj3 = { maxPrice: newValue?.[1], type: activeCateg.type };
       dispatch(getListCloth({ ...obj1, ...obj2, ...obj3 }));
-    }, 1500);
+    }, 500);
   };
 
   return (
@@ -38,10 +41,12 @@ const ClothPrices = () => {
           <Slider
             aria-label="Temperature"
             onChange={onSliderChange}
-            step={10}
+            step={1000}
             valueLabelDisplay="on"
-            min={10}
-            max={12490}
+            min={initialPrice?.min}
+            max={initialPrice?.max}
+            shiftStep={30}
+            marks
             sx={{
               "& .MuiSlider-thumb": {
                 color: "black",
@@ -59,7 +64,7 @@ const ClothPrices = () => {
                 color: "black",
               },
               "& .MuiSlider-valueLabel": {
-                backgroundColor: "transparent",
+                backgroundColor: "#fff",
                 color: "#222",
               },
             }}

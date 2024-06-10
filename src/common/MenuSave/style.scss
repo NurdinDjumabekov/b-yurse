@@ -27,11 +27,11 @@
     position: absolute;
     top: 60px;
     right: 0;
-    z-index: 10;
+    z-index: 120;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    max-height: 550px;
+    max-height: 520px;
     animation: modal 1s ease-in-out;
     overflow-y: scroll;
     -ms-overflow-style: none; 

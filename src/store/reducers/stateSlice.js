@@ -16,6 +16,9 @@ const initialState = {
   activeCateg: { categId: 0, type: 0 }, // (categ) id категории
   ////// (type) тип категрии (мужская одежда, женская)
 
+  activeSorting: { name: 0, id: 0 }, // для сортировки
+  ////// по популярности, по новинке, по цене
+
   activeSize: 0, //// размер одежды
 
   activeSizeEvery: 0, ////// для детальнйо страницы, тобы user мог временно
@@ -27,6 +30,8 @@ const initialState = {
   //// до закидывания в корзину положить куда-то цвет товара
 
   activePrice: { min: 10, max: 12000 }, //// цена одежды диапозон
+
+  initialPrice: { min: 0, max: 3000 }, //// цена одежды максимальный диапозон диапозон
 
   //////////////////////// modals
   lookFavorite: false, //// для просмотра ибранных
@@ -86,6 +91,10 @@ const stateSlice = createSlice({
       state.activeCateg = action.payload;
     },
 
+    activeSortingFN: (state, action) => {
+      state.activeSorting = action.payload;
+    },
+
     activeSizeFN: (state, action) => {
       state.activeSize = action.payload;
     },
@@ -105,6 +114,10 @@ const stateSlice = createSlice({
     activePriceFN: (state, action) => {
       state.activePrice = action.payload;
     },
+
+    initialPriceFN: (state, action) => {
+      state.initialPrice = action.payload;
+    },
   },
 });
 
@@ -119,11 +132,13 @@ export const {
   lookNumberConfFN,
   activeBrandsFN,
   activeCategFN,
+  activeSortingFN,
   activeSizeFN,
   activeSizeEveryFN,
   activeColorFN,
   activeColorEveryFN,
   activePriceFN,
+  initialPriceFN,
 } = stateSlice.actions;
 
 export default stateSlice.reducer;

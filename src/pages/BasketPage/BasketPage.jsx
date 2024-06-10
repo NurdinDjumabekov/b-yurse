@@ -34,6 +34,8 @@ const BasketPage = () => {
     }
   };
 
+  console.log(basketList, "basketList");
+
   return (
     <div className="basket">
       <div className="container">
@@ -42,7 +44,6 @@ const BasketPage = () => {
           {basketList?.map((item) => (
             <EveryBasket item={item} key={item.id} />
           ))}
-
           <Promocode />
           <div className="line"></div>
           <div className="result">

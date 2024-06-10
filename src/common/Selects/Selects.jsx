@@ -2,6 +2,9 @@ import React, { useRef, useState } from "react";
 import img from "../../assets/icons/arrowBlack.svg";
 import "./style.scss";
 
+///// только для сортировки на главной странице
+import aroow from "../../assets/icons/aroow.svg";
+
 const Selects = (props) => {
   const { list, title, initText } = props;
   const { onChnage, nameKey } = props;
@@ -31,10 +34,10 @@ const Selects = (props) => {
   const clickSelect = (id, name) => {
     setActive(false);
     setId(id);
-    onChnage(nameKey, name);
+    onChnage(nameKey, name, id);
   };
 
-  const textSelect = list?.find((i) => i.codeid === id);
+  const textSelect = list?.find((i) => i.id === id);
 
   return (
     <div className="selectBlockMain">
@@ -48,14 +51,18 @@ const Selects = (props) => {
             {textSelect ? textSelect?.name : initText}
           </p>
           <img src={img} alt="<" className={active ? "rotate180" : "rotate0"} />
+
+          {/* ///// только для сортировки на главной странице */}
+          <img
+            src={aroow}
+            alt="<"
+            className={active ? "rotate180More" : "rotate0More"}
+          />
         </div>
         {active && (
           <div className="selectBlock__activeBlock">
             {list?.map((i) => (
-              <p
-                onClick={() => clickSelect(+i?.codeid, i?.name)}
-                key={i.codeid}
-              >
+              <p onClick={() => clickSelect(+i?.id, i?.name)} key={i.id}>
                 {i?.name}
               </p>
             ))}

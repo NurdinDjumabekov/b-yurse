@@ -12,6 +12,8 @@ import { lookFavoriteFN } from "../../store/reducers/stateSlice";
 ////style
 import "./style.scss";
 import MenuChoice from "../MenuChoice/MenuChoice";
+import { useEffect } from "react";
+import { getListBrands } from "../../store/reducers/requestSlice";
 
 const Menu = () => {
   const dispatch = useDispatch();
@@ -20,16 +22,22 @@ const Menu = () => {
     (state) => state.stateSlice
   );
 
+  const { lookSize } = useSelector((state) => state.stateSlice);
+
   const noneShadow = () => {
     dispatch(lookFavoriteFN(false));
     dispatch(lookBasketFN(false));
     dispatch(lookMenuFN(false));
   };
 
+  useEffect(() => {
+    dispatch(getListBrands());
+  }, []);
+
   const check = lookFavorite || lookBasket || lookMenu;
 
   return (
-    <div className="menu">
+    <div className={`menu ${lookSize && "epsIndex"}`}>
       <div className="container">
         <div className="menu__inner">
           <MenuChoice />

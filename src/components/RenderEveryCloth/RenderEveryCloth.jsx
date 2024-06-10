@@ -9,7 +9,7 @@ import "./style.scss";
 import Favourite from "../../common/Favourite/Favourite";
 import { sarchImg } from "../../helpers/sarchImg";
 
-const RenderEveryCloth = ({ item, detailed }) => {
+const RenderEveryCloth = ({ item }) => {
   ///true - можно добавить в корзину, false - переход на детальный просмотр
   const navigate = useNavigate();
   const location = useLocation();
@@ -19,7 +19,7 @@ const RenderEveryCloth = ({ item, detailed }) => {
     if (location?.pathname?.includes("every")) {
       navigate(`/every/${item?.id}`);
       window.location.reload();
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       navigate(`/every/${item?.id}`);
       dispatch(everyClothFN(item));

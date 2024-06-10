@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { lookNumberConfFN, lookNumberFN } from "./stateSlice";
+import { initialPriceFN, lookNumberConfFN, lookNumberFN } from "./stateSlice";
 const { REACT_APP_API_URL } = process.env;
 
 ///// sendNumberFN - отправка номера
@@ -131,24 +131,24 @@ export const getListCloth = createAsyncThunk(
   "getListCloth",
   async function (props, { dispatch, rejectWithValue }) {
     const { categId, type, activeSize, activeBrands } = props;
-    const { activeColor, minPrice, maxPrice } = props;
-
-    const check1 = categId == 0 && type == 0 && activeSize == 0;
-    const check2 = activeColor == 0 && minPrice == 10 && maxPrice == 12000;
-
-    const checkAll = check1 && check2;
-
-    // const url = checkAll
-    //   ? `${REACT_APP_API_URL}/products`
-    //   : `${REACT_APP_API_URL}/products/filter?genderId=${type}&categoryId=${categId}&sizeId=${activeSize}&colorId=${activeColor}&priceMin=${minPrice}&priceMax=${maxPrice}&collectionName=${activeBrands}`;
+    const { activeColor, minPrice, maxPrice, sorting } = props;
 
     try {
       const response = await axios({
         method: "GET",
-        url: `${REACT_APP_API_URL}/products/filter?genderId=${type}&categoryId=${categId}&sizeId=${activeSize}&colorId=${activeColor}&priceMin=${minPrice}&priceMax=${maxPrice}&collectionName=${activeBrands}`,
+        url: `${REACT_APP_API_URL}/products/filter?genderId=${type}&categoryId=${categId}&sizeId=${activeSize}&colorId=${activeColor}&priceMin=${minPrice}&priceMax=${maxPrice}&collectionName=${activeBrands}&sorting=${
+          sorting || 0
+        }`,
       });
       if (response.status >= 200 && response.status < 300) {
-        return response?.data;
+        const { maxPrice, minPrice, products } = response?.data;
+
+        if (minPrice == maxPrice) {
+          dispatch(initialPriceFN({ min: 0, max: maxPrice }));
+        } else {
+          dispatch(initialPriceFN({ min: minPrice, max: maxPrice }));
+        }
+        return products;
       } else {
         throw Error(`Error: ${response.status}`);
       }

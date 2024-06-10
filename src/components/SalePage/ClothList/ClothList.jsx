@@ -1,19 +1,31 @@
-import React from "react";
+////hooks
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
+////style
 import "./style.scss";
+
+////fns
+import { getListCloth } from "../../../store/reducers/requestSlice";
+
+////components
 import Sorting from "../Sorting/Sorting";
 import RenderEveryCloth from "../../RenderEveryCloth/RenderEveryCloth";
-import { getListCloth } from "../../../store/reducers/requestSlice";
-import { useEffect } from "react";
-import { defaultRequest } from "../../../helpers/LodalData";
 
 const ClothList = () => {
   const dispatch = useDispatch();
 
   const { listCloth } = useSelector((state) => state.requestSlice);
 
+  const { activeCateg, activeSize } = useSelector((state) => state.stateSlice);
+  const { activeColor, activePrice } = useSelector((state) => state.stateSlice);
+  const { activeBrands } = useSelector((state) => state.stateSlice);
+
   useEffect(() => {
-    dispatch(getListCloth(defaultRequest));
+    const obj1 = { categId: activeCateg?.categId, type: activeCateg?.type };
+    const obj2 = { activeColor, minPrice: activePrice.min, activeSize };
+    const obj3 = { maxPrice: activePrice?.max, activeBrands };
+    dispatch(getListCloth({ ...obj1, ...obj2, ...obj3 }));
   }, []);
 
   return (

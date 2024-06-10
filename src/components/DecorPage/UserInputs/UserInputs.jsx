@@ -78,9 +78,10 @@ const UserInputs = ({ refAddres }) => {
         <div />
 
         <MyInputs
-          title={"Отчество (если нет отчества, то пусто)"}
+          title={"Отчество "}
           placeholder={"Александровна"}
           onChange={onChange}
+          moreTitle={"(если нет отчества, то пусто)"}
         />
       </div>
     </div>
