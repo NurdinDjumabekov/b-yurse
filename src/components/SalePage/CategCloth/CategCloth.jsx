@@ -24,7 +24,7 @@ const CategCloth = ({ list, typeTitle, typeSex }) => {
     window.scrollTo(0, 0);
   };
 
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState(true);
   const contentRef = useRef(null);
 
   useEffect(() => {
