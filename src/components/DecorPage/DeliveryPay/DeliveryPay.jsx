@@ -20,9 +20,9 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const DeliveryPay = () => {
-  const [state, setState] = useState(false);
-  const [state1, setState1] = useState(false);
-  const [state2, setState2] = useState(false);
+  const [state, setState] = useState(true);
+  const [state1, setState1] = useState(true);
+  const [state2, setState2] = useState(true);
 
   const navigate = useNavigate();
 

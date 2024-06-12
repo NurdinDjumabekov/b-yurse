@@ -18,4 +18,8 @@
   .css-7d61z1-MuiSlider-valueLabel {
     padding: 0 5px !important;
   }
+
+  .MuiSlider-mark MuiSlider-markActive css-6cwnna-MuiSlider-mark {
+    display: none;
+  }
 }

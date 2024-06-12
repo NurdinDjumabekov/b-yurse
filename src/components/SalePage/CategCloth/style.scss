@@ -1,0 +1,13 @@
+.more {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.active {
+    opacity: 1;
+  }
+
+.disActive {
+    opacity: 0;
+  }

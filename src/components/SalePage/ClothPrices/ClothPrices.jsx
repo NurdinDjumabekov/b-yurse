@@ -46,7 +46,7 @@ const ClothPrices = () => {
             min={initialPrice?.min}
             max={initialPrice?.max}
             shiftStep={30}
-            marks
+            // marks
             sx={{
               "& .MuiSlider-thumb": {
                 color: "black",

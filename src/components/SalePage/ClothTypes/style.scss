@@ -11,6 +11,7 @@
       position: relative;
       z-index: 10;
       background: #fff;
+      
     }
   }
 
@@ -39,7 +40,7 @@
 
     .activeTitle{
       font-weight: 700 !important;  
-      transition: 0.3s;
+      transition: 0.7s;
     }
 
     > img {
@@ -72,30 +73,4 @@
     bottom: 00px;
     left: 0;
   }
-}
-
-.accordion-content-wrapper {
-  overflow: hidden;
-}
-
-.clothTypes__inner-enter {
-  max-height: 0;
-  opacity: 0;
-}
-
-.clothTypes__inner-enter-active {
-  max-height: 500px; /* Установите максимальную высоту для содержимого */
-  opacity: 1;
-  transition: max-height 0.3s ease-out, opacity 0.9s ease-out;
-}
-
-.clothTypes__inner-exit {
-  max-height: 500px;
-  opacity: 1;
-}
-
-.clothTypes__inner-exit-active {
-  max-height: 0;
-  opacity: 0;
-  transition: max-height 0.3s ease-out, opacity 0.9s ease-out;
 }
