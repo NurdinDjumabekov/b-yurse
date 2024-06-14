@@ -23,12 +23,19 @@
     flex-wrap: wrap;
     gap: 5px;
     
-    .activeItem {
-      border: 1px solid #050505;
-      width: 43px;
-      height: 43px;
-      margin: 0;
-      padding: 2px !important;
+    .activeItem { 
+      &::after {
+        content: "";
+        border: 1px solid #050505;
+        width: 44px;
+        height: 44px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        border-radius: 50%;
+        animation: page 0.7s ease-in-out;
+      }
     }
   }
 
@@ -67,8 +74,8 @@
           height: 290px;
           width: 290px;
           border-radius: 10px;
-
       }
+
       &:hover {
         display: block;
       }
@@ -89,8 +96,6 @@
   position: relative;
   z-index: 1;
 }
-
-
 
 .shadowWhite {
   height: 100vh;

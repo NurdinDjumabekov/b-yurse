@@ -76,7 +76,6 @@ const ClothTypes = () => {
         <div className="position">
           <ClothSize />
         </div>
-        <ClothSize />
         <ClothColor />
       </div>
       <ClothPrices />

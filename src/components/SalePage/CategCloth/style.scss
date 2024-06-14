@@ -1,13 +1,14 @@
 .more {
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out, opacity 0.6s ease-in-out;
+  opacity: 1;
 }
 
-.active {
-    opacity: 1;
-  }
+.more.disActive {
+  max-height: 0;
+  opacity: 0;
+}
 
-.disActive {
-    opacity: 0;
-  }
+.titleAction {
+  cursor: pointer;
+}

@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 export const Preloader = () => {
   const { preloader } = useSelector((state) => state.requestSlice);
 
-  if (preloader) {
+  if (false) {
     return (
       <div className="preloader">
         <div className="lds-roller">
