@@ -3,8 +3,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   .filter, .sort {
-    background-color: #f5f5f5;
+    background-color: #050505;
     padding: 10px 30px;
     display: flex;
     justify-content: center;
@@ -14,12 +15,11 @@
     cursor: pointer;
 
     p {
-      font-family: Century Gothic;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 20px;
+      font-size: 14px;
+      // font-weight: 300; 
+      line-height: 16px;
       text-align: left;
-      color: #00000033;
+      color: #fff;
     }
 
     > button {

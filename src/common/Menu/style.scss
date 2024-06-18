@@ -10,8 +10,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 40px 0 25px;
-    border-bottom: 1px solid #e6e6e6;
+    padding: 20px 0 20px;
   }
 
   &__main,
@@ -48,19 +47,15 @@
   }
 
   &__logo {
-    img {
-      width: 410px;
-      height: 40px;
-    }
-
     h1 {
       font-family: AKONY;
       font-size: 30px;
       font-weight: 700;
-      line-height: 33px;
-      text-align: center;
+      line-height: 45px;
+      text-align: center; 
       text-transform: uppercase;
       color: #050505;
+      padding-top: 7px;
     }
   }
 

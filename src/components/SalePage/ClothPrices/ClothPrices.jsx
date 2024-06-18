@@ -33,9 +33,8 @@ const ClothPrices = () => {
   return (
     <>
       <div className="mainTitle">
-        <h3>Цена</h3>
+        <h5 className="allPrice">Цена</h5>
       </div>
-      <div className="line"></div>
       <div className="priceBlock">
         <Box sx={{ width: "100%" }}>
           <Slider

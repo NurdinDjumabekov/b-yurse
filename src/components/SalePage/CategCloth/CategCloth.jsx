@@ -38,16 +38,14 @@ const CategCloth = ({ list, typeTitle, typeSex }) => {
   return (
     <div className="position">
       <div className="mainTitle titleAction" onClick={changeAccord}>
-        <h3 className={checkTitle == typeTitle ? "activeTitle" : ""}>
-          {typeSex}
-        </h3>
+        <h3>{typeSex}</h3>
+
         <img
           src={like}
           alt="like"
           className={`accordionImg ${active ? "active" : ""}`}
         />
       </div>
-      <div className="line"></div>
 
       <ul
         ref={contentRef}
@@ -65,7 +63,7 @@ const CategCloth = ({ list, typeTitle, typeSex }) => {
             onClick={() => actionCateg(item)}
           >
             <p>{item?.categoryName}</p>
-            <span className="count">{item?.count || 0}</span>
+            {/* <span className="count">{item?.count || 0}</span> */}
           </li>
         ))}
       </ul>

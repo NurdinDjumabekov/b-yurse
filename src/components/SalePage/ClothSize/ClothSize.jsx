@@ -55,12 +55,6 @@ const ClothSize = ({ oneCodeId, choiceEvery, listEvery }) => {
       <div className="mainTitle position">
         <div className={`title ${checkPage && "everyPosition"}`}>
           <h3>Размерная сетка</h3>
-          <img
-            src={info}
-            alt="info"
-            className="imgAction"
-            onClick={() => lookSizeCloth(true)}
-          />
         </div>
         {lookSize && (
           <div className={`size__modal ${checkPage && "more__size"}`}>
@@ -101,7 +95,6 @@ const ClothSize = ({ oneCodeId, choiceEvery, listEvery }) => {
           <div className="shadow" onClick={() => lookSizeCloth(false)}></div>
         )}
       </div>
-      {!oneCodeId && <div className="line"></div>}
       {choiceEvery ? (
         <ul className="listSize">
           {listEvery?.map((item) => (

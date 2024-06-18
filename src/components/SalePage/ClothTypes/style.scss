@@ -1,55 +1,22 @@
 .clothTypes {
-  min-width: 290px;
-  max-width: 290px;
-  padding-bottom: 200px;
+  min-width: 265px;
+  max-width: 265px;
+  padding: 60px 0 200px;
   position: relative;
 
   &__inner {
-    padding: 0 15px 0 0;
+    .brands {
+      li {
+        p {
+          font-weight: 400;
+        }
+      }
+    }
 
     .position {
       position: relative;
       z-index: 10;
       background: #fff;
-      
-    }
-  }
-
-  h2 {
-    font-family: Century Gothic;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 20px;
-    color: #050505;
-  }
-
-  .mainTitle {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 32px;
-    
-    > h3 {
-      font-family: Century Gothic;
-      font-size: 18px;
-      font-weight: 400;  
-      line-height: 20px;
-      text-align: left;
-      color: #050505;
-    }
-
-    .activeTitle{
-      font-weight: 700 !important;  
-      transition: 0.7s;
-    }
-
-    > img {
-      width: 30px;
-      height: 30px;
-    }
-    
-    .accordionImg {
-      cursor: pointer;
     }
   }
 

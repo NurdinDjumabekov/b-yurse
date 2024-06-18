@@ -48,10 +48,8 @@ const ClothColor = ({ oneCodeId, choiceEvery, listEvery }) => {
     <div className={`clothColor ${lookSize && "moreNoneActive"}`}>
       <div className={`mainTitle position ${checkPage && "everyPosition"}`}>
         <h3>Цветовая палитра</h3>
-        <img src={info} alt="info" className="imgAction" />
       </div>
-      {!oneCodeId && <div className="line"></div>}
-      {choiceEvery ? (
+        {choiceEvery ? (
         <ul className="listColor">
           {listEvery?.map((item) => (
             <li

@@ -3,14 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import "./style.scss";
 
 /////imgs
-import krest from "../../../assets/icons/krest.svg";
-import aroow from "../../../assets/icons/aroow.svg";
+import krestWhite from "../../../assets/icons/krestWhite.svg";
 
 /////fns
-import {
-  activePriceFN,
-  activeSortingFN,
-} from "../../../store/reducers/stateSlice";
+import { activeSortingFN } from "../../../store/reducers/stateSlice";
+import { activePriceFN } from "../../../store/reducers/stateSlice";
 import { activeBrandsFN } from "../../../store/reducers/stateSlice";
 import { activeSizeFN } from "../../../store/reducers/stateSlice";
 import { activeColorFN } from "../../../store/reducers/stateSlice";
@@ -62,7 +59,7 @@ const Sorting = () => {
         <div className="filter" onClick={reset}>
           <p>сбросить фильтр</p>
           <button>
-            <img src={krest} alt="x" />
+            <img src={krestWhite} alt="x" />
           </button>
         </div>
       )}

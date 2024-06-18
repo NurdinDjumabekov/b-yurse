@@ -1,11 +1,12 @@
 import React from "react";
-import basket from "../../assets/icons/basket.svg";
+import deleteImg from "../../assets/icons/delete.svg";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { lookBasketFN, lookFavoriteFN } from "../../store/reducers/stateSlice";
 import { sarchImg } from "../../helpers/sarchImg";
-import Favourite from "../Favourite/Favourite";
 import "./style.scss";
+import { addDelProdFavourite } from "../../store/reducers/saveDataSlice";
+import DiscountPrice from "../DiscountPrice/DiscountPrice";
 
 const Cloth = ({ item, btn }) => {
   const navigate = useNavigate();
@@ -21,14 +22,27 @@ const Cloth = ({ item, btn }) => {
 
   const size = item?.sizes?.filter((i) => i.id == item?.activeSizeEvery);
 
+  const changeFavourite = (obj) => dispatch(addDelProdFavourite(obj));
+  console.log(item);
+
+  console.log(color?.[0]?.color);
+
   return (
     <li className="everyBasket">
       <div className="imgMain">
         <img src={sarchImg(item?.photos)?.url} alt="" />
       </div>
       <div className="infoBlock">
-        <h5>{item.productName}</h5>
-        <p>{item.price} ₽</p>
+        <div className="title">
+          <h5>{item.productName}</h5>
+          <button
+            className="actionDelete"
+            onClick={() => changeFavourite(item)}
+          >
+            <img src={deleteImg} alt="x" />
+          </button>
+        </div>
+        <DiscountPrice item={item} />
         <div className="sizes">
           <div className="sizes__inner">
             <span>Размерная сетка</span>
@@ -36,19 +50,19 @@ const Cloth = ({ item, btn }) => {
           </div>
           <div className="sizes__inner">
             <span>Цветовая палитра</span>
-            <img
-              src={color?.[0]?.color}
-              alt=""
-              className={item?.activeColorEvery ? "" : "noneImg"}
-            />
+            <div className="colorImg">
+              <img
+                src={color?.[0]?.color}
+                alt=""
+                className={item?.activeColorEvery ? "" : "noneImg"}
+              />
+            </div>
           </div>
         </div>
         <div className="actions">
           <button className="choiceCloth" onClick={nav}>
-            <span>{btn}</span>
-            <img src={basket} alt="basket" />
+            Добавить в корзину
           </button>
-          <Favourite obj={item} black={true} />
         </div>
       </div>
     </li>

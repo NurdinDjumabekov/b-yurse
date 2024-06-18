@@ -1,6 +1,15 @@
+.allPrice {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 14px;
+  text-align: left;      
+  color: #050505;
+  margin-bottom: 10px;
+}
 
 .priceBlock {
-  margin-top: 60px;
+  margin-top: 40px;   
+  padding: 0 0px 0 10px;
 
   .css-13sv6az-MuiSlider-root {
     height: 1px;
@@ -21,5 +30,14 @@
 
   .MuiSlider-mark MuiSlider-markActive css-6cwnna-MuiSlider-mark {
     display: none;
+  }
+
+  .MuiSlider-valueLabelLabel {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 12px;
+    text-align: center;
+    color: #050505;
+
   }
 }

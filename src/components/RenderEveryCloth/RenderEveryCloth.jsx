@@ -8,6 +8,7 @@ import "./style.scss";
 
 import Favourite from "../../common/Favourite/Favourite";
 import { sarchImg } from "../../helpers/sarchImg";
+import DiscountPrice from "../../common/DiscountPrice/DiscountPrice";
 
 const RenderEveryCloth = ({ item }) => {
   ///true - можно добавить в корзину, false - переход на детальный просмотр
@@ -30,23 +31,15 @@ const RenderEveryCloth = ({ item }) => {
     <li className="every">
       <Favourite obj={item} />
       <img src={sarchImg(item?.photos)?.url} alt="img" />
-      <div className="prices">
-        {item?.discountActive ? ( //// есть ли скидка
-          <div className="price">
-            <i>{item?.price} ₽</i> <b>{item?.oldPrice} ₽</b>
-          </div>
-        ) : (
-          <p>{item?.price} ₽</p>
-        )}
-      </div>
+      <DiscountPrice item={item} />
       <h5>{item?.productName}</h5>
-      <button
+      {/* <button
         className={`choiceCloth ${item?.discountActive && "sale"}`}
         onClick={clickBtn}
       >
         <span>Посмотреть ближе</span>
         <img src={item?.discountActive ? basketBlack : basket} alt="basket" />
-      </button>
+      </button> */}
     </li>
   );
 };

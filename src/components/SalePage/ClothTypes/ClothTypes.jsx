@@ -46,13 +46,7 @@ const ClothTypes = () => {
   return (
     <div className="clothTypes">
       <div className="clothTypes__inner">
-        <div className="mainTitle first">
-          <h3 className={activeBrands !== 0 && "activeTitle"}>
-            Премиальная одежда
-          </h3>
-        </div>
-        <div className="line"></div>
-        <ul className="listTypes">
+        <ul className="listTypes brands">
           {listBrands?.map((item) => (
             <li
               key={item?.id}
