@@ -1,53 +1,30 @@
 .promocode {
-    display: flex;
-    align-items: center;
-    gap: 10px;  
+    background-color: #F5F5F5;
+    padding: 15px;
+    border-radius: 5px;
 
-    p, span, button {
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 20px;
-        color: #050505;
-    }
-
-    p{
-        margin: 0 5px 0 0;
-    }
-
-    span {
+    p {
         color: #909090;
-        cursor: pointer;
-        margin: 0  0 0 5px;
+        font-size: 16px;
+        line-height: 16px;
     }
 
-    button, input {
-        width: 200px;
-        height: 50px;   
-        padding: 10px 15px;
-        border-radius: 10px;
-    }
-
-    button {
-        color: #FF3535;
-        border: 1px solid #FF3535;
-    }
-
-    input {
-        border: 1px solid #ebebeb;
-
-        &::placeholder {
+    .action {
+        margin: 10px 0 0 0;
+        
+        span {
+            color: #757575;
             font-size: 16px;
-            font-weight: 400;
-            line-height: 20px;
-            color: #a4a2a2;
+            line-height: 16px;
+            border: 1px solid #757575;
         }
-
-        &:focus {
-            color: #a4a2a2;
-            border: 1px solid #ebebeb !important;
-            outline: none;
+    
+        .choiceCloth {
+            background: transparent !important;
+            color: #757575;
+            border: 1px solid #757575;
+            font-size: 16px;
+            line-height: 16px;
         }
     }
-
-    
 }

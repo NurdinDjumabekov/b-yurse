@@ -168,14 +168,12 @@ export const listBasket = [
   },
 ];
 
-export const confidation =
-  "Я даю своё согласие на обработку моих персональных данных и соглашаюсь c ";
+export const confidation = "я ознакомлен(-на) и полностью согласен(-на)";
 
-export const confidationInner =
-  "условиями и политикой конфиденциальности, и условиями возврата товара";
+export const link1 =
+  "с условиями доставки товара, с условиями публичной оферты";
 
-export const advartisingInner =
-  "условиями рекламной инициативы, и условиями получения рекламного сообщения";
+export const link2 = "с условиями обработки данных";
 
 export const listClothWomen = [
   {
@@ -383,4 +381,9 @@ export const listKredit = [
   { id: 2, name: "«Рассрочка от магазина»" },
   { id: 3, name: "«Долями»" },
   { id: 4, name: "«Рассрочка через платежные сервисы»" },
+];
+
+export const listNavDecor = [
+  { link: "Подтверждение заказа", path: "/basket", active: false },
+  { link: "Оформление заказа", path: "/decor", active: true },
 ];

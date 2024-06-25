@@ -15,14 +15,12 @@ const CheckUser = () => {
   if (!dataUser?.haveBeen) {
     return (
       <div className="checkUser">
-        <p>Вы уже зарегистрированы?</p>
+        <h5>Вы зарегистрированы?</h5>
         <button className="choiceCloth" onClick={openNum}>
-          <span>Войти в свой аккаунт </span>
-          <img src={imgMan} alt="0" />
+          Войти
         </button>
         <p>
-          Если нет, то заполните ниже все поля, чтобы доставить ваш заказ —
-          именно вам
+          если вы не зарегистрированы, то <span>нажмите здесь</span>
         </p>
       </div>
     );

@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-//////////style
+///////// /style
 import "./style.scss";
 
-/////////components
+///////// components
 import { NavPath } from "../../common/NavPath/NavPath";
 import ClothSize from "../../components/SalePage/ClothSize/ClothSize";
 import ClothColor from "../../components/SalePage/ClothColor/ClothColor";
@@ -15,17 +15,19 @@ import { Description } from "../../components/EveryClothPage/Description/Descrip
 import MayBeFavorite from "../../components/EveryClothPage/MayBeFavorite/MayBeFavorite";
 import Favourite from "../../common/Favourite/Favourite";
 
-//////////fns
+////////// fns
 import { addProdBasket } from "../../store/reducers/saveDataSlice";
 import { detailedCloth } from "../../store/reducers/requestSlice";
+import { activeSizeEveryFN } from "../../store/reducers/stateSlice";
+import { activeColorEveryFN } from "../../store/reducers/stateSlice";
 
-/////////imgs
+///////// imgs
 import basket from "../../assets/icons/basket.svg";
 import pay1 from "../../assets/images/pay1.png";
 import pay2 from "../../assets/images/pay2.png";
+
+///////// helpers
 import { sarchImg, sarchImgSeconds } from "../../helpers/sarchImg";
-import { activeSizeEveryFN } from "../../store/reducers/stateSlice";
-import { activeColorEveryFN } from "../../store/reducers/stateSlice";
 
 const EveryClothPage = () => {
   const params = useParams();
@@ -61,8 +63,6 @@ const EveryClothPage = () => {
     dispatch(activeSizeEveryFN(0)); ///// обнуляю state для временного хранения размера
   };
 
-  console.log(everyCloth, "everyCloth");
-
   const link = [
     everyCloth?.brand?.collectionName || "...",
     everyCloth?.category?.categoryName,
@@ -73,7 +73,7 @@ const EveryClothPage = () => {
   return (
     <div className="everyCloth">
       <div className="container">
-        <NavPath list={link} />
+        {/* <NavPath list={link} /> */}
         <div className="everyCloth__inner">
           <div className="mainContant">
             <div className="dopImg">

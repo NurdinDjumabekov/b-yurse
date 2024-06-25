@@ -10,7 +10,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0 20px;
+    padding: 10px 0;
   }
 
   &__main,
@@ -56,6 +56,7 @@
       text-transform: uppercase;
       color: #050505;
       padding-top: 7px;
+      height: 50px;
     }
   }
 

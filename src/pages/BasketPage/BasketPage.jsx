@@ -34,8 +34,6 @@ const BasketPage = () => {
     }
   };
 
-  console.log(basketList, "basketList");
-
   return (
     <div className="basket">
       <div className="container">
@@ -45,18 +43,25 @@ const BasketPage = () => {
             <EveryBasket item={item} key={item.id} />
           ))}
           <Promocode />
-          <div className="line"></div>
-          <div className="result">
+          {/* <div className="result">
             <p>Итого: </p>
             <span>{sumTotalBasket(basketList)} ₽</span>
             {+sumTotalBasket(basketList) <
               sumTotalBasketOldPrice(basketList) && (
               <i>{sumTotalBasketOldPrice(basketList)} ₽</i>
             )}
-          </div>
-          <div className="confirm" onClick={nav}>
-            <button>Подтвердить мой заказ</button>
-            <span>без учета доставки вашего заказа: обычно около 500 ₽</span>
+          </div> */}
+          <div className="resultAction confirm">
+            <p>Итоговая стоимость вашего заказа</p>
+            <div className="action">
+              <span>{sumTotalBasket(basketList)} ₽</span>
+              <button className="choiceCloth" onClick={nav}>
+                Подтвердить заказ
+              </button>
+            </div>
+            <b>
+              без учета доставки вашего заказа: обычно это стоит около 1000 ₽
+            </b>
           </div>
         </div>
       </div>

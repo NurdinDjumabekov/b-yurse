@@ -3,11 +3,14 @@ import "./style.scss";
 
 const Promocode = () => {
   return (
-    <div className="promocode">
-      <p>Промокод с бонусами</p>
-      <input type="text" placeholder="10BEYURSE2024" />
-      <button>Применить</button>
-      <span>Как получить промокод?</span>
+    <div className="resultAction promocode">
+      <p>Промокод со скидками и (или) бонусами</p>
+      <div className="action">
+        <span>10BEYURSE2024</span>
+        <button type="submit" className="choiceCloth">
+          Применить
+        </button>
+      </div>
     </div>
   );
 };

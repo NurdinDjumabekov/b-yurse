@@ -34,29 +34,17 @@ const ModalNumber = () => {
   };
 
   return (
-    <Modal
-      openModal={lookNumber}
-      setOpenModal={() => dispatch(lookNumberFN())}
-      title={"Мой аккаунт"}
-    >
+    <Modal openModal={lookNumber} setOpenModal={() => dispatch(lookNumberFN())}>
       <div className="modalNum">
-        <div className="myInput">
-          <span>Номер сотового телефона</span>
-          <InputMask
-            mask="+9 999 999-99-99"
-            placeholder="+7 937 475-75-95"
-            name="number"
-            onChange={(e) => dispatch(numberUserFN(e.target.value))}
-            value={numberUser}
-          />
-        </div>
-        <button className="choiceCloth" onClick={sendNums}>
-          <span>Получить код подтверждения</span>
-          <img src={phone} alt="0" />
-        </button>
-        <p>
-          вам позвонит входящий номер телефона, введите последние четыре цифры
-        </p>
+        <p>Напишите код подтверждения, отправленный на номер телефона</p>
+        <InputMask
+          mask="+9 999 999-99-99"
+          placeholder="+7 937 475-75-95"
+          name="number"
+          onChange={(e) => dispatch(numberUserFN(e.target.value))}
+          value={numberUser}
+        />
+        <button onClick={sendNums}>Подтвердить код</button>
       </div>
     </Modal>
   );

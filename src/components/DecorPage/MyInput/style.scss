@@ -1,17 +1,20 @@
 .myInput {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 1px;
 
     span {
-        font-size: 20px;
-        font-weight: 400;
-        line-height: 20px;
-
+        font-size: 14px;
+        line-height: 14px;
+        font-weight: 300;
+        text-align: left;
+        height: 20px;
+        margin-top: 5px;
+        
         i {
-            font-size: 18px;
-            font-weight: 400;
-            line-height: 20px;  
+            font-size: 12px;
+            line-height: 12px;
+            font-weight: 300;
             color: #909090;
         }
     }
@@ -20,25 +23,31 @@
         font-size: 18px;
         font-weight: 400;
         line-height: 20px;  
-        padding: 5px 15px;     
-        border: 1px solid #ebebebeb;
-        border-radius: 10px;
-        width: 400px;
+        padding: 15px;     
+        border: 1px solid #7d7d7d;
+        border-radius: 5px;
+        width: 425px;
         height: 50px;
+        background-color: transparent;
+        margin-bottom: 10px;
     
         &::placeholder {
+            font-family: Unbounded;
             font-size: 16px;
-            font-weight: 400;
-            line-height: 20px;
-            color: #a4a2a26e;
+            font-weight: 300;
+            line-height: 16px;
+            text-align: left;            
+            color: #b9b9b9;
         }
 
         &:focus {
             color: #050505;
-            border: 1px solid #050505 !important;
+            border: 1px solid rgba(9, 9, 9, 0.518) !important;
             outline: none;
         }
     }
+
+  
 }
 
 

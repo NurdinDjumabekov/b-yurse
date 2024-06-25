@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./Modal.scss";
 
-const Modal = ({ openModal, setOpenModal, children, title }) => {
+const Modal = ({ openModal, setOpenModal, children }) => {
   useEffect(() => {
     if (openModal) {
       document.body.style.overflow = "hidden";
@@ -25,10 +25,7 @@ const Modal = ({ openModal, setOpenModal, children, title }) => {
   return (
     <div className="modal">
       <div className="modal__shadow" onClick={closeModal}></div>
-      <div className="modal__inner">
-        <h6>{title}</h6>
-        {children}
-      </div>
+      <div className="modal__inner">{children}</div>
     </div>
   );
 };

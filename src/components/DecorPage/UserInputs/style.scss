@@ -1,26 +1,32 @@
 .userInputAddres {
-    margin-top: 70px;
+    margin-top: 20px;
+    background-color: #F5F5F5;
+    padding: 15px;
+    border-radius: 5px;
 
     .line {
         margin: 15px 0 25px;
       }
 
     h6 {
-        font-size: 25px;
-        font-weight: 700;
-        line-height: 20px;  
-        margin-top: 40px;
-    }
-
-    &__inner {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        align-items: flex-end;
-        gap: 20px;
+        font-size: 16px;
+        line-height: 16px;
+        text-align: left;
+        margin-bottom: 12px;
     }
 
     .choiceCloth {
         cursor: pointer;
+    }
+
+    .twoInputs {
+        display: flex;
+        align-items: flex-end;
+        gap: 20px;
+
+        .choiceCloth {
+            margin: 0 0 10px 0;
+        }
+        
     }
 }

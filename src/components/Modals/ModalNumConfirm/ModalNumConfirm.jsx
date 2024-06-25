@@ -150,13 +150,9 @@ const ModalNumConfirm = () => {
   };
 
   return (
-    <Modal
-      openModal={lookNumberConf}
-      setOpenModal={closeModal}
-      title={"Мой аккаунт"}
-    >
+    <Modal openModal={lookNumberConf} setOpenModal={closeModal}>
       <div className="modalNumConf">
-        <h4>Код подтверждения</h4>
+        <h4>Напишите код подтверждения, отправленный на номер телефона</h4>
         <div className="inputs">
           <input
             type="text"
@@ -195,21 +191,63 @@ const ModalNumConfirm = () => {
             value={code?.num4}
           />
         </div>
-        <button
-          className={`choiceCloth ${checkNums && "active"}`}
-          onClick={sendNums}
-        >
-          {time === 0 ? (
-            <span>Повторить отправку</span>
-          ) : (
-            <span>Проверить мой код</span>
-          )}
-          <img src={phone} alt="0" />
+        <button className="btnSend" onClick={sendNums}>
+          Подтвердить код
         </button>
-        <p>повторно запросить через {time} секунд</p>
       </div>
     </Modal>
   );
 };
 
 export default ModalNumConfirm;
+
+// <Modal openModal={lookNumberConf} setOpenModal={closeModal}>
+// <div className="modalNumConf">
+//   <h4>Напишите код подтверждения, отправленный на номер телефона</h4>
+//   <div className="inputs">
+//     <input
+//       type="text"
+//       placeholder="_"
+//       maxLength={1}
+//       onChange={(e) => handleInputChange("num1", e.target.value)}
+//       onKeyDown={(e) => handleKeyPress("num1", e.nativeEvent.key)}
+//       ref={refs.num1}
+//       value={code?.num1}
+//     />
+//     <input
+//       type="text"
+//       placeholder="_"
+//       maxLength={1}
+//       onChange={(e) => handleInputChange("num2", e.target.value)}
+//       onKeyDown={(e) => handleKeyPress("num2", e.nativeEvent.key)}
+//       ref={refs.num2}
+//       value={code?.num2}
+//     />
+//     <input
+//       type="text"
+//       placeholder="_"
+//       maxLength={1}
+//       onChange={(e) => handleInputChange("num3", e.target.value)}
+//       onKeyDown={(e) => handleKeyPress("num3", e.nativeEvent.key)}
+//       ref={refs.num3}
+//       value={code?.num3}
+//     />
+//     <input
+//       type="text"
+//       placeholder="_"
+//       maxLength={1}
+//       onChange={(e) => handleInputChange("num4", e.target.value)}
+//       onKeyDown={(e) => handleKeyPress("num4", e.nativeEvent.key)}
+//       ref={refs.num4}
+//       value={code?.num4}
+//     />
+//   </div>
+//   <button
+//     className={`btnSend ${checkNums && "active"}`}
+//     onClick={sendNums}
+//   >
+//     {time === 0 ? "Повторить отправку" : "Подтвердить код"}
+//   </button>
+//   <p>повторно запросить через {time} секунд</p>
+// </div>
+// </Modal>

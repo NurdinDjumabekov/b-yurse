@@ -27,38 +27,13 @@ const UserInputs = ({ refAddres }) => {
   return (
     <div className="userInputAddres">
       <h6>Мои данные</h6>
-      <div className="line"></div>
-
-      <div className="userInputMain__inner">
+      <div>
         <MyInputs
           title={"Имя"}
           placeholder={"Александра"}
           onChange={onChange}
           required={true}
         />
-
-        <div className="myInput">
-          <span>Номер сотового телефона</span>
-          <InputMask
-            mask="+9 999 999-99-99"
-            placeholder="+7 937 475-75-95"
-            name="number"
-            onChange={onChange}
-            required
-          />
-        </div>
-
-        {dataUser?.haveBeen ? (
-          <div className="saveBtn">
-            <span>Автосохранение</span>
-            <img src={save} alt="[]" />
-          </div>
-        ) : (
-          <div className="choiceCloth" onClick={openNum}>
-            <span>Подтвердить номер</span>
-            <img src={phone} alt="[]" />
-          </div>
-        )}
 
         <MyInputs
           title={"Фамилия"}
@@ -68,20 +43,37 @@ const UserInputs = ({ refAddres }) => {
         />
 
         <MyInputs
+          title={"Отчество "}
+          placeholder={"Александровна"}
+          onChange={onChange}
+          moreTitle={"(если нет отчества, то пусто)"}
+        />
+
+        <div className="twoInputs">
+          <div className="myInput">
+            <span>Номер сотового телефона</span>
+            <InputMask
+              mask="+9 999 999-99-99"
+              placeholder="+7 937 475-75-95"
+              name="number"
+              onChange={onChange}
+              required
+            />
+          </div>
+
+          {!dataUser?.haveBeen && (
+            <div className="choiceCloth" onClick={openNum}>
+              Подтвердить номер
+            </div>
+          )}
+        </div>
+
+        <MyInputs
           title={"Электронная почта"}
           placeholder={"womanfromthefuture@icloud.com"}
           onChange={onChange}
           required={true}
           email={true}
-        />
-
-        <div />
-
-        <MyInputs
-          title={"Отчество "}
-          placeholder={"Александровна"}
-          onChange={onChange}
-          moreTitle={"(если нет отчества, то пусто)"}
         />
       </div>
     </div>
@@ -89,3 +81,15 @@ const UserInputs = ({ refAddres }) => {
 };
 
 export default UserInputs;
+
+// {!dataUser?.haveBeen ? (
+//   <div className="saveBtn">
+//     <span>Автосохранение</span>
+//     <img src={save} alt="[]" />
+//   </div>
+// ) : (
+//   <div className="choiceCloth" onClick={openNum}>
+//     <span>Подтвердить номер</span>
+//     <img src={phone} alt="[]" />
+//   </div>
+// )}

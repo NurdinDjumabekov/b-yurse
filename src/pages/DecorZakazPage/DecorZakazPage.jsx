@@ -7,6 +7,8 @@ import { useRef } from "react";
 import DeliveryPay from "../../components/DecorPage/DeliveryPay/DeliveryPay";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { NavPath } from "../../common/NavPath/NavPath";
+import { listNavDecor } from "../../helpers/LodalData";
 
 const DecorZakazPage = () => {
   const refAddres = useRef(null);
@@ -26,7 +28,7 @@ const DecorZakazPage = () => {
     <div className="decor">
       <div className="container">
         <div className="decor__inner">
-          <h5>Моя корзина: оформление заказа</h5>
+          <NavPath list={listNavDecor} />
           <CheckUser />
           <form onSubmit={sendData}>
             <UserInputs refAddres={refAddres} />

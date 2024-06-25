@@ -2,68 +2,56 @@ import React from "react";
 import "./style.scss";
 import vk from "../../assets/icons/vk.svg";
 import telega from "../../assets/icons/telega.svg";
+
+////delete
 import news from "../../assets/images/news.png";
 import imgFooter from "../../assets/images/imgFooter.png";
 
 const Footer = () => {
   return (
     <footer className="footer">
-      <div className="container">
-        <div className="footer__inner">
-          <div className="footer__main">
-            <div className="titleMain">
-              <h4>b’yurse</h4>
-              <div className="imgSocial">
-                <div>
-                  <img src={vk} alt="vk" />
-                </div>
-                <div>
-                  <img src={telega} alt="telega" />
-                </div>
-              </div>
-            </div>
-            <div className="textSecond">
+      <div className="footer__container">
+        <div className="footer__main">
+          <div className="titleMain">
+            <h4>b’yurse</h4>
+            <div className="imgSocial">
               <div>
-                <p>оплата и доставка товара</p>
-                <p>ежемесячная подписка</p>
-                <p>производственная программа</p>
-                <p>реферальная программа</p>
-                <p>франшиза бренда</p>
-              </div>
-              <div className="textSecond__inner">
-                <div>
-                  <p>+7 937 475-75-95</p>
-                  <p>info@byurse.ru</p>
-                </div>
-                <div>
-                  <p>график работы поддержки</p>
-                  <p>ежедневно, 08:00 - 18:00</p>
-                </div>
-              </div>
-            </div>
-            <div className="textSecond more">
-              <div>
-                <p>политика конфиденциальности и иное</p>
-                <p>2024 ⓒ все права защищены</p>
+                <img src={vk} alt="vk" />
               </div>
               <div>
-                <span>
-                  <b>FFTF</b> · создали с лобовью
-                </span>
+                <img src={telega} alt="telega" />
               </div>
             </div>
           </div>
-          <div className="footer__info">
-            <div className="header">
-              <h4>b’yurse</h4>
-              <img src={news} alt="news" />
+          <div className="textInfo">
+            <div>
+              <p>ежемесячная подписка</p>
+              <p>производственная программа</p>
+              <p>реферальная программа</p>
+              <p>франшиза бренда</p>
             </div>
-            <p>01.06.2024</p>
-            <span>
-              подпишись на нас в нашем сообществе «VK», а также на наш
-              телеграм-канал, и участвуй в постоянных мероприятиях от магазина!
-            </span>
-            <img src={imgFooter} alt="imgFooter" className="imgFooter" />
+            <div>
+              <p>условия обработки персональных данных</p>
+              <p>условия обработки файлов куки</p>
+              <p>условия доставки товаров</p>
+              <p>публичная оферта</p>
+            </div>
+            <div>
+              <span>+7 800 800 10 10</span>
+              <span>info@byurse.ru</span>
+            </div>
+          </div>
+          <div className="textInfo more">
+            <div>
+              <p>пользовательское соглашение</p>
+              <b>2024 ⓒ все права защищены</b>
+            </div>
+            <div>
+              <b>ип чернышова л. · огрн: 777777777777777</b>
+            </div>
+            <div>
+              <button></button>
+            </div>
           </div>
         </div>
       </div>

@@ -1,18 +1,8 @@
 .footer {
-  &__inner {
-    display: flex;
-    justify-content: space-between;
-    margin: 100px 0 50px;
-  }
 
-  h4 {
-    font-family: AKONY;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 22px;
-    text-align: left;
-    text-transform: uppercase;
-    color: #fff;
+  &__container {
+    max-width: 1280px;
+    margin: 100px auto 0px;
   }
 
   .imgSocial {
@@ -21,132 +11,83 @@
     align-items: center;
     gap: 10px;
     > div {
-      width: 30px;
-      height: 30px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       cursor: pointer;
     }
   }
 
   &__main {
-    width: 70%;
+    width: 100%;
     background-color: #050505;
-    padding: 50px 40px 40px;
-    border-radius: 10px;
+    padding: 50px 20px 40px;
 
     .titleMain {
-      border-bottom: 1px solid #6e686863;
       display: flex;
       justify-content: space-between;
       align-items: center;
       width: 100%;
-      padding: 0 0 20px 0;
+      margin-bottom: 30px;
 
-      > img {
-        height: 30px;
-        width: 80px;
+      h4 {
+        font-family: AKONY;
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 45px;
+        text-align: left;
+        text-transform: uppercase;
+        color: #fff;
       }
     }
 
-    .textSecond {
+    .textInfo {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      padding-top: 15px;
+      align-items: flex-start;
 
-      &__inner {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 100%;
-        gap: 30px;
-
+      > div {
         p {
-          text-align: right !important;
+          font-family: Unbounded;
+          font-size: 14px;
+          line-height: 14px;
+          color: #fff;
+          height: 20px;
+          margin-bottom: 5px;
         }
-      }
 
-      p {
-        font-family: Century Gothic;
-        font-size: 20px;
-        font-weight: 400;
-        line-height: 25.52px;
-        text-align: left;
-        color: #7a72728c;
-      }
-
-      span {
-        font-family: Century Gothic;
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 18px;
-        text-align: right;
-        color: #ccff00;
-
-        b {
-          font-family: RAYDIS;
+        span {
+          display: block;
           font-size: 18px;
-          font-weight: 700;
+          font-weight: 400;
           line-height: 18px;
           text-align: right;
-          color: #ccff00;
+          color: #fff;
+          height: 20px;
+          margin-bottom: 5px;
         }
+
+        b {
+          font-size: 14px;
+          line-height: 14px;
+          color: #444444;
+        }
+
       }
     }
 
     .more {
-      padding: 40px 0 0 0;
       align-items: flex-end;
+      margin-top: 45px;
     }
+
+    button {
+      width: 240px;
+      height: 40px;
+      background-color: #FF1F00;
+      border-radius: 5px;
+    }
+
   }
-
-  &__info { 
-    width: 29%;
-    background-color: #050505;
-    padding: 50px 40px 40px;
-    border-radius: 10px;
-    min-height: 100%;
-    position: relative;
-
-    .header {
-      position: relative;
-      height: 52px;
-      border-bottom: 1px solid #6e686863;
-
-      img {
-        position: absolute;
-        top: 10px;
-        left: 0px;
-        width: 80px;
-        height: 22px;
-      }
-    }
-
-    p {
-      font-family: Century Gothic;
-      font-size: 18px;
-      font-weight: 400;
-      line-height: 18px;
-      text-align: left;
-      color: #1a1818;
-      margin: 16px 0 5px;
-    }
-
-    span {
-      font-family: Century Gothic;
-      font-size: 18px;
-      font-weight: 400;
-      line-height: 20px;
-      text-align: left;
-      color: #d8d5d5b6;
-    }
-
-    .imgFooter {
-      position: absolute;
-      top: 65px;
-      left: 130px;  
-      width: 250px;
-      height: 350px;
-    }
-  }
+ 
 }

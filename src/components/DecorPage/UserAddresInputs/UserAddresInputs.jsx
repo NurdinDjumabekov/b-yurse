@@ -1,6 +1,8 @@
 import React from "react";
 import MyInputs from "../MyInput/MyInputs";
-import "./style.scss";
+import "../UserInputs/style.scss";
+
+////delete
 import phone from "../../../assets/icons/phone.svg";
 import save from "../../../assets/icons/save.svg";
 
@@ -13,46 +15,38 @@ const UserAddresInputs = ({ refAddres }) => {
     e.preventDefault();
     console.log("asdsa");
   };
-  const moreText = () => {
-    return <p>если частный дом, то пусто</p>;
-  };
 
   return (
-    <div className="userInputMain">
-      <h6>Адрес доставки</h6>
-      <div className="line"></div>
+    <div className="userInputAddres">
+      <h6>Выбрать адрес доставки</h6>
 
-      <div className="userInputMain__inner">
+      <div>
         <MyInputs
-          title={"Страна и город"}
-          placeholder={"Россия, Москва"}
+          title={"Населенный пункт"}
+          placeholder={"Москва, Московская область"}
           onChange={onChange}
           required={true}
           refAddres={refAddres}
         />
 
         <MyInputs
-          title={"Индекс"}
-          placeholder={"101000"}
-          onChange={onChange}
-          required={true}
-        />
-
-        <div className="saveBtn">
-          <span>Автосохранение</span>
-          <img src={save} alt="[]" />
-        </div>
-
-        <MyInputs
           title={"Улица и дом"}
-          placeholder={"Кремлевская площадь, дом 1"}
+          placeholder={"Кремлевская площадь, 1"}
           onChange={onChange}
           required={true}
         />
 
         <MyInputs
-          title={`Квартира `}
+          title={"Квартира "}
+          moreTitle={"(если отсутствует, пропустите строку)"}
           placeholder={"1"}
+          onChange={onChange}
+          required={true}
+        />
+
+        <MyInputs
+          title={`Индекс`}
+          placeholder={"1000"}
           onChange={onChange}
           moreTitle={"(если частный дом, то пусто)"}
         />

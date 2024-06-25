@@ -6,14 +6,14 @@ import { useNavigate } from "react-router-dom";
 export const NavPath = ({ list }) => {
   const navigate = useNavigate();
   return (
-    <div className="navPath" onClick={() => navigate("/")}>
-      <div>
+    <div className="navPath">
+      <div className="active" onClick={() => navigate("/")}>
         <span>Каталог </span>
       </div>
       {list?.map((item, index) => (
-        <div key={index}>
+        <div key={index} onClick={() => navigate(item?.path)}>
           <img src={arrow} alt=">" />
-          <span>{item}</span>
+          <span className={!item?.active ? "active" : ""}>{item?.link}</span>
         </div>
       ))}
     </div>
