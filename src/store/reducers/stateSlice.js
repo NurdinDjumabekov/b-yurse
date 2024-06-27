@@ -7,7 +7,7 @@ const initialState = {
     state: false,
   },
 
-  numberUser: "", /// для ввода номера
+  numberUser: "+7", /// для ввода номера
 
   //////////////////////// categories all
 

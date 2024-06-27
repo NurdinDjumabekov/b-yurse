@@ -1,11 +1,9 @@
 import React from "react";
+import InputMask from "react-input-mask";
 import { useDispatch, useSelector } from "react-redux";
 import MyInputs from "../MyInput/MyInputs";
-import { lookNumberFN } from "../../../store/reducers/stateSlice";
+import { lookNumberConfFN } from "../../../store/reducers/stateSlice";
 import "./style.scss";
-import phone from "../../../assets/icons/phone.svg";
-import save from "../../../assets/icons/save.svg";
-import InputMask from "react-input-mask";
 
 const UserInputs = ({ refAddres }) => {
   const dispatch = useDispatch();
@@ -22,7 +20,7 @@ const UserInputs = ({ refAddres }) => {
     refAddres?.current?.focus();
   };
 
-  const openNum = () => dispatch(lookNumberFN(true));
+  const openNum = () => dispatch(lookNumberConfFN(true));
 
   return (
     <div className="userInputAddres">

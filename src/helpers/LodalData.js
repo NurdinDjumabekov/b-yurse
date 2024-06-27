@@ -5,9 +5,10 @@ import colorBig from "../assets/noneData/bigMaterial.png";
 import color2 from "../assets/images/молочный.png";
 
 export const listSorting = [
-  { id: 1, name: "по цене" },
-  { id: 2, name: "по популярности" },
-  { id: 3, name: "по новинке" },
+  { id: 1, name: "по доступным" },
+  { id: 2, name: "по премиальным" },
+  { id: 3, name: "по новым" },
+  { id: 4, name: "по популярным" },
 ];
 
 export const dataCatalog = [
@@ -386,4 +387,8 @@ export const listKredit = [
 export const listNavDecor = [
   { link: "Подтверждение заказа", path: "/basket", active: false },
   { link: "Оформление заказа", path: "/decor", active: true },
+];
+
+export const listNavBasket = [
+  { link: "Подтверждение заказа", path: "/basket", active: true },
 ];

@@ -1,6 +1,6 @@
 .promocode {
     background-color: #F5F5F5;
-    padding: 15px;
+    padding: 15px 25px;
     border-radius: 5px;
 
     p {
@@ -12,11 +12,17 @@
     .action {
         margin: 10px 0 0 0;
         
-        span {
-            color: #757575;
+        input {
+            color: #050505;
             font-size: 16px;
             line-height: 16px;
             border: 1px solid #757575;
+            height: 50px;
+            border-radius: 5px;
+            padding: 0 15px;
+            &::placeholder {
+                color: #757575;
+            }
         }
     
         .choiceCloth {

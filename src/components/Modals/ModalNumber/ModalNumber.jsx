@@ -1,5 +1,4 @@
 /////hooks
-import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 ///...fns
@@ -14,7 +13,6 @@ import InputMask from "react-input-mask";
 import "./style.scss";
 
 ////imgs
-import phone from "../../../assets/icons/phone.svg";
 import { tranformNumber } from "../../../helpers/tranformNumber";
 import { sendNumberFN } from "../../../store/reducers/requestSlice";
 
@@ -34,19 +32,24 @@ const ModalNumber = () => {
   };
 
   return (
-    <Modal openModal={lookNumber} setOpenModal={() => dispatch(lookNumberFN())}>
-      <div className="modalNum">
-        <p>Напишите код подтверждения, отправленный на номер телефона</p>
-        <InputMask
-          mask="+9 999 999-99-99"
-          placeholder="+7 937 475-75-95"
-          name="number"
-          onChange={(e) => dispatch(numberUserFN(e.target.value))}
-          value={numberUser}
-        />
-        <button onClick={sendNums}>Подтвердить код</button>
-      </div>
-    </Modal>
+    <div className="parentNums">
+      <Modal
+        openModal={lookNumber}
+        setOpenModal={() => dispatch(lookNumberFN())}
+      >
+        <div className="modalNum">
+          <p>Напишите код подтверждения, отправленный на номер телефона</p>
+          <InputMask
+            mask="+9 999 999-99-99"
+            placeholder="+7 937 475-75-95"
+            name="number"
+            onChange={(e) => dispatch(numberUserFN(e.target.value))}
+            value={numberUser}
+          />
+          <button onClick={sendNums}>Подтвердить код</button>
+        </div>
+      </Modal>
+    </div>
   );
 };
 

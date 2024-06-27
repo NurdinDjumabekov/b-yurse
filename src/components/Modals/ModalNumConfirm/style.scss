@@ -1,64 +1,71 @@
-.modalNumConf {
-    width: 310px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-
-    h4 {
-        font-size: 14px;
-        line-height: 16px;
-        text-align: center;
+.parentNums {
+    
+    .modal__inner {
+        top: 35%;
     }
-
-    .inputs {
-        width: 100% ;
+    
+    .modalNumConf {
+        width: 310px;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
+        flex-direction: column;
+        gap: 20px;
 
-        > input{
-            width: 40px;
-            height: 40px;
-            font-size: 16px;
-            font-weight: 400;
+        h4 {
+            font-size: 14px;
             line-height: 16px;
             text-align: center;
-            border: 1px solid #050505;
-            border-radius: 5px;
+        }
 
-            &::placeholder {
+        .inputs {
+            width: 100% ;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+
+            > input{
+                width: 40px;
+                height: 40px;
                 font-size: 16px;
                 font-weight: 400;
                 line-height: 16px;
                 text-align: center;
-                color: #050505;                
+                border: 1px solid #050505;
+                border-radius: 5px;
+
+                &::placeholder {
+                    font-size: 16px;
+                    font-weight: 400;
+                    line-height: 16px;
+                    text-align: center;
+                    color: #050505;                
+                }
             }
         }
-    }
 
-    .btnSend {
-        width: 100%;
-        font-size: 16px;
-        line-height: 16px;
-        text-align: center;
-        background-color: #050505;
-        height: 50px;
-        border-radius: 5px;
-        color: #fff;
-    }
+        .btnSend {
+            width: 100%;
+            font-size: 16px;
+            line-height: 16px;
+            text-align: center;
+            background-color: #050505;
+            height: 50px;
+            border-radius: 5px;
+            color: #fff;
+        }
 
-    .active {
-        background: #050505;
-    }
+        .active {
+            background: #050505;
+        }
 
-    p {
-        width: 360px;
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 18px;
-        text-align: center;
-        color: #303030;
-        margin-top: 30px;
+        p {
+            width: 360px;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 18px;
+            text-align: center;
+            color: #303030;
+            margin-top: 30px;
+        }
     }
 }

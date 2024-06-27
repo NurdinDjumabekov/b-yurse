@@ -1,7 +1,6 @@
 ///hooks
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import React from "react";
 
 /////style
 import "./style.scss";
@@ -12,8 +11,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 ////helpers
 import { sumTotalBasketOldPrice } from "../../helpers/SumTotalBasket";
+////delete
+
 import { sumTotalBasket } from "../../helpers/SumTotalBasket";
 import EveryBasket from "../../components/BasketPage/EveryBasket/EveryBasket";
+import { NavPath } from "../../common/NavPath/NavPath";
+import { listNavBasket } from "../../helpers/LodalData";
 
 const BasketPage = () => {
   const dispatch = useDispatch();
@@ -37,20 +40,12 @@ const BasketPage = () => {
   return (
     <div className="basket">
       <div className="container">
+        <NavPath list={listNavBasket} />
         <div className="basket__inner">
-          <h4>Моя корзина: подтверждение заказа</h4>
           {basketList?.map((item) => (
             <EveryBasket item={item} key={item.id} />
           ))}
           <Promocode />
-          {/* <div className="result">
-            <p>Итого: </p>
-            <span>{sumTotalBasket(basketList)} ₽</span>
-            {+sumTotalBasket(basketList) <
-              sumTotalBasketOldPrice(basketList) && (
-              <i>{sumTotalBasketOldPrice(basketList)} ₽</i>
-            )}
-          </div> */}
           <div className="resultAction confirm">
             <p>Итоговая стоимость вашего заказа</p>
             <div className="action">

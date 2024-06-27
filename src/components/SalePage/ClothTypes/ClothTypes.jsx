@@ -1,5 +1,4 @@
 ////hooks
-import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 ////style
@@ -50,8 +49,8 @@ const ClothTypes = () => {
           {listBrands?.map((item) => (
             <li
               key={item?.id}
-              className={activeBrands == item.id ? "activeItem" : ""}
-              onClick={() => actionBrands(item.id)}
+              className={activeBrands == item?.id ? "activeItem" : ""}
+              onClick={() => actionBrands(item?.id)}
             >
               <p>{item?.collectionName}</p>
             </li>

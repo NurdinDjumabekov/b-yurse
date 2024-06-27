@@ -1,10 +1,12 @@
 .basket {
     animation: page 0.7s ease-in-out;
+    
+    .navPath {
+        margin: 40px 0 30px 0;
+    }
 
     &__inner {
-
         h4 {
-            font-family: Century Gothic;
             font-size: 30px;
             font-weight: 700;
             line-height: 20px;
@@ -27,19 +29,10 @@
         gap: 30px;
     }
 
-    // .result {
-    //     gap: 8px;
-    //     padding: 10px 0 25px 0;
-
-    //     span {
-    //         margin-right: 5px;
-    //     }
-    // }
-
     .confirm {
-        margin: 20px 0 0 0;
+        margin: 15px 0 0 0;
         background-color: #F5F5F5;
-        padding: 15px;
+        padding: 15px 25px;
         border-radius: 5px;
     }
 }
