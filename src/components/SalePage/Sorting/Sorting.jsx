@@ -53,7 +53,7 @@ const Sorting = () => {
 
   return (
     <div className="sorting">
-      {false ? (
+      {check && checkMore ? (
         <div />
       ) : (
         <div className="filter" onClick={reset}>

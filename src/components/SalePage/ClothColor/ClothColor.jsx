@@ -4,7 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 
 ////imgs
-import info from "../../../assets/icons/Info.svg";
+import img1 from "../../../assets/images/молочный.png";
+import img2 from "../../../assets/images/голубая лагуна.png";
+import img3 from "../../../assets/images/bigImg.png";
 
 ///style
 import "./style.scss";
@@ -14,7 +16,8 @@ import { activeColorFN } from "../../../store/reducers/stateSlice";
 import { activeColorEveryFN } from "../../../store/reducers/stateSlice";
 import { getListCloth } from "../../../store/reducers/requestSlice";
 
-const ClothColor = ({ oneCodeId, choiceEvery, listEvery }) => {
+const ClothColor = (props) => {
+  const { choiceEvery, listEvery } = props;
   ///// if oneCodeId есть, то надо отображать только один размер, который в codeid приходит
   const { pathname } = useLocation();
 
@@ -28,7 +31,7 @@ const ClothColor = ({ oneCodeId, choiceEvery, listEvery }) => {
 
   const { lookSize } = useSelector((state) => state.stateSlice);
 
-  const { listColor } = useSelector((state) => state.requestSlice);
+  // const { listColor } = useSelector((state) => state.requestSlice);
 
   const click = (id) => {
     dispatch(activeColorFN(id));
@@ -42,69 +45,41 @@ const ClothColor = ({ oneCodeId, choiceEvery, listEvery }) => {
     dispatch(activeColorEveryFN(id));
   };
 
-  const checkPage = pathname.includes("every"); //// if это детальная страница
+  /////// delete
+  const listColor = [
+    { id: 1, color: img1 },
+    { id: 2, color: img2 },
+    { id: 3, color: img1 },
+    { id: 4, color: img2 },
+    { id: 5, color: img1 },
+    { id: 6, color: img1 },
+    { id: 7, color: img2 },
+    { id: 8, color: img1 },
+    { id: 9, color: img2 },
+    { id: 10, color: img1 },
+  ];
 
   return (
     <div className={`clothColor ${lookSize && "moreNoneActive"}`}>
-      <div className={`mainTitle position ${checkPage && "everyPosition"}`}>
+      <div className="mainTitle">
         <h3>Цветовая палитра</h3>
       </div>
-        {choiceEvery ? (
-        <ul className="listColor">
-          {listEvery?.map((item) => (
-            <li
-              key={item?.id}
-              className={`list ${activeColorEvery == item.id && "activeItem"}`}
-              onClick={() => choiceForBasket(item.id)}
-            >
-              <img src={item?.color} alt="imgColor" />
-              <div className="activeImg">
-                <img src={item?.color} alt="imgColorBig" />
-              </div>
-              <div className="shadowWhite" />
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <ul className="listColor">
-          {oneCodeId ? (
-            <>
-              {listColor?.map((item) => {
-                if (oneCodeId == item.id) {
-                  return (
-                    <li key={item?.id}>
-                      {item?.text}
-                      <img src={item?.color} alt="imgColor" />
-                      <img
-                        src={item?.color}
-                        alt="imgColorBig"
-                        className="activeImg"
-                      />
-                    </li>
-                  );
-                }
-              })}
-            </>
-          ) : (
-            <>
-              {listColor?.map((item) => (
-                <li
-                  key={item?.id}
-                  className={`list ${activeColor == item.id && "activeItem"}`}
-                  onClick={() => click(item.id)}
-                >
-                  {item?.text}
-                  <img src={item?.color} alt="imgColor" />
-                  <div className="activeImg">
-                    <img src={item?.color} alt="imgColorBig" />
-                  </div>
-                  <div className="shadowWhite" />
-                </li>
-              ))}
-            </>
-          )}
-        </ul>
-      )}
+      <ul className="listColor">
+        {listColor?.map((item) => (
+          <li
+            key={item?.id}
+            className={`list ${activeColor == item.id && "activeItem"}`}
+            onClick={() => click(item.id)}
+          >
+            <img src={item?.color} alt="imgColor" className="miniImg" />
+            <div className="activeImg">
+              {/* <img src={item?.color} alt="imgColorBig" /> */}
+              <img src={img3} alt="imgColorBig" />
+            </div>
+            <div className="shadowWhite" />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

@@ -3,9 +3,6 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-///imgs
-import info from "../../../assets/icons/Info.svg";
-
 ///style
 import "./style.scss";
 
@@ -14,9 +11,10 @@ import { activeSizeEveryFN } from "../../../store/reducers/stateSlice";
 import { activeSizeFN, lookSizeFN } from "../../../store/reducers/stateSlice";
 
 //////helpers
+import { getListCloth } from "../../../store/reducers/requestSlice";
+///// delete
 import { arrSizeRow, arrSizeTable } from "../../../helpers/LodalData";
 import { texxtSize1, texxtSize2 } from "../../../helpers/LodalData";
-import { getListCloth } from "../../../store/reducers/requestSlice";
 
 const ClothSize = ({ oneCodeId, choiceEvery, listEvery }) => {
   ///// if oneCodeId есть, то надо отображать только один размер, который в codeid приходит
@@ -31,7 +29,7 @@ const ClothSize = ({ oneCodeId, choiceEvery, listEvery }) => {
   const { activeSizeEvery } = useSelector((state) => state.stateSlice);
   const { activeBrands } = useSelector((state) => state.stateSlice);
 
-  const { listSize } = useSelector((state) => state.requestSlice);
+  // const { listSize } = useSelector((state) => state.requestSlice);
 
   const clickListMan = (id) => {
     dispatch(activeSizeFN(id));
@@ -50,82 +48,53 @@ const ClothSize = ({ oneCodeId, choiceEvery, listEvery }) => {
   const checkPage = pathname?.includes("every");
   //// if это детальная страница
 
+  ////////////////////////////////////// delete
+  const listSize = [
+    { id: 1, sizeName: "S" },
+    { id: 2, sizeName: "M" },
+    { id: 3, sizeName: "L" },
+    { id: 4, sizeName: "XL" },
+    { id: 5, sizeName: "XXL" },
+  ];
+
+  const obj = {
+    1: "RS1",
+    2: "777-777",
+    3: "777-777",
+    4: "777-777",
+  };
+
   return (
-    <div>
-      <div className="mainTitle position">
-        <div className={`title ${checkPage && "everyPosition"}`}>
-          <h3>Размерная сетка</h3>
-        </div>
-        {lookSize && (
-          <div className={`size__modal ${checkPage && "more__size"}`}>
-            <div className="size__modal__inner">
-              <div className="sizeRow">
-                <span>российский размер</span>
-                <span>обхват талии</span>
-                <span>обхват груди</span>
-                <span>обхват бёдер</span>
-              </div>
-              <div>
-                <div className="sizeColumn">
-                  {arrSizeRow?.map((item) => (
-                    <span>{item}</span>
-                  ))}
+    <div className="sizeParent">
+      <div className="mainTitle">
+        <h3>Размерная сетка (верх)</h3>
+      </div>
+      <ul className="listSize">
+        {listSize?.map((item) => (
+          <li key={item?.id} onClick={() => clickListMan(item.id)}>
+            <p className={activeSize == item.id ? "activeItem" : ""}>
+              {item?.sizeName}
+            </p>
+            <div className="moreSize">
+              <div className="moreSize__inner">
+                <div className="infoSize">
+                  <b>размер</b>
+                  <b>обхват талии</b>
+                  <b>обхват груди</b>
+                  <b>обхват бедер</b>
                 </div>
-                <div class="sizeTable">
-                  {arrSizeTable?.map((item) => (
-                    <span>{item}</span>
-                  ))}
-                  {arrSizeTable?.map((item) => (
-                    <span>{item}</span>
-                  ))}
-                  {arrSizeTable?.map((item) => (
-                    <span>{item}</span>
-                  ))}
-                  {arrSizeTable?.map((item) => (
-                    <span>{item}</span>
-                  ))}
+                <div className="typesSize">
+                  <h6>{obj?.[1]}</h6>
+                  <span>{obj?.[2]}</span>
+                  <span>{obj?.[3]}</span>
+                  <span>{obj?.[4]}</span>
                 </div>
               </div>
             </div>
-            <p>{texxtSize2}</p>
-            <p>{texxtSize1}</p>
-          </div>
-        )}
-        {lookSize && (
-          <div className="shadow" onClick={() => lookSizeCloth(false)}></div>
-        )}
-      </div>
-      {choiceEvery ? (
-        <ul className="listSize">
-          {listEvery?.map((item) => (
-            <li
-              key={item?.id}
-              className={activeSizeEvery == item?.id ? "activeItem" : ""}
-              onClick={() => choiceForBasket(item?.id)}
-            >
-              {item?.sizeName}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <ul className="listSize">
-          {oneCodeId
-            ? listSize?.map((item) => {
-                if (oneCodeId == item.id) {
-                  return <li key={item?.id}>{item?.sizeName}</li>;
-                }
-              })
-            : listSize?.map((item) => (
-                <li
-                  key={item?.id}
-                  className={activeSize == item.id ? "activeItem" : ""}
-                  onClick={() => clickListMan(item.id)}
-                >
-                  {item?.sizeName}
-                </li>
-              ))}
-        </ul>
-      )}
+            <div className="shadowSize"></div>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
