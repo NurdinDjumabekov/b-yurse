@@ -1,6 +1,10 @@
 .everyCloth {
     animation: page 0.7s ease-in-out;
 
+    .navPath {
+        margin: 40px 0 27px;
+    }
+
     &__inner {
         display: flex;
         gap: 30px;
@@ -56,23 +60,23 @@
         .dopContant {
 
             .prices {
-                margin: 15px 0 ;
+                margin: 15px 0 10px;
 
                 p, i, b {
                     font-size: 25px;
                     margin: 0;
+                    font-size: 20px;
+                    line-height: 20px;
+                    text-align: left;
+                    font-weight: 400;
                 }
             }
 
             h5 {
-                font-size: 25px;
+                font-size: 20px;
+                line-height: 22px;
                 font-weight: 400;
-                line-height: 25px;
-            }
-
-            .push {
-                height: 20px;
-                width: 100%;
+                text-align: left;
             }
 
             .actions {
@@ -80,6 +84,10 @@
                 align-items: center;
                 gap: 20px;
                 margin-top: 40px;
+                
+                .choiceCloth {
+                    width: 300px;
+                }
 
                 .actionFavorite {
                     width: 30px;
@@ -90,8 +98,13 @@
             .blockPay {
                 display: flex;
                 align-items: center;
-                gap: 10px;
+                gap: 20px;
                 margin-bottom: 30px;
+                background-color: #f5f5f5;
+                padding: 5px 10px;
+                height: 50px;
+                width: 300px;
+                border-radius: 5px;
 
                 img {
                     width: 30px;
@@ -99,11 +112,10 @@
                 }
 
                 span {
-                    margin-left: 35px;
-                    font-size: 16px;
-                    font-weight: 400;
-                    line-height: 20px;
+                    font-size: 14px;
+                    line-height: 14px;
                     text-align: left;
+                    color: #757575;
                 }
             }
         }

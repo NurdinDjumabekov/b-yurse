@@ -69,7 +69,7 @@ const Sorting = () => {
         <Selects
           list={listSorting}
           title={""}
-          initText={"сортировка"}
+          initText={"сортировать по"}
           onChnage={onChnage}
           nameKey={"name"}
         />

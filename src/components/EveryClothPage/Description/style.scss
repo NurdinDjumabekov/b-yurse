@@ -4,7 +4,7 @@
         align-items: center;
         border-bottom: 1px solid #e6e6e6;
         width: 100%;
-        margin-top: 20px;
+        margin: 40px 0 0 0;
 
         &__inner {
             display: flex;
@@ -12,14 +12,14 @@
             width: 50%;
             padding: 5px 20px 8px 0px;
             gap: 10px;
-            width: 230px;
             cursor: pointer;
 
             p {
                 font-size: 16px;
-                font-weight: 400;
+                font-weight: 300;
                 line-height: 25px;
                 text-align: left;
+                height: 25px;
             }
 
             img {
@@ -55,13 +55,12 @@
         animation: page 0.7s ease-in-out;
 
         > p {
-            font-size: 16px !important;
-            font-weight: 400;
-            line-height: 18px !important;
+            font-size: 14px !important;
+            font-weight: 300;
+            line-height: 16px !important;
             padding-right: 15px;
-            margin-top: 10px;   
+            margin-top: 15px;   
             animation: page 0.9s ease-in-out;
-            transition: 0.5s;
             width: 93%;
         }
 
@@ -79,10 +78,9 @@
                 gap: 8px;
                 
                 span, p {
-
-                    font-size: 16px !important;
-                    font-weight: 400;
-                    line-height: 18px !important;
+                    font-size: 14px !important;
+                    font-weight: 300;
+                    line-height: 16px !important;
                     margin: 0 !important;
                     text-transform: lowercase;
                 }

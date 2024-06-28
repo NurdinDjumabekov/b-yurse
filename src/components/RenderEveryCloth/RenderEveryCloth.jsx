@@ -1,6 +1,9 @@
 import React from "react";
+
+///// delete
 import basket from "../../assets/icons/basket.svg";
 import basketBlack from "../../assets/icons/basketBlack.svg";
+
 import { useLocation, useNavigate } from "react-router-dom";
 import { everyClothFN } from "../../store/reducers/requestSlice";
 import { useDispatch } from "react-redux";
@@ -30,16 +33,14 @@ const RenderEveryCloth = ({ item }) => {
   return (
     <li className="every">
       <Favourite obj={item} />
-      <img src={sarchImg(item?.photos)?.url} alt="img" />
+      <div className="mainImg">
+        <img src={sarchImg(item?.photos)?.url} alt="img" />
+        <button className="lookDetailed" onClick={clickBtn}>
+          Посмотреть
+        </button>
+      </div>
       <DiscountPrice item={item} />
       <h5>{item?.productName}</h5>
-      {/* <button
-        className={`choiceCloth ${item?.discountActive && "sale"}`}
-        onClick={clickBtn}
-      >
-        <span>Посмотреть ближе</span>
-        <img src={item?.discountActive ? basketBlack : basket} alt="basket" />
-      </button> */}
     </li>
   );
 };

@@ -70,10 +70,19 @@ const EveryClothPage = () => {
 
   const listImg = sarchImgSeconds(everyCloth?.photos);
 
+  const listNavDecor = [
+    { link: "Бестселлер-коллекция", path: "/", active: false },
+    {
+      link: "Футболка из premium-хлопка со свободным кроем",
+      path: `/every/${id}`,
+      active: true,
+    },
+  ];
+
   return (
     <div className="everyCloth">
       <div className="container">
-        {/* <NavPath list={link} /> */}
+        <NavPath list={listNavDecor} />
         <div className="everyCloth__inner">
           <div className="mainContant">
             <div className="dopImg">
@@ -90,26 +99,24 @@ const EveryClothPage = () => {
           <div className="dopContant">
             <h5>{everyCloth?.productName}</h5>
             <div className="prices">
-              {everyCloth?.discountActive ? ( //// есть ли скидка
+              {/* {everyCloth?.discountActive ? ( //// есть ли скидка
                 <div className="price">
                   <i>{everyCloth?.price} ₽</i> <b>{everyCloth?.oldPrice} ₽</b>
                 </div>
               ) : (
-                <p>{everyCloth?.price} ₽</p>
-              )}
+                )} */}
+              <p>{everyCloth?.price} ₽</p>
             </div>
             <div className="blockPay">
               <img src={pay2} alt="pay" />
-              <img src={pay1} alt="pay" />
-              <span>4 платежа по ~870 ₽</span>
+              {/* <img src={pay1} alt="pay" /> */}
+              <span>четыре платежа по ~870 ₽</span>
             </div>
             <ClothSize choiceEvery={true} listEvery={everyCloth?.sizes} />
-            <div className="push"></div>
             <ClothColor choiceEvery={true} listEvery={everyCloth?.colors} />
             <div className="actions">
               <button className="choiceCloth" onClick={addBasket}>
-                <span>Положить в корзину</span>
-                <img src={basket} alt="basket" />
+                Добавить в корзину
               </button>
               <Favourite obj={everyCloth} black={true} />
             </div>

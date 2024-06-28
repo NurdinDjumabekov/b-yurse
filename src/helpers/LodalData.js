@@ -392,3 +392,71 @@ export const listNavDecor = [
 export const listNavBasket = [
   { link: "Подтверждение заказа", path: "/basket", active: true },
 ];
+
+export const listCloth = [
+  {
+    id: 1,
+    productName: "Футболка из premium-хлопка со свободным кроем",
+    photos: [
+      { url: woman, main: true },
+      { url: woman2, main: false },
+      { url: woman, main: false },
+      { url: woman2, main: false },
+    ],
+    discountActive: true,
+    price: "1000",
+    oldPrice: "5000",
+  },
+  {
+    id: 2,
+    productName: "Футболка из premium-хлопка со свободным кроем",
+    photos: [
+      { url: woman, main: true },
+      { url: woman2, main: false },
+      { url: woman, main: false },
+      { url: woman2, main: false },
+    ],
+    discountActive: false,
+    price: "5000",
+    oldPrice: "7000",
+  },
+  {
+    id: 3,
+    productName: "Футболка из premium-хлопка со свободным кроем",
+    photos: [
+      { url: woman, main: true },
+      { url: woman2, main: false },
+      { url: woman, main: false },
+      { url: woman2, main: false },
+    ],
+    discountActive: true,
+    price: "7000",
+    oldPrice: "9000",
+  },
+  {
+    id: 4,
+    productName: "Winter Coat",
+    photos: [
+      { url: woman, main: true },
+      { url: woman2, main: false },
+      { url: woman, main: false },
+      { url: woman2, main: false },
+    ],
+    discountActive: false,
+    price: "9000",
+    oldPrice: "10000",
+  },
+  {
+    id: 5,
+    productName: "Футболка из premium-хлопка со свободным кроем",
+    photos: [
+      { url: woman, main: true },
+      { url: woman2, main: false },
+      { url: woman, main: false },
+      { url: woman2, main: false },
+    ],
+    discountActive: false,
+    price: "9000",
+    oldPrice: "9500",
+  },
+];
