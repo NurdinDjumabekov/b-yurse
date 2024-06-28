@@ -1,19 +1,23 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+
+///// style
 import "./style.scss";
 
-/////imgs
+///// imgs
 import krestWhite from "../../../assets/icons/krestWhite.svg";
 
-/////fns
+///// fns
 import { activeSortingFN } from "../../../store/reducers/stateSlice";
 import { activePriceFN } from "../../../store/reducers/stateSlice";
-import { activeBrandsFN } from "../../../store/reducers/stateSlice";
 import { activeSizeFN } from "../../../store/reducers/stateSlice";
 import { activeColorFN } from "../../../store/reducers/stateSlice";
-import { activeCategFN } from "../../../store/reducers/stateSlice";
 import { getListCloth } from "../../../store/reducers/requestSlice";
+
+////// components
 import Selects from "../../../common/Selects/Selects";
+
+///// helpers
 import { listSorting } from "../../../helpers/LodalData";
 
 const Sorting = () => {
@@ -24,21 +28,17 @@ const Sorting = () => {
   const { activePrice } = useSelector((state) => state.stateSlice);
 
   const reset = () => {
-    dispatch(activeCategFN({ categId: 0, type: 0 }));
-    dispatch(activeSizeFN(0));
+    dispatch(activeSizeFN({ up: 0, down: 0 }));
     dispatch(activeColorFN(0));
     dispatch(activePriceFN({ min: 10, max: 12000 }));
-    dispatch(activeBrandsFN(0));
 
-    //////
-    const obj1 = { categId: 0, activeSize: 0 };
+    const { categId, type } = activeCateg;
+
+    const obj1 = { categId, activeSize };
     const obj2 = { activeColor: 0, minPrice: 10 };
-    const obj3 = { maxPrice: 12000, type: 0, activeBrands: 0 };
+    const obj3 = { maxPrice: 12000, type, activeBrands };
     dispatch(getListCloth({ ...obj1, ...obj2, ...obj3 }));
   };
-
-  const check = activeBrands == 0 && activeColor == 0 && activeSize == 0;
-  const checkMore = activeCateg?.categId == 0 && activeCateg?.type == 0;
 
   const onChnage = (key, name, id) => {
     // console.log(key, name, id);
@@ -51,9 +51,11 @@ const Sorting = () => {
     dispatch(getListCloth({ ...obj1, ...obj2, ...obj3 }));
   };
 
+  const check = activeColor == 0 && activeSize.up == 0 && activeSize.down == 0;
+
   return (
     <div className="sorting">
-      {check && checkMore ? (
+      {check ? (
         <div />
       ) : (
         <div className="filter" onClick={reset}>

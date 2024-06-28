@@ -17,7 +17,7 @@ const SalePage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
     dispatch(getListCateg());
     dispatch(getListSize());
     dispatch(getListColors());

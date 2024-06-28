@@ -133,13 +133,16 @@ export const getListCloth = createAsyncThunk(
     const { categId, type, activeSize, activeBrands } = props;
     const { activeColor, minPrice, maxPrice, sorting } = props;
 
+    const url =
+      `${REACT_APP_API_URL}/products/filter?` +
+      `genderId=${type}&categoryId=${categId}` +
+      `&sizeIdDown=${activeSize.down}&sizeIdUp=${activeSize.up}` +
+      `&colorId=${activeColor}&priceMin=${minPrice}` +
+      `&priceMax=${maxPrice}&collectionName=${activeBrands}` +
+      `&sorting=${sorting || 0}`;
+
     try {
-      const response = await axios({
-        method: "GET",
-        url: `${REACT_APP_API_URL}/products/filter?genderId=${type}&categoryId=${categId}&sizeId=${activeSize}&colorId=${activeColor}&priceMin=${minPrice}&priceMax=${maxPrice}&collectionName=${activeBrands}&sorting=${
-          sorting || 0
-        }`,
-      });
+      const response = await axios(url);
       if (response.status >= 200 && response.status < 300) {
         const { maxPrice, minPrice, products } = response?.data;
 

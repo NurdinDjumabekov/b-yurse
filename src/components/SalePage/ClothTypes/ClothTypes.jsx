@@ -33,12 +33,16 @@ const ClothTypes = () => {
   const actionBrands = (id) => {
     dispatch(activeBrandsFN(id));
     dispatch(activeCategFN({ categId: 0, type: 0 }));
+
     const obj1 = { categId: 0, type: 0 };
     const obj2 = { activeColor, minPrice: activePrice.min, activeSize };
     const obj3 = { maxPrice: activePrice?.max, activeBrands: id };
+
     dispatch(getListCloth({ ...obj1, ...obj2, ...obj3 }));
-    window.scrollTo(0, 0);
+    onUp();
   };
+
+  console.log(activeSize, "activeSize");
 
   ////////////////////////////////// delete
   const listCloth = [];
@@ -95,21 +99,26 @@ const ClothTypes = () => {
             </li>
           ))}
         </ul>
+
         <CategCloth
           list={categClothWoman}
           typeTitle={2}
           typeSex={"Женская одежда"}
         />
+
         <CategCloth
           list={categClothMan}
           typeTitle={1}
           typeSex={"Мужская одежда"}
         />
-        <div className="position">
-          <ClothSize />
-        </div>
+
+        <ClothSize typeSize={"up"} />
+
+        <ClothSize typeSize={"down"} />
+
         <ClothColor />
       </div>
+
       <ClothPrices />
       {lengthTen && (
         <button className="onUp" onClick={onUp}>

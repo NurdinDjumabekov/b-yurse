@@ -25,10 +25,7 @@
 
         .moreSize {
           z-index: 25;
-          &__inner {
-            display: flex;
-            background: #fff;
-          }
+          display: block;
         }
       }
 
@@ -64,6 +61,7 @@
         position: absolute;
         left: 0;
         bottom: 37px;
+        display: none;
 
         &__inner {
           min-width: 100%;
@@ -72,9 +70,9 @@
           display: flex;
           justify-content: space-between;
           border-radius: 5px;
-          display: none;
-          animation: shadowBlock 0.7s ease-in-out;
           margin: 0 0 8px 0;
+          background: #fff;
+          animation: shadowBlock 0.7s ease-in-out;
 
           .infoSize {
             display: flex;

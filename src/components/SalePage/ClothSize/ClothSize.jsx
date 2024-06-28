@@ -16,7 +16,7 @@ import { getListCloth } from "../../../store/reducers/requestSlice";
 import { arrSizeRow, arrSizeTable } from "../../../helpers/LodalData";
 import { texxtSize1, texxtSize2 } from "../../../helpers/LodalData";
 
-const ClothSize = ({ oneCodeId, choiceEvery, listEvery }) => {
+const ClothSize = ({ oneCodeId, choiceEvery, listEvery, typeSize }) => {
   ///// if oneCodeId есть, то надо отображать только один размер, который в codeid приходит
 
   const dispatch = useDispatch();
@@ -32,10 +32,12 @@ const ClothSize = ({ oneCodeId, choiceEvery, listEvery }) => {
   // const { listSize } = useSelector((state) => state.requestSlice);
 
   const clickListMan = (id) => {
-    dispatch(activeSizeFN(id));
+    const objSize = { ...activeSize, [typeSize === "up" ? "up" : "down"]: id };
+
+    dispatch(activeSizeFN(objSize));
 
     const { categId, type } = activeCateg;
-    const obj1 = { categId, type, activeSize: id, activeBrands };
+    const obj1 = { categId, type, activeSize: objSize, activeBrands };
     const obj2 = { activeColor, minPrice: activePrice.min };
     const obj3 = { maxPrice: activePrice?.max };
     dispatch(getListCloth({ ...obj1, ...obj2, ...obj3 }));
@@ -57,22 +59,21 @@ const ClothSize = ({ oneCodeId, choiceEvery, listEvery }) => {
     { id: 5, sizeName: "XXL" },
   ];
 
-  const obj = {
-    1: "RS1",
-    2: "777-777",
-    3: "777-777",
-    4: "777-777",
-  };
+  const obj = { 1: "RS1", 2: "777-777", 3: "777-777", 4: "777-777" };
+
+  const mainTitle = typeSize === "up" ? "(верх)" : "(низ)";
 
   return (
     <div className="sizeParent">
       <div className="mainTitle">
-        <h3>Размерная сетка (верх)</h3>
+        <h3>Размерная сетка {mainTitle}</h3>
       </div>
       <ul className="listSize">
         {listSize?.map((item) => (
           <li key={item?.id} onClick={() => clickListMan(item.id)}>
-            <p className={activeSize == item.id ? "activeItem" : ""}>
+            <p
+              className={activeSize?.[typeSize] == item.id ? "activeItem" : ""}
+            >
               {item?.sizeName}
             </p>
             <div className="moreSize">

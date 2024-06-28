@@ -1,9 +1,16 @@
+/////// hooks
 import React, { useState, useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+/////// style
 import "./style.scss";
+
+/////// imgs
 import like from "../../../assets/icons/like.svg";
+
+//////// fns
 import { activeCategFN } from "../../../store/reducers/stateSlice";
 import { getListCloth } from "../../../store/reducers/requestSlice";
-import { useDispatch, useSelector } from "react-redux";
 
 const CategCloth = ({ list, typeTitle, typeSex }) => {
   const dispatch = useDispatch();
@@ -11,18 +18,18 @@ const CategCloth = ({ list, typeTitle, typeSex }) => {
   const { activeColor, activePrice } = useSelector((state) => state.stateSlice);
   const { activeBrands } = useSelector((state) => state.stateSlice);
 
+  const [active, setActive] = useState(true);
+  const [contentHeight, setContentHeight] = useState("auto");
+  const contentRef = useRef(null);
+
   const actionCateg = ({ id, gender }) => {
     dispatch(activeCategFN({ categId: id, type: gender }));
     const obj1 = { categId: id, type: gender, activeSize };
     const obj2 = { activeColor, minPrice: activePrice.min };
     const obj3 = { maxPrice: activePrice?.max, activeBrands };
     dispatch(getListCloth({ ...obj1, ...obj2, ...obj3 }));
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
-
-  const [active, setActive] = useState(true);
-  const [contentHeight, setContentHeight] = useState("auto");
-  const contentRef = useRef(null);
 
   useEffect(() => {
     if (contentRef.current) {

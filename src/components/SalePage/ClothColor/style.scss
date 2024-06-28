@@ -16,8 +16,7 @@
     gap: 5px;
     
     .activeItem { 
-      width: 37px;
-      height: 37px;
+      padding: 2px;
       
       &::after {
         content: "";

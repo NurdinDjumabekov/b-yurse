@@ -1,11 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  alertText: {
-    text: "",
-    backColor: "",
-    state: false,
-  },
+  alertText: { text: "", backColor: "", state: false },
 
   numberUser: "+7", /// для ввода номера
 
@@ -19,7 +15,7 @@ const initialState = {
   activeSorting: { name: 0, id: 0 }, // для сортировки
   ////// по популярности, по новинке, по цене
 
-  activeSize: 0, //// размер одежды
+  activeSize: { up: 0, down: 0 }, //// размер одежды
 
   activeSizeEvery: 0, ////// для детальнйо страницы, тобы user мог временно
   //// до закидывания в корзину положить куда-то размер
