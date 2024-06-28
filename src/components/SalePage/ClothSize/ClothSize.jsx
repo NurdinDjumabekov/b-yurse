@@ -1,6 +1,5 @@
 ///hooks
 import React from "react";
-import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 ///style
@@ -8,22 +7,20 @@ import "./style.scss";
 
 ////fns
 import { activeSizeEveryFN } from "../../../store/reducers/stateSlice";
-import { activeSizeFN, lookSizeFN } from "../../../store/reducers/stateSlice";
+import { activeSizeFN } from "../../../store/reducers/stateSlice";
 
 //////helpers
 import { getListCloth } from "../../../store/reducers/requestSlice";
+
 ///// delete
 import { arrSizeRow, arrSizeTable } from "../../../helpers/LodalData";
 import { texxtSize1, texxtSize2 } from "../../../helpers/LodalData";
 
-const ClothSize = ({ oneCodeId, choiceEvery, listEvery, typeSize }) => {
+const ClothSize = ({ choiceEvery, typeSize }) => {
   ///// if oneCodeId есть, то надо отображать только один размер, который в codeid приходит
 
   const dispatch = useDispatch();
 
-  const { pathname } = useLocation();
-
-  const { lookSize } = useSelector((state) => state.stateSlice);
   const { activeCateg, activeSize } = useSelector((state) => state.stateSlice);
   const { activeColor, activePrice } = useSelector((state) => state.stateSlice);
   const { activeSizeEvery } = useSelector((state) => state.stateSlice);
@@ -45,11 +42,6 @@ const ClothSize = ({ oneCodeId, choiceEvery, listEvery, typeSize }) => {
 
   const choiceForBasket = (id) => dispatch(activeSizeEveryFN(id));
 
-  const lookSizeCloth = (bool) => dispatch(lookSizeFN(bool));
-
-  const checkPage = pathname?.includes("every");
-  //// if это детальная страница
-
   ////////////////////////////////////// delete
   const listSize = [
     { id: 1, sizeName: "S" },
@@ -62,6 +54,42 @@ const ClothSize = ({ oneCodeId, choiceEvery, listEvery, typeSize }) => {
   const obj = { 1: "RS1", 2: "777-777", 3: "777-777", 4: "777-777" };
 
   const mainTitle = typeSize === "up" ? "(верх)" : "(низ)";
+
+  if (choiceEvery) {
+    return (
+      <div className="sizeParent">
+        <div className="mainTitle">
+          <h3>Размерная сетка {mainTitle}</h3>
+        </div>
+        <ul className="listSize">
+          {listSize?.map((item) => (
+            <li key={item?.id} onClick={() => choiceForBasket(item?.id)}>
+              <p className={activeSizeEvery == item?.id ? "activeItem" : ""}>
+                {item?.sizeName}
+              </p>
+              <div className="moreSize">
+                <div className="moreSize__inner">
+                  <div className="infoSize">
+                    <b>размер</b>
+                    <b>обхват талии</b>
+                    <b>обхват груди</b>
+                    <b>обхват бедер</b>
+                  </div>
+                  <div className="typesSize">
+                    <h6>{obj?.[1]}</h6>
+                    <span>{obj?.[2]}</span>
+                    <span>{obj?.[3]}</span>
+                    <span>{obj?.[4]}</span>
+                  </div>
+                </div>
+              </div>
+              <div className="shadowSize"></div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
 
   return (
     <div className="sizeParent">

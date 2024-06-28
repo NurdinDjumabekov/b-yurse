@@ -22,9 +22,11 @@ import { activeSizeEveryFN } from "../../store/reducers/stateSlice";
 import { activeColorEveryFN } from "../../store/reducers/stateSlice";
 
 ///////// imgs
+import pay2 from "../../assets/images/pay2.png";
+
+///// delete
 import basket from "../../assets/icons/basket.svg";
 import pay1 from "../../assets/images/pay1.png";
-import pay2 from "../../assets/images/pay2.png";
 
 ///////// helpers
 import { sarchImg, sarchImgSeconds } from "../../helpers/sarchImg";
@@ -83,6 +85,7 @@ const EveryClothPage = () => {
     <div className="everyCloth">
       <div className="container">
         <NavPath list={listNavDecor} />
+
         <div className="everyCloth__inner">
           <div className="mainContant">
             <div className="dopImg">
@@ -96,15 +99,10 @@ const EveryClothPage = () => {
               <img src={sarchImg(everyCloth?.photos)?.url} alt="" />
             </div>
           </div>
+
           <div className="dopContant">
             <h5>{everyCloth?.productName}</h5>
             <div className="prices">
-              {/* {everyCloth?.discountActive ? ( //// есть ли скидка
-                <div className="price">
-                  <i>{everyCloth?.price} ₽</i> <b>{everyCloth?.oldPrice} ₽</b>
-                </div>
-              ) : (
-                )} */}
               <p>{everyCloth?.price} ₽</p>
             </div>
             <div className="blockPay">
@@ -112,8 +110,11 @@ const EveryClothPage = () => {
               {/* <img src={pay1} alt="pay" /> */}
               <span>четыре платежа по ~870 ₽</span>
             </div>
-            <ClothSize choiceEvery={true} listEvery={everyCloth?.sizes} />
-            <ClothColor choiceEvery={true} listEvery={everyCloth?.colors} />
+
+            <ClothSize typeSize={"up"} choiceEvery={true} />
+
+            <ClothColor choiceEvery={true} />
+
             <div className="actions">
               <button className="choiceCloth" onClick={addBasket}>
                 Добавить в корзину

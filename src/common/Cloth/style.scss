@@ -98,6 +98,19 @@
             }
 
           }
+
+          .noneTypeCloth {
+              width: 110px;
+              height: 40px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 12px;
+              line-height: 12px;
+              text-align: center;
+              border: 1px solid #050505;
+              border-radius: 100px;
+          }
         }
 
         span {
@@ -132,6 +145,22 @@
         align-items: center;
         gap: 20px;
         margin-top: 25px;
+
+        .favouriteBtnNone {
+          border: 1px solid #050505;
+          background: transparent;
+          color: #050505;
+        }
+
+        .favouriteBtnHave {
+          width: 300px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #050505;
+          height: 50px;
+          color: #fff;
+        }
 
         button {
           width: 300px;

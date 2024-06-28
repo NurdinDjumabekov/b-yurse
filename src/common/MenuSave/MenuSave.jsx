@@ -1,12 +1,20 @@
+////// hooks
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+////// imgs
 import favorite from "../../assets/icons/heart.svg";
 import favoriteWhite from "../../assets/icons/heartWhite.svg";
 import sale from "../../assets/icons/sale.svg";
 import saleWhite from "../../assets/icons/saleWhite.svg";
 
+////// style
 import "./style.scss";
-import { useDispatch, useSelector } from "react-redux";
+
+////// fns
 import { lookBasketFN, lookFavoriteFN } from "../../store/reducers/stateSlice";
+
+////// components
 import Cloth from "../Cloth/Cloth";
 
 const MenuSave = () => {
@@ -20,9 +28,6 @@ const MenuSave = () => {
   const lookMyFavorite = () => dispatch(lookFavoriteFN(!lookFavorite));
 
   const lookMyBasket = () => dispatch(lookBasketFN(!lookBasket));
-
-  // console.log(favouriteList);
-  // console.log(basketList, "basketList");
 
   return (
     <>
@@ -41,7 +46,12 @@ const MenuSave = () => {
             ) : (
               <>
                 {favouriteList?.map((item, index) => (
-                  <Cloth item={item} key={index} btn={"Положить в корзину"} />
+                  <Cloth
+                    item={item}
+                    key={index}
+                    btn={"Положить в корзину"}
+                    type={"favourite"}
+                  />
                 ))}
               </>
             )}
@@ -63,7 +73,12 @@ const MenuSave = () => {
             ) : (
               <>
                 {basketList?.map((item, index) => (
-                  <Cloth item={item} key={index} btn={"Открыть в корзине"} />
+                  <Cloth
+                    item={item}
+                    key={index}
+                    btn={"Начать оформление заказа"}
+                    type={"basket"}
+                  />
                 ))}
               </>
             )}

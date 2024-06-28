@@ -1,16 +1,17 @@
+/////// hooks
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+////// style
 import "./style.scss";
-////imgs
+
+////// imgs
 import menu from "../../assets/icons/menu.svg";
 import userCheck from "../../assets/icons/UserCheck.svg";
 import user from "../../assets/icons/User.svg";
-import { useDispatch, useSelector } from "react-redux";
 
-import {
-  activeBrandsFN,
-  lookMenuFN,
-  lookNumberFN,
-} from "../../store/reducers/stateSlice";
+import { lookMenuFN } from "../../store/reducers/stateSlice";
+import { activeBrandsFN, lookNumberFN } from "../../store/reducers/stateSlice";
 
 import { useNavigate } from "react-router-dom";
 
@@ -22,7 +23,7 @@ const MenuChoice = () => {
 
   const { dataUser } = useSelector((state) => state.saveDataSlice);
 
-  const { listBrands } = useSelector((state) => state.requestSlice);
+  // const { listBrands } = useSelector((state) => state.requestSlice);
 
   const openMenu = () => dispatch(lookMenuFN(true));
 
@@ -92,6 +93,15 @@ const MenuChoice = () => {
     dispatch(lookMenuFN(false));
     navigate("/");
   };
+
+  //// delete
+  const listBrands = [
+    { id: 1, collectionName: "Nike" },
+    { id: 2, collectionName: "Adidas" },
+    { id: 3, collectionName: "Puma" },
+    { id: 4, collectionName: "Reebok" },
+    { id: 5, collectionName: "Under Armour" },
+  ];
 
   return (
     <div className="menuChoice">

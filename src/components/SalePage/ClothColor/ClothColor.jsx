@@ -1,7 +1,6 @@
 ///hooks
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
 
 ////imgs
 import img1 from "../../../assets/images/молочный.png";
@@ -17,9 +16,7 @@ import { activeColorEveryFN } from "../../../store/reducers/stateSlice";
 import { getListCloth } from "../../../store/reducers/requestSlice";
 
 const ClothColor = (props) => {
-  const { choiceEvery, listEvery } = props;
-  ///// if oneCodeId есть, то надо отображать только один размер, который в codeid приходит
-  const { pathname } = useLocation();
+  const { choiceEvery } = props;
 
   const dispatch = useDispatch();
 
@@ -41,9 +38,7 @@ const ClothColor = (props) => {
     dispatch(getListCloth({ ...obj1, ...obj2, ...obj3 }));
   };
 
-  const choiceForBasket = (id) => {
-    dispatch(activeColorEveryFN(id));
-  };
+  const choiceForBasket = (id) => dispatch(activeColorEveryFN(id));
 
   /////// delete
   const listColor = [
@@ -58,6 +53,32 @@ const ClothColor = (props) => {
     { id: 9, color: img2 },
     { id: 10, color: img1 },
   ];
+
+  if (choiceEvery) {
+    return (
+      <div className={`clothColor ${lookSize && "moreNoneActive"}`}>
+        <div className="mainTitle">
+          <h3>Цветовая палитра</h3>
+        </div>
+        <ul className="listColor">
+          {listColor?.map((item) => (
+            <li
+              key={item?.id}
+              className={`list ${activeColorEvery == item?.id && "activeItem"}`}
+              onClick={() => choiceForBasket(item.id)}
+            >
+              <img src={item?.color} alt="imgColor" className="miniImg" />
+              <div className="activeImg">
+                {/* <img src={item?.color} alt="imgColorBig" /> */}
+                <img src={img3} alt="imgColorBig" />
+              </div>
+              <div className="shadowWhite" />
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
 
   return (
     <div className={`clothColor ${lookSize && "moreNoneActive"}`}>
