@@ -1,175 +1,174 @@
 .everyBasket {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+  width: 100%;
+  display: flex;
 
-    .imgMain {
-      min-width: 170px;
-      height: 230px;
-      border-radius: 5px; 
+  .imgMain {
+    min-width: 170px;
+    height: 230px;
+    border-radius: 5px;
 
-      > img {
-        border-radius: 5px;
-        object-fit: cover;
+    > img {
+      border-radius: 5px;
+      object-fit: cover;
+    }
+  }
+
+  .infoBlock {
+    min-height: 100%;
+    padding: 0 40px 0 20px;
+    position: relative;
+
+    .title {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      h5 {
+        font-size: 16px;
+        line-height: 16px;
+        text-align: left;
+        color: #050505;
+        max-height: 38px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .actionDelete {
+        min-width: 24px;
+        height: 24px;
+        position: absolute;
+        top: 2px;
+        right: 2px;
       }
     }
 
-    .infoBlock {
-      min-height: 100%;
-      padding: 0 60px 0 20px;
-      position: relative;
+    p {
+      font-size: 16px;
+      line-height: 18px;
+      text-align: left;
+      color: #050505;
+      margin-bottom: 15px;
+    }
 
-      .title {
+    .sizes {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      &__inner {
         display: flex;
-        justify-content: space-between;
-        width: 100%;    
+        flex-direction: column;
+        gap: 8px;
 
-        h5 {
-          font-size: 16px;
-          line-height: 16px;
-          text-align: left;
-          color: #050505;
-          max-height: 38px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
+        // .noneImg {
+        //   border: 1px solid #222;
+        // }
 
-        .actionDelete {
-          min-width: 24px;
-          height: 24px;
-          position: absolute;
-          top: 2px;
-          right: 2px;
-        }
-
-      }
-
-      p {
-        font-size: 16px;
-        line-height: 18px;
-        text-align: left;
-        color: #050505;
-        margin-bottom: 15px;
-      }
-
-      .sizes {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-
-        &__inner {
+        > b {
           display: flex;
-          flex-direction: column;
-          gap: 10px;
-
-          // .noneImg {
-          //   border: 1px solid #222;
-          // }
-
-          > b {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: 400;
-            line-height: 12px;
-            text-align: center;
-            color: #fff !important;
-            background: #050505;
-          }
-
-          b, .colorImg {
-            width: 40px;
-            height: 40px;
-            max-width: 40px;
-            min-width: 40px;
-          }
-
-          .colorImg {
-            border-radius: 50%;
-            border: 1px solid #050505;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            > img {
-              width: 34px;
-              height: 34px;
-            }
-
-          }
-
-          .noneTypeCloth {
-              width: 110px;
-              height: 40px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              font-size: 12px;
-              line-height: 12px;
-              text-align: center;
-              border: 1px solid #050505;
-              border-radius: 100px;
-          }
-        }
-
-        span {
-          color: #909090;
-          font-size: 12px;
-          line-height: 12px;
-          text-align: left;
-
-        }
-
-        b {
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          border: 1px solid #050505;
+          align-items: center;
+          justify-content: center;
           font-size: 12px;
           font-weight: 400;
           line-height: 12px;
           text-align: center;
-          color: #050505;
+          color: #fff !important;
+          background: #050505;
         }
 
-        img {
+        b,
+        .colorImg {
           width: 40px;
           height: 40px;
+          max-width: 40px;
+          min-width: 40px;
+        }
+
+        .colorImg {
           border-radius: 50%;
-        }
-      }
-
-      .actions {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        margin-top: 25px;
-
-        .favouriteBtnNone {
           border: 1px solid #050505;
-          background: transparent;
-          color: #050505;
-        }
-
-        .favouriteBtnHave {
-          width: 300px;
           display: flex;
           align-items: center;
           justify-content: center;
-          background-color: #050505;
-          height: 50px;
-          color: #fff;
+
+          > img {
+            width: 34px;
+            height: 34px;
+          }
         }
 
-        button {
-          width: 300px;
-          height: 50px;
-          font-size: 16px;
-          line-height: 16px;
+        .noneTypeCloth {
+          width: 110px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 12px;
+          line-height: 12px;
           text-align: center;
-          color: #fff;
-       }
+          border: 1px solid #050505;
+          border-radius: 100px;
+        }
+      }
+
+      span {
+        color: #909090;
+        font-size: 12px;
+        line-height: 12px;
+        text-align: left;
+      }
+
+      b {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 12px;
+        line-height: 12px;
+        text-align: center;
+        color: #fff;
+      }
+
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 25px;
+
+      .favouriteBtnNone {
+        border: 1px solid #050505;
+        background: transparent;
+        color: #050505;
+      }
+
+      .favouriteBtnHave {
+        width: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #050505;
+        height: 50px;
+        color: #fff;
+      }
+
+      .basketBtn {
+        width: 340px;
+      }
+
+      button {
+        width: 300px;
+        height: 50px;
+        font-size: 16px;
+        line-height: 16px;
+        text-align: center;
+        color: #fff;
       }
     }
   }
+}

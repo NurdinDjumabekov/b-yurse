@@ -1,48 +1,51 @@
 .basket {
-    animation: page 0.7s ease-in-out;
-    
-    .navPath {
-        margin: 40px 0 30px 0;
+  animation: page 0.7s ease-in-out;
+
+  .navPath {
+    margin: 40px 0 30px 0;
+  }
+
+  &__inner {
+    h4 {
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 20px;
+      margin: 25px 0 55px;
     }
 
-    &__inner {
-        h4 {
-            font-size: 30px;
-            font-weight: 700;
-            line-height: 20px;
-            margin: 25px 0 55px;
-        }
-
-        h5 {
-            font-size: 20px;
-            font-weight: 400;
-            line-height: 20px;
-        }
-
-        .line {
-            margin: 20px 0  ;
-        }
+    h5 {
+      font-size: 16px;
+      line-height: 16px;
+      color: #252525;
     }
 
-    &__child {
-        display: flex;
-        gap: 30px;
-    }
-
-    .confirm {
-        margin: 15px 0 0 0;
-        background-color: #F5F5F5;
-        padding: 15px 25px;
-        border-radius: 5px;
-    }
-}
-
-
-@keyframes page {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
+    .line {
+      margin: 20px 0;
     }
   }
+
+  &__child {
+    display: flex;
+    gap: 20px;
+  }
+
+  .confirm {
+    margin: 15px 0 0 0;
+    background-color: #f5f5f5;
+    padding: 15px 25px;
+    border-radius: 5px;
+
+    span {
+      width: 225px;
+    }
+  }
+}
+
+@keyframes page {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

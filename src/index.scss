@@ -1,4 +1,4 @@
-@import './assets/fonts/Akony/stylesheet.css';
+@import './assets/fonts/AKONY/stylesheet.css';
 @import './assets/fonts/Century_Gothic/stylesheet.css';
 @import './assets/fonts/Raydis/stylesheet.css';
 @import './assets/fonts/Unbounded/stylesheet.css';
@@ -8,7 +8,7 @@
   padding: 0;
   box-sizing: border-box;
   color: #050505;
-  font-family: "Unbounded", sans-serif;
+  font-family: 'Unbounded', sans-serif;
   font-size: 18px;
   font-weight: 300;
   font-style: normal;
@@ -38,7 +38,7 @@ button {
   border: none;
   cursor: pointer;
   font-size: 20px;
-  font-family: "Unbounded", sans-serif;
+  font-family: 'Unbounded', sans-serif;
   font-weight: 400;
   background-color: transparent;
 }
@@ -51,13 +51,12 @@ button {
   display: block;
 }
 
-.logoText{
+.logoText {
   font-family: AKONY;
   font-size: 30px;
   font-weight: 700;
   line-height: 33px;
   text-align: center;
-
 }
 
 .line {
@@ -67,9 +66,7 @@ button {
   background: linear-gradient(90deg, #ebebeb 0%, rgba(5, 5, 5, 0) 90%);
 }
 
-
 .listTypes {
-
   li {
     display: flex;
     justify-content: space-between;
@@ -83,7 +80,6 @@ button {
       font-weight: 300;
       line-height: 16px;
       color: #050505;
-      
     }
   }
 
@@ -133,7 +129,6 @@ button {
   cursor: pointer;
   z-index: 95;
   animation: modal 0.7s ease-in-out;
-
 }
 
 .imgAction {
@@ -145,7 +140,7 @@ button {
   gap: 35px !important;
 }
 
-// .result {   
+// .result {
 //   display: flex;
 //   align-items: center;
 //   gap: 15px;
@@ -203,38 +198,37 @@ button {
 
 .resultAction {
   p {
-      font-size: 16px;
-      line-height: 16px;
-      color: #909090;
-      height: 20px;
+    font-size: 16px;
+    line-height: 16px;
+    color: #909090;
+    height: 20px;
   }
 
   .action {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 10px 0px;
-      span {
-          border: 1px solid #050505;
-          width: 225px;
-          height: 50px;
-          padding: 15px;
-          border-radius: 5px;
-      }
-      button {
-          width: 300px !important;
-      }
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0px;
+    span {
+      border: 1px solid #050505;
+      width: 225px;
+      height: 50px;
+      padding: 15px;
+      border-radius: 5px;
+    }
+    button {
+      width: 300px !important;
+    }
   }
 
   b {
-      font-size: 12px;
-      font-weight: 400;
-      line-height: 12px;
-      text-align: left;
-      color: #909090;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 12px;
+    text-align: left;
+    color: #909090;
   }
 }
-
 
 @keyframes modal {
   from {

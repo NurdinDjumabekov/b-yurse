@@ -1,157 +1,115 @@
 .basket__every {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 20px;
+  justify-content: space-between;
+
+  .mainImg {
+    width: 170px;
+    height: 230px;
+
+    > img {
+      object-fit: cover;
+      border-radius: 5px;
+    }
+  }
+
+  .dopContant {
+    width: 505px;
+
+    h5 {
+      width: 80%;
+    }
+
+    > img {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+    }
+
+    h6 {
+      font-size: 12px;
+      line-height: 12px;
+      color: #909090;
+      margin: 14px 0 8px;
+    }
+
+    p {
+      margin: 14px 0 19px;
+      font-size: 16px;
+      line-height: 16px;
+      text-align: left;
+    }
+
+    .colors-size {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+
+      .mainTitle {
+        margin: 0px 0px 8px !important;
+        h3 {
+          font-size: 12px;
+          line-height: 12px;
+          color: #909090;
+          font-weight: 300;
+          margin: 0;
+        }
+      }
+
+      .listSize {
+        padding: 0;
+        li {
+          > p {
+            margin: 0 !important;
+          }
+        }
+      }
+    }
+
+    .counterBlock {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      span {
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 38px;
+        border: 1px solid #050505;
+        border-radius: 5px;
+      }
+
+      .actions {
+        display: flex;
+        flex-direction: column;
+
+        button {
+          width: 20px;
+          height: 20px;
+        }
+
+        .minus {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+
+  .actionsCloth {
+    width: 200px;
+    height: 100%;
     display: flex;
-    gap: 30px;
-    margin-bottom: 20px;
-    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-end;
 
-    .mainImg {
-        width: 290px;   
-        height: 390px;
-
-        > img {
-            object-fit: cover;
-            border-radius: 10px;
-        }
+    > button {
+      width: 30px;
+      height: 30px;
     }
-
-    .dopContant {
-        width: 505px;
-
-        .mainInfo {
-            display: flex;
-            justify-content: space-between;
-
-            h5 {
-                width: 80%;
-            }
-
-            > img {
-                width: 30px;
-                height: 30px;
-                cursor: pointer;
-            }
-        }
-
-        p {
-            margin: 13px 0 20px;
-            font-size: 25px;
-            font-weight: 400;
-            line-height: 25px;
-            text-align: left;
-        }
-
-        .blockPay {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 25px;
-
-            img {
-                width: 30px;
-                height: 30px;
-            }
-
-            span {
-                margin-left: 25px;
-                font-size: 16px;
-                font-weight: 400;
-                line-height: 20px;
-            }
-        }
-
-        .counterBlock {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin: 20px 0 26px;
-            > button {
-                width: 37px;
-                height: 37px;
-                border-radius: 6px;
-                font-size: 45px;
-                line-height: 0;
-                color: #fff;
-                
-            }
-            > span {
-                width: 50px;
-                text-align: center;
-                font-size: 16px;
-                font-weight: 400;
-                line-height: 20px;
-                text-decoration: underline;
-            }
-        }
-
-        .sizesColors {
-            display: flex;
-            gap: 45px;
-            .sizes {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                gap: 25px;
-      
-                &__inner {
-                  display: flex;
-                  flex-direction: column;
-                  gap: 10px;
-      
-                  > b {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 12px;
-                    font-weight: 400;
-                    line-height: 12px;
-                    text-align: center;
-      
-                  }
-      
-                  b,img {
-                    width: 40px;
-                    height: 40px;
-                  }
-                }
-      
-                span {
-                  font-size: 16px;
-                  font-weight: 400;
-                  line-height: 18px;
-                  text-align: left;
-                  color: #303030;
-                }
-      
-                b {
-                  width: 40px;
-                  height: 40px;
-                  border-radius: 50%;
-                  border: 1px solid #050505;
-                  font-size: 12px;
-                  font-weight: 400;
-                  line-height: 12px;
-                  text-align: center;
-                  color: #050505;
-                }
-      
-                img {
-                  width: 40px;
-                  height: 40px;
-                  border-radius: 50%;
-                }
-              }
-      
-            
-        }
-    }
-
-    .deleteAction {
-        width: 350px;
-        height: 100%;
-        text-align: right;
-        > button {
-            width: 30px;
-            height: 30px;
-        }
-    }
+  }
 }

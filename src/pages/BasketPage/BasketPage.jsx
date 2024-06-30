@@ -1,41 +1,46 @@
 ///hooks
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 /////style
-import "./style.scss";
+import './style.scss';
 
 //////components
-import Promocode from "../../components/BasketPage/BasketPage/Promocode";
-import { useDispatch, useSelector } from "react-redux";
+import Promocode from '../../components/BasketPage/BasketPage/Promocode';
+import { useDispatch, useSelector } from 'react-redux';
 
 ////helpers
-import { sumTotalBasketOldPrice } from "../../helpers/SumTotalBasket";
+import { sumTotalBasketOldPrice } from '../../helpers/SumTotalBasket';
+import { listNavBasket } from '../../helpers/LodalData';
+import { sumTotalBasket } from '../../helpers/SumTotalBasket';
 ////delete
 
-import { sumTotalBasket } from "../../helpers/SumTotalBasket";
-import EveryBasket from "../../components/BasketPage/EveryBasket/EveryBasket";
-import { NavPath } from "../../common/NavPath/NavPath";
-import { listNavBasket } from "../../helpers/LodalData";
+import EveryBasket from '../../components/BasketPage/EveryBasket/EveryBasket';
+import { NavPath } from '../../common/NavPath/NavPath';
+import SkeletonsBasketPage from '../../common/Skeletons/SkeletonsBasketPage/SkeletonsBasketPage';
 
 const BasketPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { basketList } = useSelector((state) => state.saveDataSlice);
+  const { basketList, preloader } = useSelector((state) => state.saveDataSlice);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   const nav = () => {
     if (basketList?.length === 0) {
-      alert("У вас пустой список");
-      navigate("/");
+      alert('У вас пустой список');
+      navigate('/');
     } else {
-      navigate("/decor");
+      navigate('/decor');
     }
   };
+
+  if (preloader) {
+    return <SkeletonsBasketPage />;
+  }
 
   return (
     <div className="basket">

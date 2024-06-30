@@ -1,0 +1,156 @@
+.skeletonParent {
+  width: 100% !important;
+  padding: 0 0 50px;
+
+  &__inner {
+    width: 100%;
+
+    .mainInfo {
+      display: flex;
+      justify-content: space-between;
+      margin: 40px 0 0;
+      gap: 50px;
+
+      &__types {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        div {
+          width: 210px;
+          height: 150px;
+          background: #aaa;
+        }
+
+        section {
+          width: 210px;
+          height: 200px;
+          background: #aaa;
+        }
+
+        p {
+          width: 210px;
+          height: 30px;
+          background: #aaa;
+        }
+
+        span {
+          width: 210px;
+          height: 70px;
+          background: #aaa;
+        }
+
+        main {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          width: 210px;
+
+          i {
+            width: 35px;
+            height: 35px;
+            background: #aaa;
+            border-radius: 50%;
+          }
+        }
+      }
+
+      &__block {
+        main {
+          display: flex;
+          justify-content: flex-end;
+          p {
+            width: 250px;
+            height: 20px;
+            background: #aaa;
+            margin: 0 0 20px;
+            align-self: center;
+          }
+        }
+      }
+    }
+    .skeletonFooter {
+      height: 580px;
+      background: #aaa;
+      width: 100%;
+      margin-top: 40px;
+    }
+  }
+}
+
+.menuSkeleton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+
+    i {
+      display: block;
+      width: 50px;
+      height: 50px;
+      background: #aaa;
+      border-radius: 50%;
+    }
+
+    p {
+      width: 100px;
+      height: 50px;
+      background: #aaa;
+    }
+
+    span {
+      display: block;
+      height: 50px;
+      width: 150px;
+      background: #aaa;
+    }
+  }
+
+  &__center {
+    width: 500px;
+    height: 50px;
+    background: #aaa;
+  }
+
+  &__right {
+    justify-content: flex-end;
+  }
+}
+
+.cardsList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+
+  > div {
+    height: 475px;
+
+    i {
+      display: block;
+      width: 320px;
+      height: 400px;
+      background: #aaa;
+    }
+
+    b {
+      display: block;
+      height: 20px;
+      background: #aaa;
+      margin: 10px 0 0 0;
+    }
+
+    span {
+      display: block;
+      height: 40px;
+      background: #aaa;
+      margin: 5px 0 0 0;
+    }
+  }
+}

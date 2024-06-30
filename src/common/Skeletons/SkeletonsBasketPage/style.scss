@@ -1,0 +1,123 @@
+.skeletonBasket {
+  width: 100% !important;
+  padding: 0 0 50px;
+
+  &__inner {
+    width: 100%;
+
+    .sortingBasket {
+      width: 160px;
+      height: 40px;
+      background: #aaa;
+      margin: 40px 0 20px;
+    }
+
+    .skeletonListBasket {
+      > div {
+        position: relative;
+        display: flex;
+        gap: 20px;
+
+        > div {
+          width: 300px;
+          height: 400px;
+          background: #aaa;
+        }
+
+        > main {
+          width: 520px;
+
+          p {
+            display: block;
+            height: 60px;
+            background: #aaa;
+          }
+
+          i {
+            display: block;
+            height: 40px;
+            width: 160px;
+            background: #aaa;
+            margin: 20px 0 0 0;
+          }
+
+          span {
+            display: block;
+            height: 30px;
+            width: 90px;
+            background: #aaa;
+            margin: 15px 0 0 0;
+          }
+
+          section {
+            display: block;
+            height: 40px;
+            width: 160px;
+            background: #aaa;
+            margin: 20px 0 15px;
+          }
+
+          > div {
+            display: block;
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            background: #aaa;
+          }
+
+          b {
+            display: block;
+            height: 40px;
+            width: 240px;
+            background: #aaa;
+            margin: 20px 0 0 0;
+          }
+        }
+
+        .roundsBlocks {
+          width: 80px;
+          display: flex;
+          gap: 20px;
+          height: 35px;
+          background: transparent;
+          position: absolute;
+          right: 0;
+          top: 0;
+
+          p {
+            width: 35px;
+            min-width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #aaa;
+          }
+        }
+      }
+
+      .line {
+        width: 100%;
+        height: 2px;
+        display: block;
+        background: #aaa;
+        margin: 30px 0;
+      }
+    }
+
+    .listfour {
+      justify-content: space-between;
+
+      > div {
+        width: 300px;
+        height: 160px;
+        background: #aaa;
+      }
+    }
+  }
+}
+
+.skeletonFooter {
+  height: 580px;
+  background: #aaa;
+  width: 100%;
+  margin-top: 40px;
+}

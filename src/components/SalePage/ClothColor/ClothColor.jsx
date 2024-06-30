@@ -1,22 +1,26 @@
-///hooks
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+////// hooks
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-////imgs
-import img1 from "../../../assets/images/молочный.png";
-import img2 from "../../../assets/images/голубая лагуна.png";
-import img3 from "../../../assets/images/bigImg.png";
+////// imgs
+import img1 from '../../../assets/images/молочный.png';
+import img2 from '../../../assets/images/голубая лагуна.png';
+import img3 from '../../../assets/images/bigImg.png';
 
-///style
-import "./style.scss";
+////// style
+import './style.scss';
 
-///fns
-import { activeColorFN } from "../../../store/reducers/stateSlice";
-import { activeColorEveryFN } from "../../../store/reducers/stateSlice";
-import { getListCloth } from "../../../store/reducers/requestSlice";
+////// fns
+import { activeColorFN } from '../../../store/reducers/stateSlice';
+import { activeColorEveryFN } from '../../../store/reducers/stateSlice';
+import { getListCloth } from '../../../store/reducers/requestSlice';
 
 const ClothColor = (props) => {
-  const { choiceEvery } = props;
+  const { activeColorProps } = props;
+  ///// activeColorProps - выбираю один активный цвет
+
+  ///// choiceEvery - для детальной страницы (выбор каждого размера)
+  const { choiceEvery, codeid } = props;
 
   const dispatch = useDispatch();
 
@@ -56,7 +60,7 @@ const ClothColor = (props) => {
 
   if (choiceEvery) {
     return (
-      <div className={`clothColor ${lookSize && "moreNoneActive"}`}>
+      <div className={`clothColor ${lookSize && 'moreNoneActive'}`}>
         <div className="mainTitle">
           <h3>Цветовая палитра</h3>
         </div>
@@ -64,7 +68,7 @@ const ClothColor = (props) => {
           {listColor?.map((item) => (
             <li
               key={item?.id}
-              className={`list ${activeColorEvery == item?.id && "activeItem"}`}
+              className={`list ${activeColorEvery == item?.id && 'activeItem'}`}
               onClick={() => choiceForBasket(item.id)}
             >
               <img src={item?.color} alt="imgColor" className="miniImg" />
@@ -80,8 +84,34 @@ const ClothColor = (props) => {
     );
   }
 
+  if (activeColorProps) {
+    return (
+      <div className={`clothColor ${lookSize && 'moreNoneActive'}`}>
+        <div className="mainTitle">
+          <h3>Цветовая палитра</h3>
+        </div>
+        <ul className="listColor">
+          {listColor?.map((item) => {
+            if (item.id == activeColorProps) {
+              return (
+                <li key={item?.id} className={`list activeItem`}>
+                  <img src={item?.color} alt="imgColor" className="miniImg" />
+                  <div className="activeImg">
+                    {/* <img src={item?.color} alt="imgColorBig" /> */}
+                    <img src={img3} alt="imgColorBig" />
+                  </div>
+                  <div className="shadowWhite" />
+                </li>
+              );
+            }
+          })}
+        </ul>
+      </div>
+    );
+  }
+
   return (
-    <div className={`clothColor ${lookSize && "moreNoneActive"}`}>
+    <div className={`clothColor ${lookSize && 'moreNoneActive'}`}>
       <div className="mainTitle">
         <h3>Цветовая палитра</h3>
       </div>
@@ -89,7 +119,7 @@ const ClothColor = (props) => {
         {listColor?.map((item) => (
           <li
             key={item?.id}
-            className={`list ${activeColor == item.id && "activeItem"}`}
+            className={`list ${activeColor == item.id && 'activeItem'}`}
             onClick={() => click(item.id)}
           >
             <img src={item?.color} alt="imgColor" className="miniImg" />

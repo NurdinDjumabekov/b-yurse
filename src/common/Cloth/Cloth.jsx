@@ -1,12 +1,25 @@
-import React from "react";
-import deleteImg from "../../assets/icons/delete.svg";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { lookBasketFN, lookFavoriteFN } from "../../store/reducers/stateSlice";
-import { sarchImg } from "../../helpers/sarchImg";
-import "./style.scss";
-import { addDelProdFavourite } from "../../store/reducers/saveDataSlice";
-import DiscountPrice from "../DiscountPrice/DiscountPrice";
+////// hooks
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+////// hooks
+import deleteImg from '../../assets/icons/delete.svg';
+import clothColor from '../../assets/images/bigImg.png';
+
+////// helpers
+import { sarchImg } from '../../helpers/sarchImg';
+
+////// style
+import './style.scss';
+
+////// fns
+import { lookBasketFN, lookFavoriteFN } from '../../store/reducers/stateSlice';
+import { addDelProdFavourite } from '../../store/reducers/saveDataSlice';
+import { deleteProdBasket } from '../../store/reducers/saveDataSlice';
+
+////// components
+import DiscountPrice from '../DiscountPrice/DiscountPrice';
 
 const Cloth = ({ item, btn, type }) => {
   const navigate = useNavigate();
@@ -15,7 +28,7 @@ const Cloth = ({ item, btn, type }) => {
   const nav = () => {
     dispatch(lookFavoriteFN(false));
     dispatch(lookBasketFN(false));
-    navigate("basket");
+    navigate('basket');
   };
 
   const color = item?.colors?.filter((i) => i.id == item?.activeColorEvery);
@@ -24,7 +37,9 @@ const Cloth = ({ item, btn, type }) => {
 
   const changeFavourite = (obj) => dispatch(addDelProdFavourite(obj));
 
-  if (type == "favourite") {
+  const delProInBasket = (codeid) => dispatch(deleteProdBasket(codeid));
+
+  if (type == 'favourite') {
     return (
       <li className="everyBasket">
         <div className="imgMain">
@@ -43,12 +58,14 @@ const Cloth = ({ item, btn, type }) => {
           <DiscountPrice item={item} />
           <div className="sizes">
             <div className="sizes__inner">
-              <span>Размерная сетка</span>
+              <span>Размерная сетка (верх)</span>
               {/* <b>{size?.[0]?.sizeName}</b> */}
+              {/* ////// local */}
               <button className="noneTypeCloth">не выбрано</button>
             </div>
             <div className="sizes__inner">
               <span>Цветовая палитра</span>
+              {/* ////// local */}
               {/* <div className="colorImg">
                 <img
                   src={color?.[0]?.color}
@@ -60,16 +77,15 @@ const Cloth = ({ item, btn, type }) => {
             </div>
           </div>
           <div className="actions">
-            <button className="choiceCloth favouriteBtnNone" onClick={nav}>
-              Выбрать
-            </button>
+            <button className="choiceCloth favouriteBtnNone">Выбрать</button>
           </div>
         </div>
       </li>
     );
   }
 
-  if (type == "basket") {
+  if (type == 'basket') {
+    console.log(item, 'item');
     return (
       <li className="everyBasket">
         <div className="imgMain">
@@ -77,10 +93,10 @@ const Cloth = ({ item, btn, type }) => {
         </div>
         <div className="infoBlock">
           <div className="title">
-            <h5>{item.productName}</h5>
+            <h5>{item?.productName}</h5>
             <button
               className="actionDelete"
-              onClick={() => changeFavourite(item)}
+              onClick={() => delProInBasket(item?.codeid)}
             >
               <img src={deleteImg} alt="x" />
             </button>
@@ -88,23 +104,31 @@ const Cloth = ({ item, btn, type }) => {
           <DiscountPrice item={item} />
           <div className="sizes">
             <div className="sizes__inner">
-              <span>Размерная сетка</span>
-              <b>{size?.[0]?.sizeName}</b>
+              <span>Размерная сетка (верх)</span>
+              {/* <b>{size?.[0]?.sizeName}</b> */}
+              {/* ////// local */}
+              <b>RS1</b>
             </div>
             <div className="sizes__inner">
               <span>Цветовая палитра</span>
               <div className="colorImg">
-                <img
+                {/* <img
                   src={color?.[0]?.color}
                   alt=""
-                  className={item?.activeColorEvery ? "" : "noneImg"}
+                  className={item?.activeColorEvery ? '' : 'noneImg'}
+                /> */}
+                {/* ////// local */}
+                <img
+                  src={clothColor}
+                  alt=""
+                  className={item?.activeColorEvery ? '' : 'noneImg'}
                 />
               </div>
             </div>
           </div>
           <div className="actions">
-            <button className="choiceCloth" onClick={nav}>
-              Добавить в корзину
+            <button className="choiceCloth basketBtn" onClick={nav}>
+              Начать оформление заказа
             </button>
           </div>
         </div>

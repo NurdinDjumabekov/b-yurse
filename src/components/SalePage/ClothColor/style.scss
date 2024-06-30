@@ -4,7 +4,7 @@
   h3 {
     font-size: 14px;
     line-height: 14px;
-    text-align: left;      
+    text-align: left;
     color: #050505;
     margin-bottom: 10px;
   }
@@ -14,96 +14,94 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 5px;
-    
-    .activeItem { 
+
+    .activeItem {
       padding: 2px;
-      
+
       &::after {
-        content: "";
+        content: '';
         border: 1px solid #050505;
         width: 40px;
         height: 40px;
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%);
         border-radius: 50%;
         animation: page 0.7s ease-in-out;
-        }
       }
     }
   }
+}
 
-  .list {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    position: relative;
-    &:hover {
-      .miniImg {
-        z-index: 20;
-      }
-
-      .activeImg {
-        display: block;
-        animation: page 1s ease-in-out;
-      }
-      
-      .shadowWhite {
-        display: block;
-      }
-    }
-    .activeImg {
-      display: none;
-      width: 290px;
-      position: absolute;
-      bottom: 37px;
-      padding-bottom: 8px;
-      left: 0;
-      border-radius: 10px;
-      transition: 1s !important;
-      cursor: pointer;
-      z-index: 112;
-      padding-bottom: 5px;
-      
-      img {
-          height: 290px;
-          width: 290px;
-          border-radius: 10px;
-      }
-
-      &:hover {
-        display: block;
-      }
-  
-    }
-
+.list {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  &:hover {
     .miniImg {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      position: relative;
-      animation: page 0.7s ease-in-out;
+      z-index: 20;
+    }
 
+    .activeImg {
+      display: block;
+      animation: page 1s ease-in-out;
     }
 
     .shadowWhite {
-      height: 100vh;
-      min-width: 100%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background: rgba(5, 5, 5, 0.404);
-      z-index: 10;
-      animation: page 0.7s ease-in-out;
-      display: none;
-
-      &:hover {
-        display: none !important;
-      }
+      display: block;
     }
   }
+  .activeImg {
+    display: none;
+    width: 290px;
+    position: absolute;
+    bottom: 37px;
+    padding-bottom: 8px;
+    left: 0;
+    border-radius: 10px;
+    transition: 1s !important;
+    cursor: pointer;
+    z-index: 112;
+    padding-bottom: 5px;
+
+    img {
+      height: 290px;
+      width: 290px;
+      border-radius: 10px;
+    }
+
+    &:hover {
+      display: block;
+    }
+  }
+
+  .miniImg {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: relative;
+    animation: page 0.7s ease-in-out;
+  }
+
+  .shadowWhite {
+    height: 100vh;
+    min-width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(5, 5, 5, 0.404);
+    z-index: 10;
+    animation: page 0.7s ease-in-out;
+    display: none;
+
+    &:hover {
+      display: none !important;
+    }
+  }
+}
 
 .moreNoneActive {
   position: relative;

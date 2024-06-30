@@ -1,21 +1,21 @@
 ////// hooks
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 ////// imgs
-import favorite from "../../assets/icons/heart.svg";
-import favoriteWhite from "../../assets/icons/heartWhite.svg";
-import sale from "../../assets/icons/sale.svg";
-import saleWhite from "../../assets/icons/saleWhite.svg";
+import favorite from '../../assets/icons/heart.svg';
+import favoriteWhite from '../../assets/icons/heartWhite.svg';
+import sale from '../../assets/icons/sale.svg';
+import saleWhite from '../../assets/icons/saleWhite.svg';
 
 ////// style
-import "./style.scss";
+import './style.scss';
 
 ////// fns
-import { lookBasketFN, lookFavoriteFN } from "../../store/reducers/stateSlice";
+import { lookBasketFN, lookFavoriteFN } from '../../store/reducers/stateSlice';
 
 ////// components
-import Cloth from "../Cloth/Cloth";
+import Cloth from '../Cloth/Cloth';
 
 const MenuSave = () => {
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ const MenuSave = () => {
     <>
       <div className="blockFavorite">
         <button
-          className={`btnAction ${lookFavorite && "activeFavorite"}`}
+          className={`btnAction ${lookFavorite && 'activeFavorite'}`}
           onClick={lookMyFavorite}
         >
           <p>{favouriteList?.length}</p>
@@ -49,8 +49,8 @@ const MenuSave = () => {
                   <Cloth
                     item={item}
                     key={index}
-                    btn={"Положить в корзину"}
-                    type={"favourite"}
+                    btn={'Положить в корзину'}
+                    type={'favourite'}
                   />
                 ))}
               </>
@@ -60,7 +60,7 @@ const MenuSave = () => {
       </div>
       <div className="blockFavorite">
         <button
-          className={`btnAction ${lookBasket && "activeFavorite"}`}
+          className={`btnAction ${lookBasket && 'activeFavorite'}`}
           onClick={lookMyBasket}
         >
           <p>{basketList?.reduce((total, item) => total + item.count, 0)}</p>
@@ -76,8 +76,8 @@ const MenuSave = () => {
                   <Cloth
                     item={item}
                     key={index}
-                    btn={"Начать оформление заказа"}
-                    type={"basket"}
+                    btn={'Начать оформление заказа'}
+                    type={'basket'}
                   />
                 ))}
               </>
