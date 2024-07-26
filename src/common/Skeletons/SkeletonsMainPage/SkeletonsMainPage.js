@@ -1,4 +1,4 @@
-import './style.scss';
+import "./style.scss";
 
 const SkeletonsMainPage = () => {
   const listRound = Array.from({ length: 20 }, (_, index) => index);
@@ -39,8 +39,8 @@ const SkeletonsMainPage = () => {
                 <p></p>
               </main>
               <div className="cardsList">
-                {listBlock?.map((i) => (
-                  <div>
+                {listBlock?.map((i, index) => (
+                  <div key={index}>
                     <i></i>
                     <b></b>
                     <span></span>

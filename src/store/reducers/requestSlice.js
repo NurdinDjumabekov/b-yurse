@@ -71,10 +71,8 @@ export const getListBrands = createAsyncThunk(
   "getListBrands",
   async function (props, { dispatch, rejectWithValue }) {
     try {
-      const response = await axios({
-        method: "GET",
-        url: `${REACT_APP_API_URL}/reference-data/brands`,
-      });
+      const url = `${REACT_APP_API_URL}/reference-data/brands`;
+      const response = await axios(url);
       if (response.status >= 200 && response.status < 300) {
         return response?.data;
       } else {

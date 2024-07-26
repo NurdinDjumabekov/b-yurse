@@ -1,20 +1,20 @@
 ///hooks
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 ///style
-import './style.scss';
+import "./style.scss";
 
 ////fns
-import { activeSizeEveryFN } from '../../../store/reducers/stateSlice';
-import { activeSizeFN } from '../../../store/reducers/stateSlice';
+import { activeSizeEveryFN } from "../../../store/reducers/stateSlice";
+import { activeSizeFN } from "../../../store/reducers/stateSlice";
 
 //////helpers
-import { getListCloth } from '../../../store/reducers/requestSlice';
+import { getListCloth } from "../../../store/reducers/requestSlice";
 
 ///// delete
-import { arrSizeRow, arrSizeTable } from '../../../helpers/LodalData';
-import { texxtSize1, texxtSize2 } from '../../../helpers/LodalData';
+import { arrSizeRow, arrSizeTable } from "../../../helpers/LodalData";
+import { texxtSize1, texxtSize2 } from "../../../helpers/LodalData";
 
 const ClothSize = ({ choiceEvery, activeSizeProps, typeSize }) => {
   ///// activeSizeProps - выбираю один активный размер для отображения одного размера
@@ -26,10 +26,10 @@ const ClothSize = ({ choiceEvery, activeSizeProps, typeSize }) => {
   const { activeSizeEvery } = useSelector((state) => state.stateSlice);
   const { activeBrands } = useSelector((state) => state.stateSlice);
 
-  // const { listSize } = useSelector((state) => state.requestSlice);
+  const { listSize } = useSelector((state) => state.requestSlice);
 
   const clickListMan = (id) => {
-    const objSize = { ...activeSize, [typeSize === 'up' ? 'up' : 'down']: id };
+    const objSize = { ...activeSize, [typeSize === "up" ? "up" : "down"]: id };
 
     dispatch(activeSizeFN(objSize));
 
@@ -42,18 +42,9 @@ const ClothSize = ({ choiceEvery, activeSizeProps, typeSize }) => {
 
   const choiceForBasket = (id) => dispatch(activeSizeEveryFN(id));
 
-  ////////////////////////////////////// delete
-  const listSize = [
-    { id: 1, sizeName: 'S' },
-    { id: 2, sizeName: 'M' },
-    { id: 3, sizeName: 'L' },
-    { id: 4, sizeName: 'XL' },
-    { id: 5, sizeName: 'XXL' },
-  ];
+  const obj = { 1: "RS1", 2: "777-777", 3: "777-777", 4: "777-777" };
 
-  const obj = { 1: 'RS1', 2: '777-777', 3: '777-777', 4: '777-777' };
-
-  const mainTitle = typeSize === 'up' ? '(верх)' : '(низ)';
+  const mainTitle = typeSize === "up" ? "(верх)" : "(низ)";
 
   if (choiceEvery) {
     return (
@@ -64,7 +55,7 @@ const ClothSize = ({ choiceEvery, activeSizeProps, typeSize }) => {
         <ul className="listSize">
           {listSize?.map((item) => (
             <li key={item?.id} onClick={() => choiceForBasket(item?.id)}>
-              <p className={activeSizeEvery == item?.id ? 'activeItem' : ''}>
+              <p className={activeSizeEvery == item?.id ? "activeItem" : ""}>
                 {item?.sizeName}
               </p>
               <div className="moreSize">
@@ -138,7 +129,7 @@ const ClothSize = ({ choiceEvery, activeSizeProps, typeSize }) => {
         {listSize?.map((item) => (
           <li key={item?.id} onClick={() => clickListMan(item.id)}>
             <p
-              className={activeSize?.[typeSize] == item.id ? 'activeItem' : ''}
+              className={activeSize?.[typeSize] == item.id ? "activeItem" : ""}
             >
               {item?.sizeName}
             </p>

@@ -11,12 +11,11 @@ import { getListCloth } from "../../../store/reducers/requestSlice";
 ////components
 import Sorting from "../Sorting/Sorting";
 import RenderEveryCloth from "../../RenderEveryCloth/RenderEveryCloth";
-import { listCloth } from "../../../helpers/LodalData";
 
 const ClothList = () => {
   const dispatch = useDispatch();
 
-  // const { listCloth } = useSelector((state) => state.requestSlice);
+  const { listCloth } = useSelector((state) => state.requestSlice);
 
   const { activeCateg, activeSize } = useSelector((state) => state.stateSlice);
   const { activeColor, activePrice } = useSelector((state) => state.stateSlice);

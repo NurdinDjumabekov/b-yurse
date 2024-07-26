@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./style.scss";
 
 /////components
+import CategCloth from "../CategCloth/CategCloth";
 import ClothSize from "../ClothSize/ClothSize";
 import ClothPrices from "../ClothPrices/ClothPrices";
 import ClothColor from "../ClothColor/ClothColor";
@@ -13,14 +14,13 @@ import ClothColor from "../ClothColor/ClothColor";
 import { activeCategFN } from "../../../store/reducers/stateSlice";
 import { activeBrandsFN } from "../../../store/reducers/stateSlice";
 import { getListCloth } from "../../../store/reducers/requestSlice";
-import CategCloth from "../CategCloth/CategCloth";
 
 const ClothTypes = () => {
   const dispatch = useDispatch();
 
-  // const { categClothWoman } = useSelector((state) => state.requestSlice);
-  // const { categClothMan } = useSelector((state) => state.requestSlice);
-  // const { listBrands, listCloth } = useSelector((state) => state.requestSlice);
+  const { categClothWoman } = useSelector((state) => state.requestSlice);
+  const { categClothMan } = useSelector((state) => state.requestSlice);
+  const { listBrands, listCloth } = useSelector((state) => state.requestSlice);
 
   const { activeSize } = useSelector((state) => state.stateSlice);
   const { activeColor, activePrice } = useSelector((state) => state.stateSlice);
@@ -41,47 +41,6 @@ const ClothTypes = () => {
     dispatch(getListCloth({ ...obj1, ...obj2, ...obj3 }));
     onUp();
   };
-
-  console.log(activeSize, "activeSize");
-
-  ////////////////////////////////// delete
-  const listCloth = [];
-
-  const categClothWoman = [
-    { id: 1, categoryName: "Футболки" },
-    { id: 2, categoryName: "Рубашки" },
-    { id: 3, categoryName: "Брюки" },
-    { id: 4, categoryName: "Джинсы" },
-    { id: 5, categoryName: "Куртки" },
-    { id: 6, categoryName: "Шорты" },
-    { id: 7, categoryName: "Костюмы" },
-    { id: 8, categoryName: "Толстовки" },
-    { id: 9, categoryName: "Спортивные костюмы" },
-    { id: 10, categoryName: "Пиджаки" },
-  ];
-
-  const categClothMan = [
-    { id: 1, categoryName: "Футболки" },
-    { id: 2, categoryName: "Рубашки" },
-    { id: 3, categoryName: "Брюки" },
-    { id: 4, categoryName: "Джинсы" },
-    { id: 5, categoryName: "Куртки" },
-    { id: 6, categoryName: "Шорты" },
-    { id: 7, categoryName: "Костюмы" },
-    { id: 8, categoryName: "Толстовки" },
-    { id: 9, categoryName: "Спортивные костюмы" },
-    { id: 10, categoryName: "Пиджаки" },
-  ];
-
-  const listBrands = [
-    { id: 1, collectionName: "Nike" },
-    { id: 2, collectionName: "Adidas" },
-    { id: 3, collectionName: "Puma" },
-    { id: 4, collectionName: "Reebok" },
-    { id: 5, collectionName: "Under Armour" },
-  ];
-
-  ////////////////////////////////////
 
   const lengthTen = listCloth?.length > 9;
 

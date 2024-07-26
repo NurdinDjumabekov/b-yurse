@@ -12,8 +12,6 @@ import { lookFavoriteFN } from "../../store/reducers/stateSlice";
 ////style
 import "./style.scss";
 import MenuChoice from "../MenuChoice/MenuChoice";
-import { useEffect } from "react";
-import { getListBrands } from "../../store/reducers/requestSlice";
 
 const Menu = () => {
   const dispatch = useDispatch();
@@ -29,10 +27,6 @@ const Menu = () => {
     dispatch(lookBasketFN(false));
     dispatch(lookMenuFN(false));
   };
-
-  useEffect(() => {
-    dispatch(getListBrands());
-  }, []);
 
   const check = lookFavorite || lookBasket || lookMenu;
 

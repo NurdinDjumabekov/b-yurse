@@ -1,11 +1,11 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import MainLayouts from '../layouts/MainLayouts/MainLayouts';
-import SalePage from '../pages/SalePage/SalePage';
-import EveryClothPage from '../pages/EveryClothPage/EveryClothPage';
-import BasketPage from '../pages/BasketPage/BasketPage';
-import DecorZakazPage from '../pages/DecorZakazPage/DecorZakazPage';
-import { Preloader } from '../common/Preloader/Preloader';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import MainLayouts from "../layouts/MainLayouts/MainLayouts";
+import SalePage from "../pages/SalePage/SalePage";
+import EveryClothPage from "../pages/EveryClothPage/EveryClothPage";
+import BasketPage from "../pages/BasketPage/BasketPage";
+import DecorZakazPage from "../pages/DecorZakazPage/DecorZakazPage";
+import { Preloader } from "../common/Preloader/Preloader";
 
 const MainRoutes = () => {
   return (

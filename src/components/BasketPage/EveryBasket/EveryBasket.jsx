@@ -1,28 +1,26 @@
 ////// hooks
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 
 ////// imgs
-import arrow from '../../../assets/icons/arrowRightTregBlack.svg';
-import deleteImg from '../../../assets/icons/delete.svg';
+import arrow from "../../../assets/icons/arrowRightTregBlack.svg";
+import deleteImg from "../../../assets/icons/delete.svg";
 
 ////// components
-import { deleteProdBasket } from '../../../store/reducers/saveDataSlice';
-import { addProdBasket } from '../../../store/reducers/saveDataSlice';
-import { removeProdBasket } from '../../../store/reducers/saveDataSlice';
+import { deleteProdBasket } from "../../../store/reducers/saveDataSlice";
+import { addProdBasket } from "../../../store/reducers/saveDataSlice";
+import { removeProdBasket } from "../../../store/reducers/saveDataSlice";
 
 /////// helpers
-import { sarchImg } from '../../../helpers/sarchImg';
+import { sarchImg } from "../../../helpers/sarchImg";
 
 ////// style
-import './style.scss';
-import Favourite from '../../../common/Favourite/Favourite';
-import ClothColor from '../../SalePage/ClothColor/ClothColor';
-import ClothSize from '../../SalePage/ClothSize/ClothSize';
+import "./style.scss";
+import Favourite from "../../../common/Favourite/Favourite";
+import ClothColor from "../../SalePage/ClothColor/ClothColor";
+import ClothSize from "../../SalePage/ClothSize/ClothSize";
 
 const EveryBasket = ({ item }) => {
   const dispatch = useDispatch();
-
-  console.log(item, 'item');
 
   return (
     <div className="basket__every">
@@ -36,7 +34,7 @@ const EveryBasket = ({ item }) => {
 
           <div className="colors-size">
             <ClothSize
-              typeSize={'up'}
+              typeSize={"up"}
               activeSizeProps={item?.activeSizeEvery}
             />
             <ClothColor activeColorProps={item?.activeColorEvery} />

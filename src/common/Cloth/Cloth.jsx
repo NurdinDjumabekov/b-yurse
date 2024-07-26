@@ -1,25 +1,25 @@
 ////// hooks
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 ////// hooks
-import deleteImg from '../../assets/icons/delete.svg';
-import clothColor from '../../assets/images/bigImg.png';
+import deleteImg from "../../assets/icons/delete.svg";
+import clothColor from "../../assets/images/bigImg.png";
 
 ////// helpers
-import { sarchImg } from '../../helpers/sarchImg';
+import { sarchImg } from "../../helpers/sarchImg";
 
 ////// style
-import './style.scss';
+import "./style.scss";
 
 ////// fns
-import { lookBasketFN, lookFavoriteFN } from '../../store/reducers/stateSlice';
-import { addDelProdFavourite } from '../../store/reducers/saveDataSlice';
-import { deleteProdBasket } from '../../store/reducers/saveDataSlice';
+import { lookBasketFN, lookFavoriteFN } from "../../store/reducers/stateSlice";
+import { addDelProdFavourite } from "../../store/reducers/saveDataSlice";
+import { deleteProdBasket } from "../../store/reducers/saveDataSlice";
 
 ////// components
-import DiscountPrice from '../DiscountPrice/DiscountPrice';
+import DiscountPrice from "../DiscountPrice/DiscountPrice";
 
 const Cloth = ({ item, btn, type }) => {
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ const Cloth = ({ item, btn, type }) => {
   const nav = () => {
     dispatch(lookFavoriteFN(false));
     dispatch(lookBasketFN(false));
-    navigate('basket');
+    navigate("basket");
   };
 
   const color = item?.colors?.filter((i) => i.id == item?.activeColorEvery);
@@ -37,9 +37,9 @@ const Cloth = ({ item, btn, type }) => {
 
   const changeFavourite = (obj) => dispatch(addDelProdFavourite(obj));
 
-  const delProInBasket = (codeid) => dispatch(deleteProdBasket(codeid));
+  const delProdInBasket = (obj) => dispatch(deleteProdBasket(obj));
 
-  if (type == 'favourite') {
+  if (type == "favourite") {
     return (
       <li className="everyBasket">
         <div className="imgMain">
@@ -84,8 +84,8 @@ const Cloth = ({ item, btn, type }) => {
     );
   }
 
-  if (type == 'basket') {
-    console.log(item, 'item');
+  if (type == "basket") {
+    console.log(item, "item");
     return (
       <li className="everyBasket">
         <div className="imgMain">
@@ -96,7 +96,7 @@ const Cloth = ({ item, btn, type }) => {
             <h5>{item?.productName}</h5>
             <button
               className="actionDelete"
-              onClick={() => delProInBasket(item?.codeid)}
+              onClick={() => delProdInBasket(item)}
             >
               <img src={deleteImg} alt="x" />
             </button>
@@ -121,7 +121,7 @@ const Cloth = ({ item, btn, type }) => {
                 <img
                   src={clothColor}
                   alt=""
-                  className={item?.activeColorEvery ? '' : 'noneImg'}
+                  className={item?.activeColorEvery ? "" : "noneImg"}
                 />
               </div>
             </div>
